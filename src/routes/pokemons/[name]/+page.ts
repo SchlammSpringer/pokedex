@@ -1,7 +1,7 @@
 import type { PageLoad } from '../../../../.svelte-kit/types/src/routes/pokemons/[name]/$types'
 
 export const load = (async (event) => {
-  const response = await event.fetch(`/api/pokemons/${event.params.name}`, {
+  const response: Response = await event.fetch(`/api/pokemons/${event.params.name}`, {
     method: 'GET',
     headers: {
       'content-type': 'application/json'

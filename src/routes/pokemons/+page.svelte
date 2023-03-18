@@ -1,8 +1,7 @@
 <script lang='ts'>
-  import type { PageData } from './$types'
-  import type { PokemonShort } from '../../types'
+  import type { Pokemons, PokemonShort } from '../../types'
 
-  export let data: PageData
+  export let data: Pokemons
   let pokemons: PokemonShort[] = data.pokemons
   const spriteUrl = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'
   const spriteBackUrl =
@@ -22,7 +21,9 @@
   }
 
   let searchTerm = ''
-  $: pokemons = data.pokemons.filter(pokemon => pokemon.name.toLowerCase().includes(searchTerm.toLowerCase()) === true)
+  $: pokemons = data.pokemons.filter(
+    (pokemon) => pokemon.name.toLowerCase().includes(searchTerm.toLowerCase()) === true
+  )
 </script>
 
 <div class='container mx-auto p-8 space-y-8'>
