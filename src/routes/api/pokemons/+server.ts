@@ -2,15 +2,16 @@ import type { RequestHandler } from '@sveltejs/kit'
 import { json } from '@sveltejs/kit'
 import type { Pokemons, PokemonShort } from '../../../types'
 
-const lastPart = (href: string) => {
+const lastPart: (href: string) => string = (href: string) => {
   const segments = new URL(href).pathname.split('/')
-  return segments.pop() || segments.pop()
+  return segments.pop() || segments.pop() || ''
 }
 
-const toPokemonShort = () => (pokemon: { url: string; name: string }) => ({
-  pokedex: lastPart(pokemon.url),
-  name: pokemon.name
-})
+const toPokemonShort: () => (pokemon: { url: string; name: string }) => PokemonShort =
+  () => (pokemon: { url: string; name: string }) => ({
+    pokedex: lastPart(pokemon.url),
+    name: pokemon.name
+  })
 
 const fetchOriginalPokemons = async () => {
   const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=151')

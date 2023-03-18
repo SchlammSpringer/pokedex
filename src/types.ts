@@ -1,5 +1,5 @@
 export interface PokemonShort {
-  index: number
+  pokedex: string
   name: string
 }
 
