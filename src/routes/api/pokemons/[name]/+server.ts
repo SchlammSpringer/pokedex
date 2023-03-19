@@ -6,8 +6,7 @@ const extractFlavorTexts = ({ flavor_text_entries }: { flavor_text_entries: Flav
   const allTexts = flavor_text_entries
     .filter((flavor: Flavor) => flavor.language.name === 'de')
     .map((flavor: Flavor) => flavor.flavor_text.replace(/[\r\n\f]/gm, ' '))
-  const uniqueTexts = [...new Set(allTexts)]
-  return uniqueTexts
+  return [...new Set(allTexts)]
 }
 
 export const GET = (async ({ params }) => {

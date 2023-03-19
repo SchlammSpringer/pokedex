@@ -30,7 +30,12 @@
   <h1>Pokemons</h1>
   <div class='input-group input-group-divider grid-cols-[auto_1fr_auto]'>
     <div class='input-group-shim'><i class='fa-solid fa-search' /></div>
-    <input bind:value={searchTerm} autocomplete='false' type='search' placeholder='Search name or pokedex id' />
+    <input
+      bind:value={searchTerm}
+      autocomplete='false'
+      type='search'
+      placeholder='Search name or pokedex id'
+    />
   </div>
   <div class='grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3'>
     {#each pokemons as pokemon}
