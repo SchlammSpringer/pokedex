@@ -1,14 +1,16 @@
-export interface Pokemon {
-  name: string
+export interface Pokemon extends PokemonShort {
   description: string
   types: string[]
+  color: string
   germanName: string
+  habitat: string
 }
 
 export interface PokemonShort {
-  pokedex: string
+  pokedex: number
   name: string
 }
+
 export interface Pokemons {
   pokemons: PokemonShort[]
 }

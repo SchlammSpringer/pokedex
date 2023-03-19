@@ -1,11 +1,9 @@
 <script lang='ts'>
   import type { Pokemons, PokemonShort } from '../../types'
+  import { spriteBackUrl, spriteUrl } from '../../share'
 
   export let data: Pokemons
   let pokemons: PokemonShort[] = data.pokemons
-  const spriteUrl = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'
-  const spriteBackUrl =
-    'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/'
 
   let sprite: string[] = []
   const frontImage = (pokedex) => {
@@ -22,7 +20,9 @@
 
   let searchTerm = ''
   $: pokemons = data.pokemons.filter(
-    (pokemon) => pokemon.name.toLowerCase().includes(searchTerm.toLowerCase()) === true
+    (pokemon) =>
+      pokemon.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      pokemon.pokedex.toString().includes(searchTerm.toLowerCase()) === true
   )
 </script>
 
@@ -30,7 +30,7 @@
   <h1>Pokemons</h1>
   <div class='input-group input-group-divider grid-cols-[auto_1fr_auto]'>
     <div class='input-group-shim'><i class='fa-solid fa-search' /></div>
-    <input bind:value={searchTerm} autocomplete='false' type='search' placeholder='Search...' />
+    <input bind:value={searchTerm} autocomplete='false' type='search' placeholder='Search name or pokedex id' />
   </div>
   <div class='grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3'>
     {#each pokemons as pokemon}
