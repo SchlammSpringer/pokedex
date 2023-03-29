@@ -1,4 +1,18 @@
-<script lang='ts' ✂prettier:content✂="CiAgaW1wb3J0IHR5cGUgeyBQb2tlbW9uIH0gZnJvbSAnJGxpYi90eXBlcycKICBpbXBvcnQgeyBzcHJpdGVCYWNrVXJsLCBzcHJpdGVTaGlueUJhY2tVcmwsIHNwcml0ZVNoaW55VXJsLCBzcHJpdGVVcmwgfSBmcm9tICckbGliL3NoYXJlLmpzJwogIGltcG9ydCB7IEF2YXRhciwgUHJvZ3Jlc3NCYXIgfSBmcm9tICdAc2tlbGV0b25sYWJzL3NrZWxldG9uJwogIGltcG9ydCB7IGZseSB9IGZyb20gJ3N2ZWx0ZS90cmFuc2l0aW9uJwoKICBleHBvcnQgbGV0IGRhdGE6IFBva2Vtb24KICBjb25zdCBzcmMgPSBgaHR0cHM6Ly9zb3VyY2UudW5zcGxhc2guY29tL3JhbmRvbS8xMDAweDQwMD8ke2RhdGEuaGFiaXRhdH0mbmF0dXJlYAogIGNvbnN0IHByZWxvYWQgPSAoc3JjOiBzdHJpbmcpID0+CiAgICBuZXcgUHJvbWlzZSgocmVzb2x2ZSkgPT4gewogICAgICBjb25zdCBpbWcgPSBuZXcgSW1hZ2UoKQogICAgICBpbWcub25sb2FkID0gcmVzb2x2ZQogICAgICBpbWcuc3JjID0gc3JjCiAgICB9KQo=">{}</script>
+<script lang='ts'>
+  import type { Pokemon } from '$lib/types'
+  import { spriteBackUrl, spriteShinyBackUrl, spriteShinyUrl, spriteUrl } from '$lib/share.js'
+  import { Avatar, ProgressBar } from '@skeletonlabs/skeleton'
+  import { fly } from 'svelte/transition'
+
+  export let data: Pokemon
+  const src = `https://source.unsplash.com/random/1000x400?${data.habitat}&nature`
+  const preload = (src: string) =>
+    new Promise((resolve) => {
+      const img = new Image()
+      img.onload = resolve
+      img.src = src
+    })
+</script>
 
 <div class='container mx-auto p-8 space-y-8'>
   <div class='card overflow-hidden'>
@@ -70,4 +84,5 @@
   </div>
 </div>
 
-<style ✂prettier:content✂="Cg=="></style>
+<style>
+</style>
