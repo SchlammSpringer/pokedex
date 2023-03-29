@@ -1,6 +1,6 @@
 import type { RequestHandler } from '@sveltejs/kit'
 import { json } from '@sveltejs/kit'
-import type { Pokemon } from '../../../../types'
+import type { Pokemon } from '$lib/types'
 
 const extractFlavorTexts = ({ flavor_text_entries }: { flavor_text_entries: Flavor[] }) => {
   const allTexts = flavor_text_entries

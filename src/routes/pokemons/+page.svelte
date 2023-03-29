@@ -1,30 +1,4 @@
-<script lang='ts'>
-  import type { Pokemons, PokemonShort } from '../../types'
-  import { spriteBackUrl, spriteUrl } from '../../share'
-
-  export let data: Pokemons
-  let pokemons: PokemonShort[] = data.pokemons
-
-  let sprite: string[] = []
-  const frontImage = (pokedex) => {
-    const url = `${spriteUrl + pokedex}.png`
-    sprite[pokedex] = url
-    return url
-  }
-
-  const backImage = (pokedex) => {
-    const url = `${spriteBackUrl + pokedex}.png`
-    sprite[pokedex] = url
-    return url
-  }
-
-  let searchTerm = ''
-  $: pokemons = data.pokemons.filter(
-    (pokemon) =>
-      pokemon.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      pokemon.pokedex.toString().includes(searchTerm.toLowerCase()) === true
-  )
-</script>
+<script lang='ts' ✂prettier:content✂="CiAgaW1wb3J0IHR5cGUgeyBQb2tlbW9ucywgUG9rZW1vblNob3J0IH0gZnJvbSAnJGxpYi90eXBlcycKICBpbXBvcnQgeyBzcHJpdGVCYWNrVXJsLCBzcHJpdGVVcmwgfSBmcm9tICckbGliL3NoYXJlJwoKICBleHBvcnQgbGV0IGRhdGE6IFBva2Vtb25zCiAgbGV0IHBva2Vtb25zOiBQb2tlbW9uU2hvcnRbXQoKICBsZXQgc3ByaXRlOiBzdHJpbmdbXSA9IFtdCiAgY29uc3QgZnJvbnRJbWFnZSA9IChwb2tlZGV4OiBudW1iZXIpID0+IHsKICAgIGNvbnN0IHVybCA9IGAke3Nwcml0ZVVybCArIHBva2VkZXh9LnBuZ2AKICAgIHNwcml0ZVtwb2tlZGV4XSA9IHVybAogICAgcmV0dXJuIHVybAogIH0KCiAgY29uc3QgYmFja0ltYWdlID0gKHBva2VkZXg6IG51bWJlcikgPT4gewogICAgY29uc3QgdXJsID0gYCR7c3ByaXRlQmFja1VybCArIHBva2VkZXh9LnBuZ2AKICAgIHNwcml0ZVtwb2tlZGV4XSA9IHVybAogICAgcmV0dXJuIHVybAogIH0KCiAgbGV0IHNlYXJjaFRlcm0gPSAnJwogICQ6IHBva2Vtb25zID0gZGF0YS5wb2tlbW9ucy5maWx0ZXIoCiAgICAocG9rZW1vbikgPT4KICAgICAgcG9rZW1vbi5uYW1lLnRvTG93ZXJDYXNlKCkuaW5jbHVkZXMoc2VhcmNoVGVybS50b0xvd2VyQ2FzZSgpKSB8fAogICAgICBwb2tlbW9uLnBva2VkZXgudG9TdHJpbmcoKS5pbmNsdWRlcyhzZWFyY2hUZXJtLnRvTG93ZXJDYXNlKCkpID09PSB0cnVlCiAgKQo=">{}</script>
 
 <div class='container mx-auto p-8 space-y-8'>
   <h1>Pokemons</h1>
@@ -63,5 +37,4 @@
   </div>
 </div>
 
-<style>
-</style>
+<style ✂prettier:content✂="Cg=="></style>

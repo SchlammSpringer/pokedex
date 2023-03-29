@@ -1,4 +1,4 @@
-import type { PageLoad } from '../../../.svelte-kit/types/src/routes/pokemons/$types'
+import type { PageLoad } from './$types'
 
 export const load = (async (event) => {
   const response = await event.fetch('/api/pokemons', {

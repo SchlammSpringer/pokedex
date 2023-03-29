@@ -1,15 +1,15 @@
 import type { RequestHandler } from '@sveltejs/kit'
 import { json } from '@sveltejs/kit'
-import type { Pokemons, PokemonShort } from '../../../types'
+import type { PokemonFromApi, Pokemons, PokemonShort } from '$lib/types'
 
 const lastPart: (href: string) => string = (href: string) => {
   const segments = new URL(href).pathname.split('/')
   return segments.pop() || segments.pop() || ''
 }
 
-const toPokemonShort: () => (pokemon: { url: string; name: string }) => PokemonShort =
-  () => (pokemon: { url: string; name: string }) => ({
-    pokedex: lastPart(pokemon.url),
+const toPokemonShort: () => (pokemon: PokemonFromApi) => PokemonShort =
+  () => (pokemon: PokemonFromApi) => ({
+    pokedex: +lastPart(pokemon.url),
     name: pokemon.name
   })
 

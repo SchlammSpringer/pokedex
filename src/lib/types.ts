@@ -14,3 +14,8 @@ export interface PokemonShort {
 export interface Pokemons {
   pokemons: PokemonShort[]
 }
+
+export interface PokemonFromApi {
+  url: string
+  name: string
+}
