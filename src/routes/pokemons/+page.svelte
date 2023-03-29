@@ -1,4 +1,4 @@
-<script lang='ts'>
+<script lang="ts">
   import type { Pokemons, PokemonShort } from '$lib/types'
   import { spriteBackUrl, spriteUrl } from '$lib/share'
 
