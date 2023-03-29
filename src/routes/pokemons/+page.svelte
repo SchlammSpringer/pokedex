@@ -25,7 +25,6 @@
       pokemon.pokedex.toString().includes(searchTerm.toLowerCase()) === true
   )
 </script>
-
 <div class="container mx-auto p-8 space-y-8">
   <h1>Pokemons</h1>
   <div class="input-group input-group-divider grid-cols-[auto_1fr_auto]">

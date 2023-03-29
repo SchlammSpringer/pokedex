@@ -9,7 +9,7 @@
 </script>
 
 <!-- App Shell -->
-<AppShell slotSidebarLeft="bg-surface-500/5 w-56 p-4">
+<AppShell>
   <svelte:fragment slot="header">
     <!-- App Bar -->
     <AppBar>
@@ -20,15 +20,15 @@
   </svelte:fragment>
 
   <svelte:fragment slot="sidebarLeft">
-    <!-- Insert the list: -->
-    <nav class="list-nav">
-      <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/pokemons">Pokemons</a></li>
-        <li><a href="/about">About</a></li>
-      </ul>
-    </nav>
-    <!-- --- -->
+    <div id="sidebar-left" class="hidden lg:block">
+      <nav class="list-nav p-4">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/pokemons">Pokemons</a></li>
+          <li><a href="/about">About</a></li>
+        </ul>
+      </nav>
+    </div>
   </svelte:fragment>
 
   <!-- Page Route Content -->
