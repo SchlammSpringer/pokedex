@@ -75,9 +75,12 @@
       {/if}
       <div class="flex justify-start items-center space-x-4">
         {#each data.types as type}
-          <span class="badge variant-filled">
+          <a
+            class="chip variant-soft hover:variant-filled !no-underline"
+            href="/pokemons?type={type}"
+          >
             {type}
-          </span>
+          </a>
         {/each}
       </div>
     </section>

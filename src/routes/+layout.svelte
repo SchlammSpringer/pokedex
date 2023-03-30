@@ -6,6 +6,10 @@
   // Most of your app wide CSS should be put in this file
   import '../app.postcss'
   import { AppBar, AppShell } from '@skeletonlabs/skeleton'
+  import { QueryClientProvider } from '@tanstack/svelte-query'
+  import type { PageData } from './$types'
+
+  export let data: PageData
 </script>
 
 <!-- App Shell -->
@@ -32,5 +36,7 @@
   </svelte:fragment>
 
   <!-- Page Route Content -->
-  <slot />
+  <QueryClientProvider client={data.queryClient}>
+    <slot />
+  </QueryClientProvider>
 </AppShell>
