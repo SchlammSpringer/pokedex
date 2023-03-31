@@ -18,11 +18,8 @@
   export let data: PageData
 
   let analyticsId = import.meta.env.VERCEL_ANALYTICS_ID
-  console.log(analyticsId)
 
   $: if (browser && analyticsId) {
-    console.log('analytics should work')
-
     webVitals({
       path: $page.url.pathname,
       params: $page.params,
