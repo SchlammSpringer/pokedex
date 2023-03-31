@@ -16,7 +16,6 @@ export interface PokemonFromApi {
   types: Type[]
   id: number
   species: SpeciesFromApi
-  url: string
   name: string
 }
 

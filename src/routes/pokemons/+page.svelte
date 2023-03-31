@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { Pokemons } from '$lib/types'
-  import { spriteBackUrl, spriteUrl } from '$lib/share'
+  import { officialArtworkUrl, officialShinyArtworkUrl } from '$lib/share'
   import { page } from '$app/stores'
   import { createQuery } from '@tanstack/svelte-query'
   import { getAllPokemons } from '$lib/queries'
@@ -15,13 +15,13 @@
 
   let sprite: string[] = []
   const frontImage = (pokedex: number) => {
-    const url = `${spriteUrl + pokedex}.png`
+    const url = `${officialArtworkUrl + pokedex}.png`
     sprite[pokedex] = url
     return url
   }
 
   const backImage = (pokedex: number) => {
-    const url = `${spriteBackUrl + pokedex}.png`
+    const url = `${officialShinyArtworkUrl + pokedex}.png`
     sprite[pokedex] = url
     return url
   }
@@ -67,7 +67,7 @@
             </header>
             <section class="p-4">
               <img
-                class="block bg-pink-50 ml-auto mr-auto rounded-full border border-gray-100 shadow-sm"
+                class="block"
                 src={sprite[pokemon.pokedex] || frontImage(pokemon.pokedex)}
                 alt={pokemon.name}
               />
