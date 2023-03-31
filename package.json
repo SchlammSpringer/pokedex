@@ -40,6 +40,7 @@
   "type": "module",
   "dependencies": {
     "@tanstack/svelte-query": "^4.27.0",
+    "@vercel/analytics": "^0.1.11",
     "lowdb": "^5.1.0"
   }
 }

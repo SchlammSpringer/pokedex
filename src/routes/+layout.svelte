@@ -8,6 +8,10 @@
   import { AppBar, AppShell } from '@skeletonlabs/skeleton'
   import { QueryClientProvider } from '@tanstack/svelte-query'
   import type { PageData } from './$types'
+  import { dev } from '$app/environment'
+  import { inject } from '@vercel/analytics'
+
+  inject({ mode: dev ? 'development' : 'production' })
 
   export let data: PageData
 </script>
