@@ -9,7 +9,7 @@ export const spriteShinyUrl =
 export const spriteShinyBackUrl =
   'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/'
 
-export async function fetchPokemon(pokeUrl: URL) {
+export const fetchPokemon = async (pokeUrl: URL) => {
   const pokemonResponse: Response = await fetch(pokeUrl)
   const pokemonFromApi: PokemonFromApi = await pokemonResponse.json()
   const speciesResponse: Response = await fetch(pokemonFromApi.species.url)
@@ -34,17 +34,4 @@ const extractFlavorTexts = ({ flavor_text_entries }: { flavor_text_entries: Flav
     .filter((flavor: Flavor) => flavor.language.name === 'de')
     .map((flavor: Flavor) => flavor.flavor_text.replace(/[\r\n\f]/gm, ' '))
   return [...new Set(allTexts)]
-}
-
-export const getAllPokemons = async (
-  fetch: (input: RequestInfo | URL, init?: RequestInit | undefined) => Promise<Response>
-) => {
-  const response = await fetch('/api/pokemons', {
-    method: 'GET',
-    headers: {
-      'content-type': 'application/json'
-    }
-  })
-
-  return await response.json()
 }

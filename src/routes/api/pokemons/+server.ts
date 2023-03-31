@@ -1,6 +1,6 @@
 import type { RequestHandler } from '@sveltejs/kit'
 import { json } from '@sveltejs/kit'
-import type { Pokemon, Pokemons } from '$lib/types'
+import type { Pokemon } from '$lib/types'
 import { fetchPokemon } from '$lib/share'
 
 const fetchOriginalPokemons = async () => {
@@ -16,5 +16,7 @@ export const GET = (async () => {
   )
   const pokemons = await Promise.all(maybePokemons)
 
-  return json(<Pokemons>{ pokemons: pokemons })
+  console.log('pokemons collected & transformed ...')
+
+  return json({ pokemons })
 }) satisfies RequestHandler

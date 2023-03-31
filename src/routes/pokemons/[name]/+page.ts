@@ -1,11 +1,20 @@
+import { getPokemon } from '$lib/queries'
 import type { PageLoad } from './$types'
 
-export const load = (async (event) => {
-  const response: Response = await event.fetch(`/api/pokemons/${event.params.name}`, {
-    method: 'GET',
-    headers: {
-      'content-type': 'application/json'
-    }
+// export const load = (async (event) => {
+//   return getPokemon(event.fetch, event.params.name)
+// }) satisfies PageLoad
+
+export const load = (async ({ fetch, params, parent }) => {
+  const { queryClient } = await parent()
+  const query = await queryClient.prefetchQuery({
+    queryKey: ['pokemon', params.name],
+    queryFn: () => getPokemon(fetch, params.name)
   })
-  return await response.json()
+
+  return {
+    name: params.name,
+    queryClient: queryClient,
+    query: query
+  }
 }) satisfies PageLoad

@@ -1,4 +1,7 @@
-export interface Pokemon extends PokemonShort {
+export interface Pokemon {
+  pokedex: number
+  name: string
+  types: string[]
   description: string
   color: string
   germanName: string
@@ -7,12 +10,6 @@ export interface Pokemon extends PokemonShort {
 
 export interface Pokemons {
   pokemons: Pokemon[]
-}
-
-interface PokemonShort {
-  pokedex: number
-  name: string
-  types: string[]
 }
 
 export interface PokemonFromApi {
@@ -25,9 +22,9 @@ export interface PokemonFromApi {
 
 export interface SpeciesFromApi {
   url: URL | RequestInfo
-  habitat: any
+  habitat: Name
   names: LanguageName[]
-  color: any
+  color: Name
   flavor_text_entries: Flavor[]
 }
 
