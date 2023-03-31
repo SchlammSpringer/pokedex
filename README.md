@@ -1,41 +1,21 @@
-# create-svelte
+# Pokedex in [SvelteKit](https://kit.svelte.dev/) as classic full stack application
 
-Everything you need to build a Svelte project, powered
-by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+- no cors
+- no seperate eco systems (angular / spring boot)
+- high developer perfomance
 
-## Creating a project
+## Backend with [PokeApi](https://pokeapi.co/) and [LowDB](https://github.com/typicode/lowdb)
 
-If you're seeing this, you've probably already done this step. Congrats!
+### [PokeApi](https://pokeapi.co/) as a simulation for internal service orchestration
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+### [LowDB](https://github.com/typicode/lowdb) as lightweight document store
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+## Frontend with dynamic server side rendering (SSR)
 
-## Developing
+### [Skeleton](https://www.skeleton.dev/) for nice UI
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a
-development server:
+### [TanStack Query](https://tanstack.com/query/latest/docs/svelte/overview) to optimize loading behavior
 
-```bash
-npm run dev
+### reactive searching / filtering for Pokemons
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target
-> environment.
+## [Vitest](https://vitest.dev/)
