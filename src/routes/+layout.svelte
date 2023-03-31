@@ -8,21 +8,10 @@
   import { AppBar, AppShell } from '@skeletonlabs/skeleton'
   import { QueryClientProvider } from '@tanstack/svelte-query'
   import type { PageData } from './$types'
-  import { browser, dev } from '$app/environment'
+  import { dev } from '$app/environment'
   import { inject } from '@vercel/analytics'
-  import { webVitals } from '$lib/vitals'
-  import { page } from '$app/stores'
 
   inject({ mode: dev ? 'development' : 'production' })
-
-  let analyticsId = import.meta.env.VERCEL_ANALYTICS_ID
-  $: if (browser && analyticsId) {
-    webVitals({
-      path: $page.url.pathname,
-      params: $page.params,
-      analyticsId
-    })
-  }
 
   export let data: PageData
 </script>
