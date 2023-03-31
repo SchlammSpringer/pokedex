@@ -1,5 +1,6 @@
 # Pokedex in [SvelteKit](https://kit.svelte.dev/) as classic full stack application
 
+- used for Apple Music 
 - no cors
 - no seperate eco systems (angular / spring boot)
 - high developer perfomance
@@ -19,3 +20,5 @@
 ### reactive searching / filtering for Pokemons
 
 ## [Vitest](https://vitest.dev/)
+
+## [Vercel](https://vercel.com)
