@@ -1,8 +1,6 @@
 import { getAllPokemons } from '$lib/queries'
 import type { PageLoad } from './$types'
 
-export const prerender = false
-
 export const load = (async ({ fetch, parent }) => {
   const { queryClient } = await parent()
   await queryClient.prefetchQuery({
