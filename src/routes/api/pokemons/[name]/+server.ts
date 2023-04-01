@@ -3,7 +3,9 @@ import { json } from '@sveltejs/kit'
 import { fetchPokemon } from '$lib/server/share'
 
 export const config: Config = {
-  runtime: 'edge'
+  runtime: 'edge',
+  region: ['fra1'],
+  split: true
 }
 
 export const GET = (async ({ params }) => {
