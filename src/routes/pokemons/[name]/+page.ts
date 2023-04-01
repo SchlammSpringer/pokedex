@@ -1,6 +1,8 @@
 import { getPokemon } from '$lib/queries'
 import type { PageLoad } from './$types'
 
+export const prerender = false
+
 // export const load = (async (event) => {
 //   return getPokemon(event.fetch, event.params.name)
 // }) satisfies PageLoad
