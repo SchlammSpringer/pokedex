@@ -8,9 +8,13 @@ import type {
 } from '$lib/types'
 
 export const fetchPokemon = async (pokeUrl: URL) => {
-  const pokemonResponse: Response = await fetch(pokeUrl)
+  const pokemonResponse: Response = await fetch(pokeUrl, {
+    headers: { 'Cache-Control': 's-maxage=86400, stale-while-revalidate' }
+  })
   const pokemonFromApi: PokemonFromApi = await pokemonResponse.json()
-  const speciesResponse: Response = await fetch(pokemonFromApi.species.url)
+  const speciesResponse: Response = await fetch(pokemonFromApi.species.url, {
+    headers: { 'Cache-Control': 's-maxage=86400, stale-while-revalidate' }
+  })
   const species: SpeciesFromApi = await speciesResponse.json()
   const pokemon: Pokemon = {
     pokedex: pokemonFromApi.id,
