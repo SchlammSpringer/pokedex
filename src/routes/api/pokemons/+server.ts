@@ -4,9 +4,8 @@ import type { Pokemon } from '$lib/types'
 import { fetchPokemon } from '$lib/server/share'
 
 export const config: Config = {
-  runtime: 'edge',
-  split: true
-};
+  runtime: 'edge'
+}
 
 const fetchOriginalPokemons = async () => {
   const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=151')
