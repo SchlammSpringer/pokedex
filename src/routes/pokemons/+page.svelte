@@ -1,10 +1,11 @@
 <script lang="ts">
+  import PokemonCard from '$lib/components/PokemonCard.svelte'
   import type { Pokemons } from '$lib/types'
-  import { officialArtworkUrl, officialShinyArtworkUrl } from '$lib/share'
   import { page } from '$app/stores'
   import { createQuery } from '@tanstack/svelte-query'
   import { getAllPokemons } from '$lib/queries'
-  import { ProgressBar } from '@skeletonlabs/skeleton'
+  import { InputChip, ProgressBar } from '@skeletonlabs/skeleton'
+  import { goto } from '$app/navigation'
 
   const url = $page.url
 
@@ -13,28 +14,31 @@
     queryFn: () => getAllPokemons(fetch)
   })
 
-  let sprite: string[] = []
-  const frontImage = (pokedex: number) => {
-    const url = `${officialArtworkUrl + pokedex}.png`
-    sprite[pokedex] = url
-    return url
-  }
+  let searchTerm = ''
 
-  const backImage = (pokedex: number) => {
-    const url = `${officialShinyArtworkUrl + pokedex}.png`
-    sprite[pokedex] = url
-    return url
-  }
+  let typeFilter = url.searchParams.get('type') || ''
 
-  let searchTerm = url.searchParams.get('type') || ''
+  const types = [...new Set($query.data?.pokemons.flatMap((pokemon) => pokemon.types))]
+
+  let typesWhitelist = types
+
+  let selectedTypes = typeFilter.length === 0 ? types : [typeFilter]
 
   $: pokemons =
     $query.data?.pokemons.filter(
       (pokemon) =>
-        pokemon.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        pokemon.pokedex.toString().includes(searchTerm.toLowerCase()) === true ||
-        pokemon.types.map((type) => type.toLowerCase()).includes(searchTerm.toLowerCase())
+        (pokemon.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          pokemon.pokedex.toString().includes(searchTerm.toLowerCase()) === true) &&
+        pokemon.types.filter((type) => selectedTypes.includes(type)).length > 0
     ) || []
+
+  const onNext = (event) => {
+    if (url.searchParams.get('type') === event.detail.chipValue) {
+      const newUrl = new URL($page.url)
+      newUrl?.searchParams.delete('type')
+      goto(newUrl)
+    }
+  }
 </script>
 
 <div class="container mx-auto p-8 space-y-8">
@@ -49,31 +53,19 @@
         bind:value={searchTerm}
         autocomplete="false"
         type="search"
-        placeholder="Search name, pokedex id or type"
+        placeholder="Search name, pokedex id"
       />
     </div>
+    <InputChip
+      bind:input={typeFilter}
+      bind:value={selectedTypes}
+      whitelist={typesWhitelist}
+      name="chips"
+      on:remove={(event) => onNext(event)}
+    />
     <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
       {#each pokemons as pokemon}
-        <div
-          class="card overflow-hidden p-4 text-center"
-          on:mouseover={() => backImage(pokemon.pokedex)}
-          on:focus={() => backImage(pokemon.pokedex)}
-          on:mouseout={() => frontImage(pokemon.pokedex)}
-          on:blur={() => frontImage(pokemon.pokedex)}
-        >
-          <a href="/pokemons/{pokemon.name}" class="!no-underline">
-            <header class="card-header">
-              <h2 class="!text-xl first-letter:uppercase">{pokemon.name}</h2>
-            </header>
-            <section class="p-4">
-              <img
-                class="block"
-                src={sprite[pokemon.pokedex] || frontImage(pokemon.pokedex)}
-                alt={pokemon.name}
-              />
-            </section>
-          </a>
-        </div>
+        <PokemonCard {pokemon} />
       {/each}
     </div>
   {/if}
