@@ -20,7 +20,5 @@ export const GET = (async () => {
   )
   const pokemons = await Promise.all(maybePokemons)
 
-  console.log('pokemons collected & transformed ...')
-
   return json({ pokemons })
 }) satisfies RequestHandler
