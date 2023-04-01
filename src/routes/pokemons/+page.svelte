@@ -15,6 +15,7 @@
   })
 
   let searchTerm = ''
+  let typeSearchTerm = ''
 
   let typeFilter = url.searchParams.get('type') || ''
 
@@ -32,7 +33,8 @@
         pokemon.types.filter((type) => selectedTypes.includes(type)).length > 0
     ) || []
 
-  const onNext = (event) => {
+  const onNext = (event: CustomEvent<any>) => {
+    selectedTypes = selectedTypes.length === 0 ? types : selectedTypes
     if (url.searchParams.get('type') === event.detail.chipValue) {
       const newUrl = new URL($page.url)
       newUrl?.searchParams.delete('type')
@@ -57,7 +59,8 @@
       />
     </div>
     <InputChip
-      bind:input={typeFilter}
+      placeholder="Pokemon type..."
+      bind:input={typeSearchTerm}
       bind:value={selectedTypes}
       whitelist={typesWhitelist}
       name="chips"

@@ -73,5 +73,6 @@
     "text",
     "track",
     "width"
-  ]
+  ],
+  "testing.automaticallyOpenPeekView": "never"
 }
