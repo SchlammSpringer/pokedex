@@ -24,3 +24,5 @@
 ## [Vercel](https://vercel.com)
 
 ### Incremental Static Regeneration (ISR)
+
+- chaches query calls
