@@ -4,18 +4,14 @@
   // If you have source.organizeImports set to true in VSCode, then it will auto change this ordering
   import '@skeletonlabs/skeleton/styles/all.css'
   // Most of your app wide CSS should be put in this file
-  import '../app.postcss'
-  import { AppBar, AppShell } from '@skeletonlabs/skeleton'
-  import { QueryClientProvider } from '@tanstack/svelte-query'
-  import type { PageData } from './$types'
   import { browser, dev } from '$app/environment'
-  import { inject } from '@vercel/analytics'
-  import { webVitals } from '$lib/vital'
   import { page } from '$app/stores'
+  import { webVitals } from '$lib/vital'
+  import { AppBar, AppShell } from '@skeletonlabs/skeleton'
+  import { inject } from '@vercel/analytics'
+  import '../app.postcss'
 
   inject({ mode: dev ? 'development' : 'production' })
-
-  export let data: PageData
 
   let analyticsId = import.meta.env.VERCEL_ANALYTICS_ID
 
@@ -50,9 +46,6 @@
       </nav>
     </div>
   </svelte:fragment>
-
   <!-- Page Route Content -->
-  <QueryClientProvider client={data.queryClient}>
-    <slot />
-  </QueryClientProvider>
+  <slot />
 </AppShell>

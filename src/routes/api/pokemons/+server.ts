@@ -4,8 +4,6 @@ import type { Pokemon } from '$lib/types'
 import { fetchPokemon } from '$lib/server/share'
 
 export const config: Config = {
-  runtime: 'edge',
-  region: ['fra1'],
   split: true
 }
 
