@@ -4,9 +4,7 @@
   import type { Pokemons } from '$lib/types'
 
   export let data: Pokemons
-
   const initalPokemons = data.pokemons
-
   let pokemons = initalPokemons
 </script>
 
