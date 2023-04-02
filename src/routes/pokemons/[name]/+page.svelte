@@ -6,7 +6,7 @@
 
   export let data: Pokemon
 
-  let pokemon = data
+  const pokemon = data
 </script>
 
 <div class="container mx-auto p-8 space-y-8">

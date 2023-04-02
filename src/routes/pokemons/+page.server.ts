@@ -7,12 +7,8 @@ export const config = {
 }
 
 export const load = (async (event) => {
-  const response = await event.fetch('/api/pokemons', {
-    method: 'GET',
-    headers: {
-      Accept: 'application/json'
-    }
-  })
-
-  return await response.json()
+  const response = await event.fetch('/api/pokemons')
+  return {
+    pokemons: response.json()
+  }
 }) satisfies PageServerLoad

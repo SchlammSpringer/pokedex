@@ -5,7 +5,7 @@
 
   export let data: Pokemons
 
-  let initalPokemons = data.pokemons
+  const initalPokemons = data.pokemons
 
   let pokemons = initalPokemons
 </script>
@@ -19,5 +19,6 @@
     {/each}
   </div>
 </div>
+
 <style>
 </style>

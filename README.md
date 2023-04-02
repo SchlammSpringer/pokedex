@@ -17,10 +17,10 @@
 
 ### [Skeleton](https://www.skeleton.dev/) for nice UI
 
-### [TanStack Query](https://tanstack.com/query/latest/docs/svelte/overview) to optimize loading behavior
-
 ### reactive searching / filtering for Pokemons
 
 ## [Vitest](https://vitest.dev/)
 
 ## [Vercel](https://vercel.com)
+
+### Incremental Static Regeneration (ISR)
