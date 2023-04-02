@@ -10,5 +10,5 @@ export const GET = (async ({ params }) => {
   const pokeUrl = new URL(`https://pokeapi.co/api/v2/pokemon/${params.name}`)
   const pokemon = await fetchPokemon(pokeUrl)
 
-  return json(pokemon, { headers: { 'Cache-Control': 's-maxage=86400' } })
+  return json(pokemon)
 }) satisfies RequestHandler

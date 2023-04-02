@@ -24,5 +24,5 @@ export const GET = (async () => {
   )
   const pokemons = await Promise.all(maybePokemons)
 
-  return json({ pokemons }, { headers: { 'Cache-Control': 's-maxage=86400' } })
+  return json({ pokemons })
 }) satisfies RequestHandler

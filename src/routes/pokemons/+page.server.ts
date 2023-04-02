@@ -10,8 +10,7 @@ export const load = (async (event) => {
   const response = await event.fetch('/api/pokemons', {
     method: 'GET',
     headers: {
-      Accept: 'application/json',
-      'Cache-Control': 's-maxage=86400'
+      Accept: 'application/json'
     }
   })
 
