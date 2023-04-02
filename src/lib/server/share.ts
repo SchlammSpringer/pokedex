@@ -9,11 +9,17 @@ import type {
 
 export const fetchPokemon = async (pokeUrl: URL) => {
   const pokemonResponse: Response = await fetch(pokeUrl, {
-    headers: { 'Cache-Control': 's-maxage=86400, stale-while-revalidate' }
+    headers: {
+      Accept: 'application/json',
+      'Cache-Control': 's-maxage=86400'
+    }
   })
   const pokemonFromApi: PokemonFromApi = await pokemonResponse.json()
   const speciesResponse: Response = await fetch(pokemonFromApi.species.url, {
-    headers: { 'Cache-Control': 's-maxage=86400, stale-while-revalidate' }
+    headers: {
+      Accept: 'application/json',
+      'Cache-Control': 's-maxage=86400'
+    }
   })
   const species: SpeciesFromApi = await speciesResponse.json()
   const pokemon: Pokemon = {

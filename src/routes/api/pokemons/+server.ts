@@ -12,7 +12,7 @@ export const config: Config = {
 const fetchOriginalPokemons = async () => {
   const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=151', {
     headers: {
-      'Cache-Control': 's-maxage=86400, stale-while-revalidate'
+      'Cache-Control': 's-maxage=86400'
     }
   })
   return await response.json()
@@ -26,5 +26,5 @@ export const GET = (async () => {
   )
   const pokemons = await Promise.all(maybePokemons)
 
-  return json({ pokemons })
+  return json({ pokemons }, { headers: { 'Cache-Control': 's-maxage=86400' } })
 }) satisfies RequestHandler
