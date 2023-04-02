@@ -12,18 +12,19 @@
 			"..",
 			"./types"
 		],
-		"importsNotUsedAsValues": "error",
-		"isolatedModules": true,
-		"preserveValueImports": true,
-		"lib": [
-			"esnext",
-			"DOM",
-			"DOM.Iterable"
-		],
-		"moduleResolution": "node",
-		"module": "esnext",
-		"target": "esnext"
-	},
+      "importsNotUsedAsValues": "error",
+      "isolatedModules": true,
+      "preserveValueImports": true,
+      "lib": [
+        "esnext",
+        "DOM",
+        "DOM.Iterable"
+      ],
+      "moduleResolution": "node",
+      "module": "esnext",
+      "target": "esnext",
+      "ignoreDeprecations": "5.0"
+    },
 	"include": [
 		"ambient.d.ts",
 		"./types/**/$types.d.ts",
