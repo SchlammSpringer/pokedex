@@ -12,7 +12,7 @@ export const config: Config = {
 const fetchOriginalPokemons = async () => {
   const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=151', {
     headers: {
-      'Cache-Control': 's-maxage=86400'
+      Accept: 'application/json'
     }
   })
   return await response.json()

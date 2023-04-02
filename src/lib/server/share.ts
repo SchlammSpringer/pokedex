@@ -10,15 +10,13 @@ import type {
 export const fetchPokemon = async (pokeUrl: URL) => {
   const pokemonResponse: Response = await fetch(pokeUrl, {
     headers: {
-      Accept: 'application/json',
-      'Cache-Control': 's-maxage=86400'
+      Accept: 'application/json'
     }
   })
   const pokemonFromApi: PokemonFromApi = await pokemonResponse.json()
   const speciesResponse: Response = await fetch(pokemonFromApi.species.url, {
     headers: {
-      Accept: 'application/json',
-      'Cache-Control': 's-maxage=86400'
+      Accept: 'application/json'
     }
   })
   const species: SpeciesFromApi = await speciesResponse.json()
