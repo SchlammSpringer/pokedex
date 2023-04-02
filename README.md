@@ -9,9 +9,11 @@
 
 ### [PokeApi](https://pokeapi.co/) as a simulation for internal service orchestration
 
-### [LowDB](https://github.com/typicode/lowdb) as lightweight document store
-
 ## Frontend with dynamic server side rendering (SSR)
+
+### State / routing with query params
+
+?type
 
 ### [Skeleton](https://www.skeleton.dev/) for nice UI
 

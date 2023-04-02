@@ -4,24 +4,24 @@
 
   export let pokemon: Pokemon
 
-  let sprite: string[] = []
+  let image: string[] = []
   const frontImage = (pokedex: number) => {
     const url = `${officialArtworkUrl + pokedex}.png`
-    sprite[pokedex] = url
+    image[pokedex] = url
     return url
   }
 
-  const backImage = (pokedex: number) => {
+  const shinyImage = (pokedex: number) => {
     const url = `${officialShinyArtworkUrl + pokedex}.png`
-    sprite[pokedex] = url
+    image[pokedex] = url
     return url
   }
 </script>
 
 <div
   class="card overflow-hidden p-4 text-center"
-  on:mouseover={() => backImage(pokemon.pokedex)}
-  on:focus={() => backImage(pokemon.pokedex)}
+  on:mouseover={() => shinyImage(pokemon.pokedex)}
+  on:focus={() => shinyImage(pokemon.pokedex)}
   on:mouseout={() => frontImage(pokemon.pokedex)}
   on:blur={() => frontImage(pokemon.pokedex)}
 >
@@ -32,7 +32,7 @@
     <section class="p-4">
       <img
         class="block"
-        src={sprite[pokemon.pokedex] || frontImage(pokemon.pokedex)}
+        src={image[pokemon.pokedex] || frontImage(pokemon.pokedex)}
         alt={pokemon.name}
       />
     </section>

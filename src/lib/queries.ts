@@ -4,7 +4,8 @@ export const getAllPokemons = async (
   const response = await fetch('/api/pokemons', {
     method: 'GET',
     headers: {
-      'content-type': 'application/json'
+      'content-type': 'application/json',
+      'Cache-Control': 's-maxage=86400, stale-while-revalidate'
     }
   })
 
@@ -18,7 +19,8 @@ export const getPokemon = async (
   const response: Response = await fetch(`/api/pokemons/${name}`, {
     method: 'GET',
     headers: {
-      'content-type': 'application/json'
+      'content-type': 'application/json',
+      'Cache-Control': 's-maxage=86400, stale-while-revalidate'
     }
   })
 
