@@ -7,10 +7,10 @@
 
 ## Alternatives
 
-- [SolidStart]('https://start.solidjs.com')
-- [NextJs]('nextjs.org')
-- [NuxtJs]('https://nuxtjs.org/')
-- [GatsbyJs]('https://www.gatsbyjs.com/')
+- [SolidStart](https://start.solidjs.com)
+- [NextJs](nextjs.org)
+- [NuxtJs](https://nuxtjs.org/)
+- [GatsbyJs](https://www.gatsbyjs.com/)
 
 ## Backend with [PokeApi](https://pokeapi.co/) and [LowDB](https://github.com/typicode/lowdb)
 
