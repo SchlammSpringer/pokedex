@@ -21,7 +21,6 @@ describe('Pokemons page', () => {
     })
 
     const heading = screen.getByRole('heading', { level: 1 })
-    screen.debug()
     expect(heading).toHaveTextContent('Pokemons')
   })
 })
