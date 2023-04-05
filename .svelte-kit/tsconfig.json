@@ -2,16 +2,16 @@
 	"compilerOptions": {
 		"paths": {
 			"$lib": [
-				"../src/lib"
-			],
-			"$lib/*": [
-				"../src/lib/*"
-			]
-		},
-		"rootDirs": [
-			"..",
-			"./types"
-		],
+              "../src/lib"
+            ],
+          "$lib/*": [
+            "../src/lib/*"
+          ]
+        },
+      "rootDirs": [
+        "..",
+        "./types"
+      ],
       "importsNotUsedAsValues": "error",
       "isolatedModules": true,
       "preserveValueImports": true,
@@ -25,16 +25,16 @@
       "target": "esnext",
       "ignoreDeprecations": "5.0"
     },
-	"include": [
-		"ambient.d.ts",
-		"./types/**/$types.d.ts",
-		"../vite.config.ts",
-		"../src/**/*.js",
-		"../src/**/*.ts",
-		"../src/**/*.svelte",
-		"../tests/**/*.js",
-		"../tests/**/*.ts",
-		"../tests/**/*.svelte"
+  "include": [
+    "ambient.d.ts",
+    "./types/**/$types.d.ts",
+    "../vite.config.ts",
+    "../src/**/*.js",
+    "../src/**/*.ts",
+    "../src/**/*.svelte",
+    "../tests/**/*.js",
+    "../tests/**/*.ts",
+    "../tests/**/*.svelte"
 	],
 	"exclude": [
 		"../node_modules/**",
