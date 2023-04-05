@@ -14,7 +14,7 @@ const fetchOriginalPokemons = async () => {
 }
 
 export const GET = (async () => {
-  const { data } = await supabase.from('Pokemons').select('pokemon', { count: 'exact' })
+  const { data } = await supabase.from('Pokemons').select('pokemon', { count: 'exact' }).order('id')
   if (data && data?.length !== 0) {
     const pokemons: Pokemon[] = data.map((pokemon) => pokemon.pokemon) satisfies Pokemon[]
     return json(pokemons, { headers: { 'Cache-Control': 's-maxage=86400' } })
