@@ -1,8 +1,8 @@
+import { insertAllPokemons, selectAllPokemons } from '$lib/server/db-queries'
+import { fetchPokemon } from '$lib/server/share'
+import type { Pokemon } from '$lib/types'
 import type { RequestHandler } from '@sveltejs/kit'
 import { json } from '@sveltejs/kit'
-import type { Pokemon } from '$lib/types'
-import { fetchPokemon } from '$lib/server/share'
-import { supabase } from '$lib/server/supabase'
 
 const fetchOriginalPokemons = async () => {
   const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=151', {
@@ -14,7 +14,7 @@ const fetchOriginalPokemons = async () => {
 }
 
 export const GET = (async () => {
-  const { data } = await supabase.from('Pokemons').select('pokemon', { count: 'exact' }).order('id')
+  const { data } = await selectAllPokemons()
   if (data && data?.length !== 0) {
     const pokemons: Pokemon[] = data.map((pokemon) => pokemon.pokemon) satisfies Pokemon[]
     return json(pokemons, { headers: { 'Cache-Control': 's-maxage=86400' } })
@@ -24,10 +24,8 @@ export const GET = (async () => {
     fetchPokemon(url)
   )
   const pokemons = await Promise.all(maybePokemons)
-  pokemons.forEach(async (pokemon) => {
-    const { data, error } = await supabase
-      .from('Pokemons')
-      .insert([{ id: pokemon.pokedex, pokemon: pokemon }])
-  })
+  for (const pokemon of pokemons) {
+    const { data, error } = await insertAllPokemons(pokemon)
+  }
   return json(pokemons, { headers: { 'Cache-Control': 's-maxage=86400' } })
 }) satisfies RequestHandler
