@@ -15,7 +15,7 @@
       <NavigationLink href="/pokemons">Pokemons</NavigationLink>
       {#if active.split('/').length === 3}
         <ul>
-          <li class="pl-8">
+          <li class="pl-8 py-1">
             <NavigationLink href={active}>
               <span class="first-letter:uppercase">
                 {active.split('/')[2]}

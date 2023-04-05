@@ -5,7 +5,9 @@
   export let data: Pokemons
 </script>
 
-<PokemonsGrid initalPokemons={data.pokemons} />
+<div>
+  <PokemonsGrid initalPokemons={data.pokemons} />
+</div>
 
 <style>
 </style>
