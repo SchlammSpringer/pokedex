@@ -13,19 +13,24 @@ const fetchOriginalPokemons = async () => {
   return await response.json()
 }
 
+const fetchFromPokeAPi = async () => {
+  const originalPokemons = await fetchOriginalPokemons()
+  return originalPokemons.results.map(({ url }: { url: URL }) => fetchPokemon(url))
+}
+
+const pokemonsToJson = (pokemons: Pokemon[]) =>
+  json(pokemons, { headers: { 'Cache-Control': 's-maxage=86400' } })
+
 export const GET = (async () => {
   const { data } = await selectAllPokemons()
   if (data && data?.length !== 0) {
-    const pokemons: Pokemon[] = data.map((pokemon) => pokemon.pokemon) satisfies Pokemon[]
-    return json(pokemons, { headers: { 'Cache-Control': 's-maxage=86400' } })
+    const pokemons: Pokemon[] = data.map(({ pokemon: Pokemon }) => Pokemon) satisfies Pokemon[]
+    return pokemonsToJson(pokemons)
   }
-  const originalPokemons = await fetchOriginalPokemons()
-  const maybePokemons: Promise<Pokemon>[] = originalPokemons.results.map(({ url }: { url: URL }) =>
-    fetchPokemon(url)
-  )
+  const maybePokemons = await fetchFromPokeAPi()
   const pokemons = await Promise.all(maybePokemons)
   for (const pokemon of pokemons) {
     const { data, error } = await insertAllPokemons(pokemon)
   }
-  return json(pokemons, { headers: { 'Cache-Control': 's-maxage=86400' } })
+  return pokemonsToJson(pokemons)
 }) satisfies RequestHandler
