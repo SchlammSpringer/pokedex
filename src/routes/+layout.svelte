@@ -36,24 +36,24 @@
   <title>Pokedex</title>
 </svelte:head>
 <Drawer width="w-70">
-  <h3 class="p-4">Navigation</h3>
+  <h2 class="p-4">Navigation</h2>
   <hr />
   <Navigation />
 </Drawer>
 
 <!-- App Shell -->
-<AppShell regionPage="shrink-0" slotSidebarLeft="bg-surface-500/5 w-0 lg:w-56">
+<AppShell slotSidebarLeft="bg-surface-500/5 hidden lg:flex lg:w-56">
   <svelte:fragment slot="header">
     <!-- App Bar -->
     <AppBar>
       <svelte:fragment slot="lead">
-        <div class="flex shrink-0 items-center">
+        <div class="flex items-center">
           <button class="lg:hidden btn btn-sm mr-4" on:click={drawerOpen}>
             <span>
-              <i class="fa-solid fa-bars" />
+              <i class="text-2xl fa-solid fa-bars" />
             </span>
           </button>
-          <strong class="text-lg md:text-xl truncate">Pokedex</strong>
+          <strong class="text-lg md:text-xl">Pokedex</strong>
         </div>
       </svelte:fragment>
     </AppBar>

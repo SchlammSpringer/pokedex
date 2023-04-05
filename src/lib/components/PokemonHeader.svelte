@@ -10,7 +10,7 @@
 <img
   src="https://source.unsplash.com/random/1000x400?${pokemon.habitat}&nature"
   in:fly
-  class="w-full aspect-[10/4]"
+  class="w-full lg:aspect-[10/4] aspect-auto"
   alt={pokemon.habitat}
 />
 <div

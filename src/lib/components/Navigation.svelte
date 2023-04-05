@@ -1,28 +1,12 @@
 <script lang="ts">
   import { page } from '$app/stores'
-  import { drawerStore } from '@skeletonlabs/skeleton'
-  import { onMount } from 'svelte'
   import NavigationLink from './NavigationLink.svelte'
-
-  function drawerClose(): void {
-    drawerStore.close()
-  }
-
-  let nav: HTMLElement
-
-  onMount(() => {
-    nav.addEventListener('click', (e) => {
-      const target = e.target as HTMLElement
-      if (target && target.tagName == 'A') {
-        drawerClose()
-      }
-    })
-  })
 
   $: active = $page.url.pathname
 </script>
 
-<nav class="list-nav p-4" bind:this={nav}>
+<nav class="list-nav p-4">
+  <button class="!hidden">workaround for strange index</button>
   <ul>
     <li>
       <NavigationLink href="/">Home</NavigationLink>
