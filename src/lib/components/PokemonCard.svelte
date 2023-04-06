@@ -5,14 +5,15 @@
   export let pokemon: Pokemon
 
   let image: string[] = []
+
   const frontImage = (pokedex: number) => {
-    const url = `${officialArtworkUrl + pokedex}.png`
+    const url = `${officialArtworkUrl + pokemon.pokedex}.png`
     image[pokedex] = url
     return url
   }
 
   const shinyImage = (pokedex: number) => {
-    const url = `${officialShinyArtworkUrl + pokedex}.png`
+    const url = `${officialShinyArtworkUrl + pokemon.pokedex}.png`
     image[pokedex] = url
     return url
   }
