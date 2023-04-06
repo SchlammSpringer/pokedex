@@ -24,7 +24,9 @@ const pokemonsToJson = (pokemons: Pokemon[]) =>
 export const GET = (async () => {
   const { data } = await selectAllPokemons()
   if (data && data?.length !== 0) {
-    const pokemons: Pokemon[] = data.map(({ pokemon: Pokemon }) => Pokemon) satisfies Pokemon[]
+    const pokemons: Pokemon[] = data
+      .map(({ pokemon }) => pokemon)
+      .filter((it): it is Pokemon => it !== null) satisfies Pokemon[]
     return pokemonsToJson(pokemons)
   }
   const maybePokemons = await fetchFromPokeAPi()

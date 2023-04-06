@@ -11,7 +11,8 @@
     "test:unit": "vitest",
     "lint": "prettier --plugin-search-dir . --check . && eslint .",
     "format": "prettier --plugin-search-dir . --write .",
-    "coverage": "vitest run --coverage"
+    "coverage": "vitest run --coverage",
+    "update-types": "npx supabase gen types typescript --project-id \"hykrtxkdrrgsabjsuavx\" --schema public > src/lib/db/types.ts"
   },
   "devDependencies": {
     "@skeletonlabs/skeleton": "^1.1.0",
