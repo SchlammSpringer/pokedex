@@ -7,5 +7,5 @@ export const spriteShinyUrl =
 export const spriteShinyBackUrl =
   'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/'
 
-export const officialArtworkUrl = './assets/official-artwork/'
-export const officialShinyArtworkUrl = './assets/official-artwork/shiny/'
+export const officialArtworkUrl = '/assets/official-artwork/'
+export const officialShinyArtworkUrl = '/assets/official-artwork/shiny/'
