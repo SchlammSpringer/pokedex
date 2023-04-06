@@ -2,14 +2,12 @@
   import { officialArtworkUrl } from '$lib/share.js'
   import type { Pokemon } from '$lib/types'
   import { Avatar } from '@skeletonlabs/skeleton'
-  import { fly } from 'svelte/transition'
 
   export let pokemon: Pokemon
 </script>
 
 <img
   src="/assets/habitats/{pokemon.habitat}.jpg"
-  in:fly
   class="w-full lg:aspect-[10/4] aspect-auto"
   alt={pokemon.habitat}
 />
