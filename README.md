@@ -33,3 +33,12 @@
 ### Incremental Static Regeneration (ISR)
 
 - chaches query calls
+
+## Green IT - it's all about resources
+
+- less code
+- less memory
+- smaller sites
+- better caches
+- less cpu
+- Developers become more efficient & faster 
