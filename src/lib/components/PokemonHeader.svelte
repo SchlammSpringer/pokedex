@@ -8,7 +8,7 @@
 </script>
 
 <img
-  src="https://source.unsplash.com/random/1000x400?${pokemon.habitat}&nature"
+  src="/assets/habitats/{pokemon.habitat}.jpg"
   in:fly
   class="w-full lg:aspect-[10/4] aspect-auto"
   alt={pokemon.habitat}
