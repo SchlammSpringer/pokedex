@@ -49,6 +49,7 @@
   "dependencies": {
     "@supabase/supabase-js": "^2.14.0",
     "@vercel/analytics": "^0.1.11",
+    "svelte-preprocess-import-assets": "^0.2.6",
     "web-vitals": "^2.1.4"
   }
 }
