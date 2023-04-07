@@ -6,6 +6,7 @@ export interface Pokemon {
   color: string
   germanName: string
   habitat: string
+  notes?: string
 }
 
 export interface Pokemons {

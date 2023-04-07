@@ -48,3 +48,15 @@ cd my-skeleton-app
 - [NextJs](nextjs.org)
 - [NuxtJs](https://nuxtjs.org/)
 - [GatsbyJs](https://www.gatsbyjs.com/)
+
+## Credits
+
+- [SVELTE](https://svelte.dev/)
+- [SVELTEKIT](https://kit.svelte.dev/)
+- [Vercel](https://vercel.com)
+- [supabase - open source Firebase alternative](https://supabase.com/)
+- [Build state-of-the-art web applications with SvelteKit.](https://b-nova.com/en/home/content/build-state-of-the-art-web-applications-with-sveltekit)
+- [Is Svelte the next big frontend trend?](https://b-nova.com/en/home/content/build-state-of-the-art-web-applications-with-sveltekit)
+- [Why Svelte is more environmentally friendly](https://sustainablewww.org/principles/svelte-vs-react-vs-angular-why-svelte-is-more-environmental-friendly)
+- [Skeleton - The UI toolkit for Svelte and Tailwind.](https://www.skeleton.dev/)
+- [PokeAPI](https://pokeapi.co/)

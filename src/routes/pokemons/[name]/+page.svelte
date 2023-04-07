@@ -3,30 +3,58 @@
   import PokemonHeader from '$lib/components/PokemonHeader.svelte'
   import PokemonSprites from '$lib/components/PokemonSprites.svelte'
   import type { Pokemon } from '$lib/types'
+  import type { PageData } from './$types'
+  import { superForm } from 'sveltekit-superforms/client'
+  import { enhance } from '$app/forms'
+  import { each } from 'svelte/internal'
 
-  export let data: Pokemon
-  const pokemon = data
+  export let data: PageData
+
+  const { form } = superForm(data.form)
 </script>
 
 <div class="container mx-auto p-8 space-y-8">
   <div class="card overflow-hidden">
     <header class="relative">
-      <PokemonHeader {pokemon} />
+      <PokemonHeader pokemon={$form} />
     </header>
     <section class="p-4 space-y-4">
-      <PokemonSprites {pokemon} />
+      <PokemonSprites pokemon={$form} />
       <h3>Description</h3>
-      <p class="whitespace-pre-line">{pokemon.description}</p>
+      <p class="whitespace-pre-line">{$form.description}</p>
       <hr class="opacity-50" />
       <h3>Habitat</h3>
-      {pokemon.habitat}
+      {$form.habitat}
       <hr class="opacity-50" />
       <h3>Favorite color</h3>
-      <div class="w-fit rounded-lg" style="background-color: {pokemon.color}">
-        <span class="invert font-bold p-4" style="color: {pokemon.color}">{pokemon.color}</span>
+      <div class="w-fit rounded-lg" style="background-color: {$form.color}">
+        <span class="invert font-bold p-4" style="color: {$form.color}">{$form.color}</span>
       </div>
       <hr class="opacity-50" />
-      <PokemonTypes {pokemon} />
+      <PokemonTypes pokemon={$form} />
+      <hr class="opacity-50" />
+      <form method="POST" use:enhance>
+        <input type="hidden" name="pokedex" value={$form.pokedex} />
+        <input type="hidden" name="color" value={$form.color} />
+        <input type="hidden" name="description" value={$form.description} />
+        <input type="hidden" name="germanName" value={$form.germanName} />
+        <input type="hidden" name="name" value={$form.name} />
+        {#each $form.types as type}
+          <input type="hidden" name="types" value={type} />
+        {/each}
+        <input type="hidden" name="habitat" value={$form.habitat} />
+        <label class="label">
+          <span>Notes</span>
+          <textarea
+            class="textarea"
+            rows="4"
+            name="notes"
+            placeholder="My thoughts about {$form.name}"
+            bind:value={$form.notes}
+          />
+        </label>
+        <button type="submit" class="btn variant-filled-primary">Submit</button>
+      </form>
     </section>
   </div>
 </div>
