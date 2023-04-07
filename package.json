@@ -6,6 +6,7 @@
     "dev": "vite dev",
     "build": "vite build",
     "preview": "vite preview",
+    "test": "playwright test",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
     "test:unit": "vitest",
@@ -15,6 +16,7 @@
     "update-types": "npx supabase gen types typescript --project-id \"hykrtxkdrrgsabjsuavx\" --schema public > src/lib/db/types.ts"
   },
   "devDependencies": {
+    "@playwright/test": "^1.28.1",
     "@skeletonlabs/skeleton": "^1.1.0",
     "@sveltejs/adapter-vercel": "^2.4.1",
     "@sveltejs/kit": "^1.15.1",

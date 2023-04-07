@@ -1,16 +1,14 @@
 # Pokedex in [SvelteKit](https://kit.svelte.dev/) as classic full stack application
 
-- used for Apple Music 
-- no cors
-- no seperate eco systems (angular / spring boot)
-- high developer perfomance
+- used for Apple Music & NY Times
 
-## Alternatives
+## Quickstart
 
-- [SolidStart](https://start.solidjs.com)
-- [NextJs](nextjs.org)
-- [NuxtJs](https://nuxtjs.org/)
-- [GatsbyJs](https://www.gatsbyjs.com/)
+```
+npm create skeleton-app@latest my-skeleton-app
+	- Enable SvelteKit's Typescript syntax (recommended)
+cd my-skeleton-app
+```
 
 ## Backend with [PokeApi](https://pokeapi.co/) and [LowDB](https://github.com/typicode/lowdb)
 
@@ -38,7 +36,15 @@
 
 - less code
 - less memory
+- smaller bundle size
 - smaller sites
 - better caches
 - less cpu
-- Developers become more efficient & faster 
+- Developers become more efficient & faster
+
+## Alternatives
+
+- [SolidStart](https://start.solidjs.com)
+- [NextJs](nextjs.org)
+- [NuxtJs](https://nuxtjs.org/)
+- [GatsbyJs](https://www.gatsbyjs.com/)
