@@ -1,14 +1,14 @@
-import { BYPASS_TOKEN } from '$env/static/private'
+import { BYPASS_TOKEN, VERCEL_URL } from '$env/static/private'
 import { validatePokemon } from '$lib/server/share'
 import { schema, type Pokemon } from '$lib/types'
 import { fail, error as svelteError } from '@sveltejs/kit'
 import { superValidate } from 'sveltekit-superforms/server'
 import type { Actions, PageServerLoad } from './$types'
 
-export const load = (async (event) => {
-  const response: Response = await event.fetch(`/api/pokemons/${event.params.name}`)
+export const load = (async ({fetch, params}) => {
+  const response: Response = await fetch(`/api/pokemons/${params.name}`)
   if (response.status !== 200) {
-    throw svelteError(response.status, `${event.params.name} not found`)
+    throw svelteError(response.status, `${params.name} not found`)
   }
   const pokemon: Pokemon = (await response.json()) satisfies Pokemon
   const form = await validatePokemon(pokemon)
@@ -16,8 +16,8 @@ export const load = (async (event) => {
 }) satisfies PageServerLoad
 
 export const actions = {
-  default: async (event) => {
-    const form = await superValidate(event.request, schema)
+  default: async ({fetch, request, params}) => {
+    const form = await superValidate(request, schema)
 
     // Convenient validation check:
     if (!form.valid) {
@@ -28,16 +28,16 @@ export const actions = {
       return fail(400, { form })
     }
 
-    console.log(BYPASS_TOKEN)
+    console.log(BYPASS_TOKEN, VERCEL_URL)
     // TODO: Do something with the validated data
-    const response = await event.fetch('/pokemons/' + event.params.name, {
+    const response = await fetch(`https://${VERCEL_URL}/pokemons/${params.name}`, {
       headers: { 'x-prerender-revalidate': BYPASS_TOKEN },
-      method: 'HEAD'      
+      method: 'HEAD'   
     })
 
     console.log('response from resfresh: ' ,response.status)
 
-    await event.fetch('/api/pokemons/' + event.params.name, {
+    await fetch(`/api/pokemons/${params.name}`, {
       method: 'PUT',
       body: JSON.stringify(form.data)
     })

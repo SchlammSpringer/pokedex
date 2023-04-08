@@ -13,12 +13,10 @@ export const GET = (async ({ params }) => {
 
 export const PUT = async (event: RequestEvent) => {
   const body: Pokemon = (await event.request.json()) as Pokemon
-
   const form = await validatePokemon(body)
-
   const { data } = await updatePokemon(body)
   if (!data) {
-    throw svelteError(400, 'validation errors: ' + JSON.stringify(form.errors, null, 2))
+    throw svelteError(400, `validation errors: ${JSON.stringify(form.errors, null, 2)}`)
   }
   return json(data[0].pokemon)
 }
