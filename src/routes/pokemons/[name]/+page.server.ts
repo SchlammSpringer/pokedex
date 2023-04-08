@@ -1,8 +1,9 @@
-import { error as svelteError, fail } from '@sveltejs/kit'
-import type { Actions, PageServerLoad } from './$types'
-import { superValidate } from 'sveltekit-superforms/server'
-import { schema, type Pokemon } from '$lib/types'
 import { BYPASS_TOKEN } from '$env/static/private'
+import { validatePokemon } from '$lib/server/share'
+import { schema, type Pokemon } from '$lib/types'
+import { fail, error as svelteError } from '@sveltejs/kit'
+import { superValidate } from 'sveltekit-superforms/server'
+import type { Actions, PageServerLoad } from './$types'
 
 export const load = (async (event) => {
   const response: Response = await event.fetch(`/api/pokemons/${event.params.name}`)
@@ -10,10 +11,7 @@ export const load = (async (event) => {
     throw svelteError(response.status, `${event.params.name} not found`)
   }
   const pokemon: Pokemon = (await response.json()) satisfies Pokemon
-  const form = await superValidate(pokemon, schema)
-  if (!form.valid) {
-    throw svelteError(400, 'validation errors: ' + JSON.stringify(form.errors, null, 2))
-  }
+  const form = await validatePokemon(pokemon)
   return { form }
 }) satisfies PageServerLoad
 
@@ -31,9 +29,14 @@ export const actions = {
     }
 
     // TODO: Do something with the validated data
-    const revalidateCache = await event.fetch('/pokemons/' + event.params.name, {
+    await event.fetch('/pokemons/' + event.params.name, {
       headers: { 'x-prerender-revalidate': BYPASS_TOKEN },
       method: 'HEAD'
+    })
+
+    await event.fetch('/api/pokemons/' + event.params.name, {
+      method: 'PUT',
+      body: JSON.stringify(form.data)
     })
     // Yep, return { form } here too
     return { form }

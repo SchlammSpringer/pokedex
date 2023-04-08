@@ -9,3 +9,6 @@ export const insertAllPokemons = (pokemon: Pokemon) =>
 
 export const findPokemonByName = (name: string) =>
   supabase.from('Pokemons').select('pokemon').eq('pokemon->>name', name)
+
+export const updatePokemon = (pokemon: Pokemon) =>
+  supabase.from('Pokemons').update({ pokemon: pokemon }).eq('id', pokemon.pokedex).select()
