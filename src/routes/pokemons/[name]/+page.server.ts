@@ -1,19 +1,8 @@
 import { error as svelteError, fail } from '@sveltejs/kit'
 import type { Actions, PageServerLoad } from './$types'
-import { z } from 'zod'
 import { superValidate } from 'sveltekit-superforms/server'
-import type { Pokemon } from '$lib/types'
-
-const schema = z.object({
-  pokedex: z.number().positive(),
-  name: z.string().min(1),
-  types: z.array(z.string().min(1)),
-  description: z.string().min(1),
-  color: z.string().min(1),
-  germanName: z.string().min(1),
-  habitat: z.string().min(1),
-  notes: z.string().optional()
-})
+import { schema, type Pokemon } from '$lib/types'
+import { BYPASS_TOKEN } from '$env/static/private'
 
 export const load = (async (event) => {
   const response: Response = await event.fetch(`/api/pokemons/${event.params.name}`)
@@ -30,18 +19,22 @@ export const load = (async (event) => {
 
 export const actions = {
   default: async (event) => {
-
     const form = await superValidate(event.request, schema)
-    console.log('POST', form)
 
     // Convenient validation check:
     if (!form.valid) {
       console.log('invalid', form.errors)
       throw svelteError(400, 'validation errors: ' + JSON.stringify(form.errors, null, 2))
+      // Again, always return { form } and things will just work.
+      // TODO don´t render the display component.
+      return fail(400, { form })
     }
 
     // TODO: Do something with the validated data
-
+    const revalidateCache = await event.fetch('/pokemons/' + event.params.name, {
+      headers: { 'x-prerender-revalidate': BYPASS_TOKEN },
+      method: 'HEAD'
+    })
     // Yep, return { form } here too
     return { form }
   }

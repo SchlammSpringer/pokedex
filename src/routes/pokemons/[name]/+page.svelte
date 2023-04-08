@@ -1,12 +1,10 @@
 <script lang="ts">
-  import PokemonTypes from '$lib/components/PokemonTypes.svelte'
+  import { enhance } from '$app/forms'
   import PokemonHeader from '$lib/components/PokemonHeader.svelte'
   import PokemonSprites from '$lib/components/PokemonSprites.svelte'
-  import type { Pokemon } from '$lib/types'
-  import type { PageData } from './$types'
+  import PokemonTypes from '$lib/components/PokemonTypes.svelte'
   import { superForm } from 'sveltekit-superforms/client'
-  import { enhance } from '$app/forms'
-  import { each } from 'svelte/internal'
+  import type { PageData } from './$types'
 
   export let data: PageData
 
@@ -44,7 +42,7 @@
         {/each}
         <input type="hidden" name="habitat" value={$form.habitat} />
         <label class="label">
-          <span>Notes</span>
+          <h3>Notes</h3>
           <textarea
             class="textarea"
             rows="4"

@@ -1,3 +1,5 @@
+import { z } from 'zod'
+
 export interface Pokemon {
   pokedex: number
   name: string
@@ -45,3 +47,14 @@ export interface Flavor {
 export interface Type {
   type: Name
 }
+
+export const schema = z.object({
+  pokedex: z.number().positive(),
+  name: z.string().min(1),
+  types: z.array(z.string().min(1)),
+  description: z.string().min(1),
+  color: z.string().min(1),
+  germanName: z.string().min(1),
+  habitat: z.string().min(1),
+  notes: z.string().optional()
+})
