@@ -3,7 +3,7 @@ import { fetchPokemon } from '$lib/server/share'
 import type { Pokemon } from '$lib/types'
 import type { RequestHandler } from '@sveltejs/kit'
 import { json } from '@sveltejs/kit'
-import type { Config } from '@sveltejs/adapter-vercel';
+import type { Config } from '@sveltejs/adapter-vercel'
 
 export const config: Config = {
   runtime: 'edge'
@@ -23,7 +23,10 @@ const fetchFromPokeAPi = async () => {
   return originalPokemons.results.map(({ url }: { url: URL }) => fetchPokemon(url))
 }
 
-const pokemonsToJson = (pokemons: Pokemon[]) => json(pokemons)
+const pokemonsToJson = (pokemons: Pokemon[]) =>
+  json(pokemons, {
+    headers: { 'Cache-Control': 'max-age=0, s-maxage=86400' }
+  })
 
 export const GET = (async () => {
   const { data } = await selectAllPokemons()
