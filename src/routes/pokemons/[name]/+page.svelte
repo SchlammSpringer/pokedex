@@ -4,10 +4,11 @@
   import PokemonTypes from '$lib/components/PokemonTypes.svelte'
   import { superForm } from 'sveltekit-superforms/client'
   import type { PageData } from './$types'
+  import { enhance } from '$app/forms'
 
   export let data: PageData
 
-  const { form } = superForm(data.form)
+  const { form, errors, constraints } = superForm(data.form)
 </script>
 
 <div class="container mx-auto p-8 space-y-8">
@@ -30,7 +31,7 @@
       <hr class="opacity-50" />
       <PokemonTypes pokemon={$form} />
       <hr class="opacity-50" />
-      <form method="POST">
+      <form method="POST" use:enhance>
         <input type="hidden" name="pokedex" value={$form.pokedex} />
         <input type="hidden" name="color" value={$form.color} />
         <input type="hidden" name="description" value={$form.description} />
@@ -42,13 +43,20 @@
         <input type="hidden" name="habitat" value={$form.habitat} />
         <label class="label">
           <h3>Notes</h3>
+          {#if $errors.notes}<div class="alert variant-filled-error">
+            <span class="alert-message">{$errors.notes}</span>
+          </div>{/if}
           <textarea
             class="textarea"
             rows="4"
             name="notes"
+            data-invalid={$errors.notes}
+            class:input-error={$errors.notes}
+            {...$constraints.notes}
             placeholder="My thoughts about {$form.name}"
             bind:value={$form.notes}
           />
+         
         </label>
         <button type="submit" class="btn variant-filled-primary">Submit</button>
       </form>

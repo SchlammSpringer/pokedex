@@ -56,5 +56,5 @@ export const schema = z.object({
   color: z.string().min(1),
   germanName: z.string().min(1),
   habitat: z.string().min(1),
-  notes: z.string().optional()
+  notes: z.string().min(5).max(1000).optional()
 })

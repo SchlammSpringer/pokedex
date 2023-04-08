@@ -26,9 +26,6 @@ export const actions = {
     // Convenient validation check:
     if (!form.valid) {
       console.log('invalid', form.errors)
-      throw svelteError(400, 'validation errors: ' + JSON.stringify(form.errors, null, 2))
-      // Again, always return { form } and things will just work.
-      // TODO don´t render the display component.
       return fail(400, { form })
     }
     await fetch(`/api/pokemons/${params.name}`, {
