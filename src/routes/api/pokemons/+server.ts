@@ -3,6 +3,11 @@ import { fetchPokemon } from '$lib/server/share'
 import type { Pokemon } from '$lib/types'
 import type { RequestHandler } from '@sveltejs/kit'
 import { json } from '@sveltejs/kit'
+import type { Config } from '@sveltejs/adapter-vercel';
+
+export const config: Config = {
+  runtime: 'edge'
+}
 
 const fetchOriginalPokemons = async () => {
   const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=151', {

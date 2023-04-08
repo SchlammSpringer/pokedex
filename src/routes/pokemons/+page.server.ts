@@ -1,7 +1,10 @@
 import type { PageServerLoad } from './$types'
 
-export const config = {
+import type { Config } from '@sveltejs/adapter-vercel'
+
+export const config: Config = {
   isr: {
+    expiration: false,
     allowQuery: ['type']
   }
 }

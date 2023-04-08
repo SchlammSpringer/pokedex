@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { enhance } from '$app/forms'
   import PokemonHeader from '$lib/components/PokemonHeader.svelte'
   import PokemonSprites from '$lib/components/PokemonSprites.svelte'
   import PokemonTypes from '$lib/components/PokemonTypes.svelte'
@@ -31,7 +30,7 @@
       <hr class="opacity-50" />
       <PokemonTypes pokemon={$form} />
       <hr class="opacity-50" />
-      <form method="POST" use:enhance>
+      <form method="POST">
         <input type="hidden" name="pokedex" value={$form.pokedex} />
         <input type="hidden" name="color" value={$form.color} />
         <input type="hidden" name="description" value={$form.description} />
