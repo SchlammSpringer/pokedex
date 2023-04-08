@@ -29,7 +29,7 @@ export const actions = {
     }
 
     console.log(BYPASS_TOKEN, VERCEL_URL, VERCEL_ENV)
-    if (VITE_VERCEL_ENV !== 'development') {
+    if (VERCEL_ENV !== 'development') {
       const response = await fetch(`https://${VERCEL_URL}/pokemons/${params.name}`, {
         headers: { 'x-prerender-revalidate': BYPASS_TOKEN },
         method: 'HEAD'
