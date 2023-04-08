@@ -1,4 +1,4 @@
-import { BYPASS_TOKEN, VERCEL_URL, VITE_VERCEL_ENV } from '$env/static/private'
+import { BYPASS_TOKEN, VERCEL_URL, VERCEL_ENV } from '$env/static/private'
 import { validatePokemon } from '$lib/server/share'
 import { schema, type Pokemon } from '$lib/types'
 import { fail, error as svelteError } from '@sveltejs/kit'
@@ -28,7 +28,7 @@ export const actions = {
       return fail(400, { form })
     }
 
-    console.log(BYPASS_TOKEN, VERCEL_URL, VITE_VERCEL_ENV)
+    console.log(BYPASS_TOKEN, VERCEL_URL, VERCEL_ENV)
     if (VITE_VERCEL_ENV !== 'development') {
       const response = await fetch(`https://${VERCEL_URL}/pokemons/${params.name}`, {
         headers: { 'x-prerender-revalidate': BYPASS_TOKEN },
