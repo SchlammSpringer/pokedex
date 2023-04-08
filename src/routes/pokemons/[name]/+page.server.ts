@@ -30,10 +30,12 @@ export const actions = {
 
     console.log(BYPASS_TOKEN)
     // TODO: Do something with the validated data
-    await event.fetch('/pokemons/' + event.params.name, {
+    const response = await event.fetch('/pokemons/' + event.params.name, {
       headers: { 'x-prerender-revalidate': BYPASS_TOKEN },
       method: 'HEAD'      
     })
+
+    console.log('response from resfresh: ' ,response.status)
 
     await event.fetch('/api/pokemons/' + event.params.name, {
       method: 'PUT',

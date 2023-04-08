@@ -14,7 +14,7 @@ export const GET = (async ({ params }) => {
 export const PUT = async (event: RequestEvent) => {
   const body: Pokemon = (await event.request.json()) as Pokemon
 
-  await validatePokemon(body)
+  const form = await validatePokemon(body)
 
   const { data } = await updatePokemon(body)
   if (!data) {
