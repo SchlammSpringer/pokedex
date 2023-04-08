@@ -18,8 +18,7 @@ const fetchFromPokeAPi = async () => {
   return originalPokemons.results.map(({ url }: { url: URL }) => fetchPokemon(url))
 }
 
-const pokemonsToJson = (pokemons: Pokemon[]) =>
-  json(pokemons, { headers: { 'Cache-Control': 's-maxage=86400' } })
+const pokemonsToJson = (pokemons: Pokemon[]) => json(pokemons)
 
 export const GET = (async () => {
   const { data } = await selectAllPokemons()
@@ -32,7 +31,7 @@ export const GET = (async () => {
   const maybePokemons = await fetchFromPokeAPi()
   const pokemons = await Promise.all(maybePokemons)
   for (const pokemon of pokemons) {
-    const { data, error } = await insertAllPokemons(pokemon)
+    await insertAllPokemons(pokemon)
   }
   return pokemonsToJson(pokemons)
 }) satisfies RequestHandler
