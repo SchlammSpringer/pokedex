@@ -19,7 +19,7 @@ export const PUT = async (event: RequestEvent) => {
 
   const { data } = await updatePokemon(body)
   if (data) {
-    await event.fetch('/api/pokemons/' + event.params.name, {
+    await event.fetch('/pokemons/' + event.params.name, {
       headers: { 'x-prerender-revalidate': BYPASS_TOKEN },
       method: 'HEAD'
     })
