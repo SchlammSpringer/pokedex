@@ -67,8 +67,7 @@
             class:input-error={$errors.notes}
             {...$constraints.notes}
             placeholder="My thoughts about {$form.name}"
-            bind:value={$form.notes}
-          />
+            bind:value={$form.notes}></textarea>
         </label>
         <button type="submit" class="btn variant-filled-primary">Submit</button>
       </form>
