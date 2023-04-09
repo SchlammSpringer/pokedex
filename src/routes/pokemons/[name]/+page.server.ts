@@ -1,6 +1,6 @@
 import { validatePokemon } from '$lib/server/share'
-import { schema, type Pokemon } from '$lib/types'
-import { fail, error as svelteError } from '@sveltejs/kit'
+import { type Pokemon, schema } from '$lib/types'
+import { error as svelteError, fail } from '@sveltejs/kit'
 import { superValidate } from 'sveltekit-superforms/server'
 import type { Actions, PageServerLoad } from './$types'
 import type { Config } from '@sveltejs/adapter-vercel'
@@ -25,7 +25,6 @@ export const actions = {
 
     // Convenient validation check:
     if (!form.valid) {
-      console.log('invalid', form.errors)
       return fail(400, { form })
     }
     await fetch(`/api/pokemons/${params.name}`, {

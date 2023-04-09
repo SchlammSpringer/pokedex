@@ -11,7 +11,7 @@
   const { form, errors, constraints } = superForm(data.form)
 </script>
 
-<div class="container mx-auto p-8 space-y-8">
+<div class="container mx-auto p-4 space-y-8">
   <div class="card overflow-hidden">
     <header class="relative">
       <PokemonHeader pokemon={$form} />
@@ -22,12 +22,23 @@
       <p class="whitespace-pre-line">{$form.description}</p>
       <hr class="opacity-50" />
       <h3>Habitat</h3>
-      {$form.habitat}
+      <p
+        class="text-2xl bg-gradient-to-br from-red-500 to-yellow-500 bg-clip-text text-transparent
+            box-decoration-clone first-letter:uppercase"
+      >
+        {$form.habitat}
+      </p>
       <hr class="opacity-50" />
       <h3>Favorite color</h3>
-      <div class="w-fit rounded-lg" style="background-color: {$form.color}">
-        <span class="invert font-bold p-4" style="color: {$form.color}">{$form.color}</span>
-      </div>
+      {#if $form.color === 'gray'}
+        <div class="w-fit rounded-full" style="background-color: gray">
+          <span class="font-bold p-4" style="color: white">{$form.color}</span>
+        </div>
+      {:else}
+        <div class="w-fit rounded-lg" style="background-color: {$form.color}">
+          <span class="invert font-bold p-4" style="color: {$form.color}">{$form.color}</span>
+        </div>
+      {/if}
       <hr class="opacity-50" />
       <PokemonTypes pokemon={$form} />
       <hr class="opacity-50" />
@@ -43,9 +54,11 @@
         <input type="hidden" name="habitat" value={$form.habitat} />
         <label class="label">
           <h3>Notes</h3>
-          {#if $errors.notes}<div class="alert variant-filled-error">
-            <span class="alert-message">{$errors.notes}</span>
-          </div>{/if}
+          {#if $errors.notes}
+            <div class="alert variant-filled-error">
+              <span class="alert-message">{$errors.notes}</span>
+            </div>
+          {/if}
           <textarea
             class="textarea"
             rows="4"
@@ -56,7 +69,6 @@
             placeholder="My thoughts about {$form.name}"
             bind:value={$form.notes}
           />
-         
         </label>
         <button type="submit" class="btn variant-filled-primary">Submit</button>
       </form>

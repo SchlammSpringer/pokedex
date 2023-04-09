@@ -7,7 +7,6 @@ import { error, error as svelteError, json } from '@sveltejs/kit'
 export const GET = (async ({ params }) => {
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const { data } = await findPokemonByName(params.name!)
-  console.log(data)
   if (!data || data?.length === 0) throw error(404, 'not found')
 
   return json(data[0].pokemon, {

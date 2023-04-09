@@ -9,9 +9,10 @@
 {:else}
   <h3>Types</h3>
 {/if}
+<span>Choose a specific type, to show all Pokemons of type</span>
 <div class="flex justify-start items-center space-x-4">
   {#each pokemon.types as type}
-    <a class="chip variant-filled !no-underline" href="/pokemons?type={type}">
+    <a class="chip variant-soft hover:variant-filled !no-underline" href="/pokemons?type={type}">
       {type}
     </a>
   {/each}

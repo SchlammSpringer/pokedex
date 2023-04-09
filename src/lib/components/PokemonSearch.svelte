@@ -21,12 +21,12 @@
 
   let selectedTypes = typeFilter.length === 0 ? types : [typeFilter]
 
-
   $: {
     pokemons =
       initalPokemons.filter(
         (pokemon) =>
           (pokemon.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            pokemon.germanName.toLowerCase().includes(searchTerm.toLowerCase()) ||
             pokemon.pokedex.toString().includes(searchTerm.toLowerCase()) === true) &&
           pokemon.types.filter((type) => selectedTypes.includes(type)).length > 0
       ) || []
@@ -48,7 +48,7 @@
     bind:value={searchTerm}
     autocomplete="false"
     type="search"
-    placeholder="Search name, pokedex id"
+    placeholder="Search name, german name or pokedex id"
   />
 </div>
 <InputChip
