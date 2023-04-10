@@ -56,7 +56,7 @@
             </svg>
             </span>
           </button>
-          <strong class="text-lg md:text-xl">Pokedex</strong>
+          <strong class="text-lg md:text-xl">Pokedex with SvelteKit</strong>
         </div>
       </svelte:fragment>
     </AppBar>

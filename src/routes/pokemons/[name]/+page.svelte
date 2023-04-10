@@ -5,10 +5,13 @@
   import { superForm } from 'sveltekit-superforms/client'
   import type { PageData } from './$types'
   import { enhance } from '$app/forms'
+  import { fade, fly } from 'svelte/transition'
 
   export let data: PageData
 
   const { form, errors, constraints } = superForm(data.form)
+
+  let creating = false
 </script>
 
 <div class="container mx-auto p-4 space-y-8">
@@ -42,7 +45,18 @@
       <hr class="opacity-50" />
       <PokemonTypes pokemon={$form} />
       <hr class="opacity-50" />
-      <form method="POST" use:enhance>
+      <form
+        method="POST"
+        use:enhance={() => {
+          creating = true
+          return async ({ update }) => {
+            await update()
+            creating = false
+          }
+        }}
+        in:fly={{ y: 200, duration: 200 }}
+        out:fade
+      >
         <input type="hidden" name="pokedex" value={$form.pokedex} />
         <input type="hidden" name="color" value={$form.color} />
         <input type="hidden" name="description" value={$form.description} />
@@ -59,7 +73,10 @@
               <span class="alert-message">{$errors.notes}</span>
             </div>
           {/if}
+
           <textarea
+            readonly={creating}
+            class:input-success={creating}
             class="textarea"
             rows="4"
             name="notes"
@@ -67,7 +84,8 @@
             class:input-error={$errors.notes}
             {...$constraints.notes}
             placeholder="My thoughts about {$form.name}"
-            bind:value={$form.notes}></textarea>
+            bind:value={$form.notes}
+          />
         </label>
         <button type="submit" class="btn variant-filled-primary">Submit</button>
       </form>
