@@ -6,7 +6,8 @@ import { json } from '@sveltejs/kit'
 import type { Config } from '@sveltejs/adapter-vercel'
 
 export const config: Config = {
-  runtime: 'edge'
+  runtime: 'edge',
+  regions: ['fra1']
 }
 
 const fetchOriginalPokemons = async () => {
@@ -25,7 +26,7 @@ const fetchFromPokeAPi = async () => {
 
 const pokemonsToJson = (pokemons: Pokemon[]) =>
   json(pokemons, {
-    headers: { 'Cache-Control': 'max-age=0, s-maxage=86400' }
+    headers: { 'Cache-Control': 'public, max-age=0, s-maxage=86400' }
   })
 
 export const GET = (async () => {

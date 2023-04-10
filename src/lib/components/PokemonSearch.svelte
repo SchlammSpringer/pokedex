@@ -1,7 +1,7 @@
 <script lang="ts">
   import { goto } from '$app/navigation'
   import { page } from '$app/stores'
-  import type { Pokemon } from '$lib/types'
+  import type { Pokemon, PokeTypeRecord } from '$lib/types'
 
   const url = $page.url
   export let pokemons: Pokemon[]
@@ -9,11 +9,10 @@
   let searchTerm = ''
   let typeFilter = url.searchParams.get('type') || undefined
   const types = [...new Set(pokemons.flatMap((pokemon) => pokemon.types))]
-  let dictionary
 
-  function fillFromTypes(activate: boolean) {
-    return Object.fromEntries(types.sort().map((type) => [type, activate]))
-  }
+  let dictionary: PokeTypeRecord
+
+  const fillFromTypes: (activate: boolean) => PokeTypeRecord = (activate: boolean) => Object.fromEntries(types.sort().map((type) => [type, activate]))
 
   if (typeFilter) {
     dictionary = fillFromTypes(false)

@@ -5,7 +5,8 @@ import type { Config, RequestHandler } from '@sveltejs/kit'
 import { error as svelteError, json } from '@sveltejs/kit'
 
 export const config: Config = {
-  runtime: 'edge'
+  runtime: 'edge',
+  regions: ['fra1']
 }
 
 export const GET = (async ({ params }) => {
@@ -14,7 +15,7 @@ export const GET = (async ({ params }) => {
   if (!data || data?.length === 0) throw svelteError(404, 'not found')
 
   return json(data[0].pokemon, {
-    headers: { 'Cache-Control': 's-maxage=1, stale-while-revalidate' }
+    headers: { 'Cache-Control': 'public, s-maxage=1, stale-while-revalidate' }
   })
 }) satisfies RequestHandler
 

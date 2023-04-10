@@ -48,6 +48,10 @@ export interface Type {
   type: Name
 }
 
+export interface PokeTypeRecord {
+  [p: string]: string | boolean
+}
+
 export const schema = z.object({
   pokedex: z.number().positive(),
   name: z.string().min(1),
