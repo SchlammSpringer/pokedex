@@ -1,6 +1,7 @@
 <script lang="ts">
   import { goto } from '$app/navigation'
   import { page } from '$app/stores'
+  import { fillFromTypes, filterPokemon } from '$lib/share'
   import type { Pokemon, PokeTypeRecord } from '$lib/types'
 
   const url = $page.url
@@ -12,13 +13,11 @@
 
   let dictionary: PokeTypeRecord
 
-  const fillFromTypes: (activate: boolean) => PokeTypeRecord = (activate: boolean) => Object.fromEntries(types.sort().map((type) => [type, activate]))
-
   if (typeFilter) {
-    dictionary = fillFromTypes(false)
+    dictionary = fillFromTypes(types, false)
     dictionary[typeFilter] = true
   } else {
-    dictionary = fillFromTypes(true)
+    dictionary = fillFromTypes(types, true)
   }
 
   const filter = (type: string) => {
@@ -29,14 +28,7 @@
   }
 
   $: {
-    pokemons =
-      initalPokemons.filter(
-        (pokemon) =>
-          (pokemon.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            pokemon.germanName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            pokemon.pokedex.toString().includes(searchTerm.toLowerCase()) === true) &&
-          pokemon.types.filter((type) => dictionary[type]).length > 0
-      ) || []
+    pokemons = initalPokemons.filter(filterPokemon(searchTerm, dictionary)) || []
   }
 </script>
 
@@ -59,7 +51,9 @@
       }}
       on:keypress
     >
-      {#if dictionary[type]}<span>✔</span>{/if}
+      {#if dictionary[type]}<span
+        class="border-b-2 border-surface-50 border-r-2 w-1 h-2 inline-block rotate-45"
+      />{/if}
       <span class="capitalize">{type}</span>
     </span>
   {/each}
