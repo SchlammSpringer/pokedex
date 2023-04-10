@@ -2,24 +2,32 @@
   import { goto } from '$app/navigation'
   import { page } from '$app/stores'
   import type { Pokemon } from '$lib/types'
-  import { InputChip } from '@skeletonlabs/skeleton'
 
   const url = $page.url
-
   export let pokemons: Pokemon[]
-
   export let initalPokemons: Pokemon[]
-
   let searchTerm = ''
-  let typeSearchTerm = ''
-
-  let typeFilter = url.searchParams.get('type') || ''
-
+  let typeFilter = url.searchParams.get('type') || undefined
   const types = [...new Set(pokemons.flatMap((pokemon) => pokemon.types))]
+  let dictionary
 
-  let typesWhitelist = types
+  function fillFromTypes(activate: boolean) {
+    return Object.fromEntries(types.sort().map((type) => [type, activate]))
+  }
 
-  let selectedTypes = typeFilter.length === 0 ? types : [typeFilter]
+  if (typeFilter) {
+    dictionary = fillFromTypes(false)
+    dictionary[typeFilter] = true
+  } else {
+    dictionary = fillFromTypes(true)
+  }
+
+  const filter = (type: string) => {
+    const newUrl = new URL($page.url)
+    newUrl?.searchParams.delete('type')
+    goto(newUrl)
+    dictionary[type] = !dictionary[type]
+  }
 
   $: {
     pokemons =
@@ -28,37 +36,13 @@
           (pokemon.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
             pokemon.germanName.toLowerCase().includes(searchTerm.toLowerCase()) ||
             pokemon.pokedex.toString().includes(searchTerm.toLowerCase()) === true) &&
-          pokemon.types.filter((type) => selectedTypes.includes(type)).length > 0
+          pokemon.types.filter((type) => dictionary[type]).length > 0
       ) || []
-  }
-
-  const onTypeRemoved = (event: CustomEvent) => {
-    selectedTypes = selectedTypes.length === 0 ? types : selectedTypes
-    if (url.searchParams.get('type') === event.detail.chipValue) {
-      const newUrl = new URL($page.url)
-      newUrl?.searchParams.delete('type')
-      goto(newUrl)
-    }
   }
 </script>
 
 <div class="input-group input-group-divider grid-cols-[auto_1fr_auto]">
-  <div class="input-group-shim">
-    <svg
-      aria-hidden="true"
-      class="w-5 h-5 text-gray-500 dark:text-gray-400"
-      fill="currentColor"
-      viewBox="0 0 20 20"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        fill-rule="evenodd"
-        d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-        clip-rule="evenodd"
-      />
-    </svg
-    >
-  </div>
+  <div class="input-group-shim">🔍</div>
   <input
     bind:value={searchTerm}
     autocomplete="false"
@@ -66,14 +50,21 @@
     placeholder="Search name, german name or pokedex id"
   />
 </div>
-<InputChip
-  placeholder="Pokemon type..."
-  bind:input={typeSearchTerm}
-  bind:value={selectedTypes}
-  whitelist={typesWhitelist}
-  name="chips"
-  on:remove={(event) => onTypeRemoved(event)}
-/>
+
+<div class="textarea flex flex-wrap gap-2 px-2 py-4">
+  {#each Object.keys(dictionary) as type}
+    <span
+      class="chip {dictionary[type] ? 'variant-filled' : 'variant-soft'}"
+      on:click={() => {
+        filter(type)
+      }}
+      on:keypress
+    >
+      {#if dictionary[type]}<span>✔</span>{/if}
+      <span class="capitalize">{type}</span>
+    </span>
+  {/each}
+</div>
 
 <style>
 </style>
