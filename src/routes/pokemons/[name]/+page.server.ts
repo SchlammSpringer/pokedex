@@ -6,7 +6,7 @@ import type { Actions, PageServerLoad } from './$types'
 import type { Config } from '@sveltejs/adapter-vercel'
 
 export const config: Config = {
-  isr: false
+  runtime: 'edge'
 }
 
 export const load = (async ({ fetch, params }) => {

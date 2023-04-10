@@ -1,8 +1,12 @@
 import { findPokemonByName, updatePokemon } from '$lib/server/db-queries'
 import { validatePokemon } from '$lib/server/share'
 import type { Pokemon } from '$lib/types'
-import type { RequestHandler } from '@sveltejs/kit'
+import type { Config, RequestHandler } from '@sveltejs/kit'
 import { error as svelteError, json } from '@sveltejs/kit'
+
+export const config: Config = {
+  runtime: 'edge'
+}
 
 export const GET = (async ({ params }) => {
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
