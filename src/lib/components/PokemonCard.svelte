@@ -38,7 +38,7 @@
         image={{ sourceUrl: image[pokemon.pokedex] || frontImage(pokemon.pokedex) }}
         width={475}
         height={475}
-        sizes={{ base: "5px", sm: "5px", md: "5px", lg: "5px", xl: "5px" }}
+        sizes={{ base: '50vw', sm: '50vw', md: '33vw', lg: '25vw', xl: '25vw' }}
       />
     </section>
   </a>
