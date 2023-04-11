@@ -6,7 +6,7 @@ const file = '.vercel/output/config.json'
 const config = {
   ...JSON.parse(fs.readFileSync(file, 'utf-8')),
   images: {
-    sizes: [640, 768, 1024, 1280, 1536],
+    sizes: [16, 32, 48, 64, 96, 128, 256, 384],
     domains: ['vercel-images-sveltekit.vercel.app'],
     minimumCacheTTL: 60,
     formats: ['image/avif', 'image/webp'],
