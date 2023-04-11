@@ -33,7 +33,7 @@
   export let sizes: Breakpoints = {}
 
   const imageSizes = [64, 96, 128, 256, 384]
-  const breakpoints = { base: -1, sm: 640, md: 768, lg: 1024, xl: 1280, '2xl': 1536 }
+  const breakpoints = { base: -1, sm: 64, md: 96, lg: 128, xl: 256, '2xl': 384 }
 
   $: mediaSizes = Object.entries({ base: '100vw', ...sizes })
     .map(([k, v]) => [breakpoints[k], v])
