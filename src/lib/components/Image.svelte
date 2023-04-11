@@ -14,7 +14,7 @@
 		}
 	}
 
-	type Keys = 'base' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
+	type Keys = 'base' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
 	type Breakpoints = {
 		[K in Keys]?: string;
 	};
@@ -25,15 +25,14 @@
 	export { className as class }
 	export let image: WpImage
 	export let showTitle = false
-	export let lazy = true
 	export let width: string | number = 1280
 	export let height: string | number = 720
 	export let quality = 70
 	export let unoptimized = false
 	export let sizes: Breakpoints = {}
 
-	const imageSizes = [640, 768, 1024, 1280, 1536]
-	const breakpoints = { base: -1, sm: 640, md: 768, lg: 1024, xl: 1280, '2xl': 1536 }
+	const imageSizes = [384, 640, 768, 1024, 1280, 1536]
+	const breakpoints = { base: -1, xs: 384, sm: 640, md: 768, lg: 1024, xl: 1280, '2xl': 1536 }
 
 	$: mediaSizes = Object.entries({ base: '100vw', ...sizes })
 		.map(([k, v]) => [breakpoints[k], v])
@@ -70,7 +69,7 @@
 	src={sourceUrl}
 	alt={altText ?? title}
 	class={className}
-	loading={lazy ? 'lazy' : 'eager'}
+	loading="eager"
 	sizes={mediaSizes}
 	bind:this={element}
 	{...$$restProps}

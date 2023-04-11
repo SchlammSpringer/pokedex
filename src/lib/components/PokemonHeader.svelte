@@ -8,7 +8,7 @@
 </script>
 
 <Image
-  class="w-full lg:aspect-[10/4] aspect-auto"
+  class="w-full"
   alt={`Habitat of ${pokemon.name}`}
   width={1000}
   height={400}
