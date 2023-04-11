@@ -21,10 +21,10 @@
     image={{ sourceUrl: `${officialArtworkUrl + pokemon.pokedex}.png` }}
     width={475}
     height={475}
-    sizes={{ sm: '10vw'}}
+    class="w-32 sm:w-40 lg:w-48"
   />
 
-  <div class="items-center">
+  <div class="text-right">
     <h1 class="pl-10 pt-10 text-white font-bold first-letter:uppercase">
       {pokemon.name}
     </h1>
