@@ -8,7 +8,7 @@ const config = {
   images: {
     sizes: [16, 32, 48, 64, 96, 128, 256, 384],
     domains: ['vercel-images-sveltekit.vercel.app'],
-    minimumCacheTTL: 60,
+    minimumCacheTTL: 86400,
     formats: ['image/avif', 'image/webp'],
     remotePatterns: [
       {

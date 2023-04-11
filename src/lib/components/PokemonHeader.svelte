@@ -12,6 +12,7 @@
   width={1000}
   height={400}
   image={{ sourceUrl: `/assets/habitats/${pokemon.habitat}.jpg` }}
+  sizes={{ sm: '640', md: '768', lg: '1024', xl: '1280', '2xl': '1536' }}
 />
 <div
   class="flex h-full sm:h-fit justify-start items-center absolute bottom-0 left-0 right-0 px-4 backdrop-saturate-200 bg-black/30"
