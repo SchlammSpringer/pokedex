@@ -1,7 +1,8 @@
 <script lang="ts">
   import { officialArtworkUrl } from '$lib/share.js'
   import type { Pokemon } from '$lib/types'
-  import Image from '$lib/components/Image.svelte'
+  import Image from './Image.svelte'
+  import ImagePokemon from './ImagePokemon.svelte'
 
   export let pokemon: Pokemon
 </script>
@@ -17,13 +18,12 @@
 <div
   class="flex h-full sm:h-fit justify-start items-center absolute bottom-0 left-0 right-0 px-4 backdrop-saturate-200 bg-black/30"
 >
-  <Image
+  <ImagePokemon
     alt={pokemon.name}
     image={{ sourceUrl: `${officialArtworkUrl + pokemon.pokedex}.png` }}
     width={475}
     height={475}
     class="w-32 sm:w-40 lg:w-48"
-    loading="eager"
   />
 
   <div class="text-right">

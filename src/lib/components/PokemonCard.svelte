@@ -1,7 +1,7 @@
 <script lang="ts">
   import { officialArtworkUrl, officialShinyArtworkUrl } from '$lib/share'
   import type { Pokemon } from '$lib/types'
-  import Image from '$lib/components/Image.svelte'
+  import ImagePokemon from '$lib/components/Image.svelte'
 
   export let pokemon: Pokemon
 
@@ -32,13 +32,11 @@
       <h2 class="!text-xl first-letter:uppercase">{pokemon.name}</h2>
     </header>
     <section class="p-4">
-      <Image
-        loading="eager"
+      <ImagePokemon
         alt={`official artwork for ${pokemon.name}`}
         image={{ sourceUrl: image[pokemon.pokedex] || frontImage(pokemon.pokedex) }}
         width={475}
         height={475}
-        sizes={{ base: "50vw", xs: "50vw", sm: "33vw", md: "33vw", lg: "25vw", xl: "25vw" }}
       />
     </section>
   </a>
