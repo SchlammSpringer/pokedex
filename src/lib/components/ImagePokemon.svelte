@@ -14,10 +14,10 @@
     }
   }
 
-  type Keys = 'base' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
+  type Keys = 'base' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'
   type Breakpoints = {
-    [K in Keys]?: string;
-  };
+    [K in Keys]?: string
+  }
 
   import { dev } from '$app/environment'
 
@@ -32,8 +32,8 @@
   export let unoptimized = false
   export let sizes: Breakpoints = {}
 
-  const imageSizes = [64, 96, 128, 256, 384]
-  const breakpoints = { base: -1, sm: 64, md: 96, lg: 128, xl: 256, '2xl': 384 }
+  const imageSizes = [48, 64, 96, 128, 256, 384]
+  const breakpoints = { base: -1, xs: 384, sm: 640, md: 768, lg: 1024, xl: 1280, '2xl': 1536 }
 
   $: mediaSizes = Object.entries({ base: '100vw', ...sizes })
     .map(([k, v]) => [breakpoints[k], v])
@@ -60,7 +60,6 @@
 
   let element
 </script>
-
 
 <img
   width={width ?? imageWidth}
