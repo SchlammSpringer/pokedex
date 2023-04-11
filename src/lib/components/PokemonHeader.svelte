@@ -9,12 +9,15 @@
 <Image
   class="w-full lg:aspect-[10/4] aspect-auto"
   alt={`Habitat of ${pokemon.name}`}
+  width={1000}
+  height={400}
   image={{ sourceUrl: `/assets/habitats/${pokemon.habitat}.jpg` }}
 />
 <div
   class="flex h-full sm:h-fit justify-start items-center absolute bottom-0 left-0 right-0 px-4 backdrop-saturate-200 bg-black/30"
 >
   <Image
+    class="w-40"
     alt={pokemon.name}
     image={{ sourceUrl: `${officialArtworkUrl + pokemon.pokedex}.png` }}
     width={160}
