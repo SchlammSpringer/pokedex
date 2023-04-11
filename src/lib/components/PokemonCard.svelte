@@ -33,11 +33,12 @@
     </header>
     <section class="p-4">
       <Image
+        loading="eager"
         alt={`official artwork for ${pokemon.name}`}
         image={{ sourceUrl: image[pokemon.pokedex] || frontImage(pokemon.pokedex) }}
         width={475}
         height={475}
-        sizes={{ base: "1vw", sm: "1vw", md: "1vw", lg: "1vw", xl: "1vw" }}
+        sizes={{ base: "5px", sm: "5px", md: "5px", lg: "5px", xl: "5px" }}
       />
     </section>
   </a>

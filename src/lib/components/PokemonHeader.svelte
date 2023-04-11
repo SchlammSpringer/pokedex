@@ -11,6 +11,7 @@
   alt={`Habitat of ${pokemon.name}`}
   width={1000}
   height={400}
+  loading="eager"
   image={{ sourceUrl: `/assets/habitats/${pokemon.habitat}.jpg` }}
 />
 <div
@@ -22,7 +23,8 @@
     width={475}
     height={475}
     class="w-32 sm:w-40 lg:w-48"
-    sizes={{ base: "25vw", sm: "25vw", md: "25vw", lg: "25vw", xl: "25vw" }}
+    loading="eager"
+    sizes={{ base: '25vw', sm: '25vw', md: '25vw', lg: '25vw', xl: '25vw' }}
   />
 
   <div class="text-right">
