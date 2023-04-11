@@ -25,10 +25,10 @@
   />
 
   <div class="text-right">
-    <h1 class="pl-10 pt-10 text-white font-bold first-letter:uppercase">
+    <h1 class="pt-10 text-white font-bold first-letter:uppercase">
       {pokemon.name}
     </h1>
-    <h2 class="pl-10 pb-10 text-white font-bold">{pokemon.germanName}</h2>
+    <h2 class="pb-10 text-white font-bold">{pokemon.germanName}</h2>
   </div>
 </div>
 
