@@ -17,11 +17,10 @@
   class="flex h-full sm:h-fit justify-start items-center absolute bottom-0 left-0 right-0 px-4 backdrop-saturate-200 bg-black/30"
 >
   <Image
-    class="w-40"
     alt={pokemon.name}
     image={{ sourceUrl: `${officialArtworkUrl + pokemon.pokedex}.png` }}
-    width={160}
-    height={160}
+    width={475}
+    height={475}
     sizes={{ sm: '10vw'}}
   />
 
