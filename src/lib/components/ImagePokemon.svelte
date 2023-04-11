@@ -33,7 +33,9 @@
   export let sizes: Breakpoints = {}
 
   const imageSizes = [48, 64, 96, 128, 256, 384]
+  const breakSizes = [384, 640, 768, 1024, 1280, 1536]
   const breakpoints = { base: -1, xs: 384, sm: 640, md: 768, lg: 1024, xl: 1280, '2xl': 1536 }
+
 
   $: mediaSizes = Object.entries({ base: '100vw', ...sizes })
     .map(([k, v]) => [breakpoints[k], v])
@@ -43,8 +45,8 @@
     .join(',')
     .replace(/\(min-width: -1px\) /g, '')
 
-  const vercelImg = (sourceUrl: string, size: number) =>
-    `/_vercel/image?url=${encodeURIComponent(sourceUrl)}&w=${size}&q=${quality} ${size}w`
+  const vercelImg = (sourceUrl: string, size: number, breakpoint: number) =>
+    `/_vercel/image?url=${encodeURIComponent(sourceUrl)}&w=${size}&q=${quality} ${breakpoint}w`
 
   $: ({
     srcSet = null,
@@ -53,7 +55,7 @@
     sourceUrl = '',
     mediaDetails: { height: imageHeight = null, width: imageWidth = null } = {}
   } = image || {})
-  $: vercelSrcSet = imageSizes.map((size) => vercelImg(image?.sourceUrl, size)).join(',')
+  $: vercelSrcSet = imageSizes.map((size, index) => vercelImg(image?.sourceUrl, size, index)).join(',')
 
   // dynamic srcset only for optimized (w/vercel)
   $: imageSrcSet = unoptimized || dev ? srcSet : vercelSrcSet
