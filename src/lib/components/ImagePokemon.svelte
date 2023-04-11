@@ -46,7 +46,7 @@
     .replace(/\(min-width: -1px\) /g, '')
 
   const vercelImg = (sourceUrl: string, size: number, breakpoint: number) =>
-    `/_vercel/image?url=${encodeURIComponent(sourceUrl)}&w=${size}&q=${quality} ${breakpoint}w`
+    `/_vercel/image?url=${encodeURIComponent(sourceUrl)}&w=${size}&q=${quality} ${breakSizes[breakpoint]}w`
 
   $: ({
     srcSet = null,
