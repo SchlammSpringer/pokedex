@@ -7,7 +7,13 @@
       <span class="badge bg-primary-500">🧾</span>
       <span class="flex-auto">
         <dt class="font-bold">Sourcen</dt>
-        <dd class="text-sm"><a href="https://github.com/SchlammSpringer/pokedex" target="_blank">GitHub SchlammSpringer/pokedex</a></dd>
+        <dd class="text-sm">
+          <a
+            class="whitespace-break-spaces"
+            href="https://github.com/SchlammSpringer/pokedex"
+            target="_blank">GitHub SchlammSpringer/pokedex</a
+          >
+        </dd>
       </span>
     </div>
     <div>
@@ -34,33 +40,13 @@
       </span>
     </div>
     <div>
-      <span class="badge bg-primary-500">📦</span>
+      <span class="badge bg-primary-500">🌩</span>
       <span class="flex-auto">
         <dt class="font-bold">Cloud</dt>
         <dd class="text-sm"><a href="https://vercel.com/home" target="_blank">Vercel</a></dd>
-      </span>
-    </div>
-    <div>
-      <span class="badge bg-primary-500">💾</span>
-      <span class="flex-auto">
-        <dt class="font-bold">Database</dt>
-        <dd class="text-sm"><a href="https://supabase.com/" target="_blank">Supabase</a></dd>
-      </span>
-    </div>
-    <div>
-      <span class="badge bg-primary-500">✅</span>
-      <span class="flex-auto">
-        <dt class="font-bold">Unit Testing</dt>
-        <dd class="text-sm"><a href="https://vitest.dev/" target="_blank">Vitest</a></dd>
-      </span>
-    </div>
-    <div>
-      <span class="badge bg-primary-500">✅</span>
-      <span class="flex-auto">
-        <dt class="font-bold">Component Testing</dt>
         <dd class="text-sm">
-          <a href="https://testing-library.com/docs/svelte-testing-library/intro/" target="_blank"
-          >Testing Library</a
+          <a class="whitespace-break-spaces" href="https://supabase.com/" target="_blank"
+          >Supabase - open source Firebase alternative</a
           >
         </dd>
       </span>
@@ -68,18 +54,23 @@
     <div>
       <span class="badge bg-primary-500">✅</span>
       <span class="flex-auto">
-        <dt class="font-bold">E2E Testing</dt>
+        <dt class="font-bold">Testing</dt>
         <dd class="text-sm">
-          <a href="https://playwright.dev/" target="_blank">Playwright</a>
+          <a class="whitespace-break-spaces" href="https://vitest.dev/" target="_blank"
+          >Vitest - Unit testing</a
+          >
         </dd>
-      </span>
-    </div>
-    <div>
-      <span class="badge bg-primary-500">📗</span>
-      <span class="flex-auto">
-        <dt class="font-bold">Information</dt>
         <dd class="text-sm">
-          <a href="https://blog.flotes.app/posts/flotes-2x-faster" target="_blank">How I Made My App 2.4x Faster Switching to Svelte</a>
+          <a
+            class="whitespace-break-spaces"
+            href="https://testing-library.com/docs/svelte-testing-library/intro/"
+            target="_blank">Testing Library - Component testing</a
+          >
+        </dd>
+        <dd class="text-sm">
+          <a class="whitespace-break-spaces" href="https://playwright.dev/" target="_blank"
+          >Playwright - e2e testing</a
+          >
         </dd>
       </span>
     </div>
@@ -89,8 +80,24 @@
         <dt class="font-bold">Information</dt>
         <dd class="text-sm">
           <a
+            class="whitespace-break-spaces"
+            href="https://blog.flotes.app/posts/flotes-2x-faster"
+            target="_blank">How I Made My App 2.4x Faster Switching to Svelte</a
+          >
+        </dd>
+        <dd class="text-sm">
+          <a
+            class="whitespace-break-spaces"
             href="https://sustainablewww.org/principles/svelte-vs-react-vs-angular-why-svelte-is-more-environmental-friendly"
-            target="_blank">Why Svelte is more environmentally friendly</a>
+            target="_blank">Why Svelte is more environmentally friendly</a
+          >
+        </dd>
+        <dd class="text-sm">
+          <a
+            class="whitespace-break-spaces"
+            href="https://vercel.com/docs/concepts/image-optimization"
+            target="_blank">Vercel image optimization</a
+          >
         </dd>
       </span>
     </div>
