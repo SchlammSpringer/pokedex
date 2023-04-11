@@ -28,7 +28,7 @@
   export let lazy = true
   export let width: string | number = 1280
   export let height: string | number = 720
-  export let quality = 80
+  export let quality = 90
   export let unoptimized = false
   export let sizes: Breakpoints = {}
 
