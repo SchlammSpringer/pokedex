@@ -1,7 +1,7 @@
 <script lang="ts">
   import { officialArtworkUrl, officialShinyArtworkUrl } from '$lib/share'
   import type { Pokemon } from '$lib/types'
-  import ImagePokemon from '$lib/components/Image.svelte'
+  import ImagePokemon from '$lib/components/ImagePokemon.svelte'
 
   export let pokemon: Pokemon
 

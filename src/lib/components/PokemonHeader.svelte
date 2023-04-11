@@ -1,8 +1,8 @@
 <script lang="ts">
   import { officialArtworkUrl } from '$lib/share.js'
   import type { Pokemon } from '$lib/types'
-  import Image from './Image.svelte'
-  import ImagePokemon from './ImagePokemon.svelte'
+  import Image from '$lib/components/Image.svelte'
+  import ImagePokemon from '$lib/components/ImagePokemon.svelte'
 
   export let pokemon: Pokemon
 </script>
