@@ -22,6 +22,7 @@
     width={475}
     height={475}
     class="w-32 sm:w-40 lg:w-48"
+    sizes={{ base: "25vw", sm: "25vw", md: "25vw", lg: "25vw", xl: "25vw" }}
   />
 
   <div class="text-right">
