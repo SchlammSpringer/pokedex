@@ -40,7 +40,6 @@
   <hr />
   <Navigation />
 </Drawer>
-
 <!-- App Shell -->
 <AppShell slotSidebarLeft="bg-surface-500/5 hidden lg:flex lg:w-56">
   <svelte:fragment slot="header">

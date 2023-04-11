@@ -8,6 +8,7 @@
 
 <Image
   class="w-full lg:aspect-[10/4] aspect-auto"
+  alt={`Habitat of ${pokemon.name}`}
   image={{ sourceUrl: `/assets/habitats/${pokemon.habitat}.jpg` }}
   sizes={{ sm: '110px', md: '10rem', lg: '10rem', xl: '10rem' }}
 />
@@ -19,7 +20,6 @@
     image={{ sourceUrl: `${officialArtworkUrl + pokemon.pokedex}.png` }}
     width={160}
     height={160}
-    sizes={{ sm: '110px', md: '10rem', lg: '10rem', xl: '10rem' }}
   />
 
   <div class="items-center">

@@ -28,11 +28,11 @@
   export let lazy = true
   export let width: string | number = 1280
   export let height: string | number = 720
-  export let quality = 70
+  export let quality = 80
   export let unoptimized = false
   export let sizes: Breakpoints = {}
 
-  const imageSizes = [640, 768, 1024, 1280, 1536]
+  const imageSizes = [16, 32, 48, 64, 96, 128, 256, 384]
   const breakpoints = { base: -1, sm: 640, md: 768, lg: 1024, xl: 1280, '2xl': 1536 }
 
   $: mediaSizes = Object.entries({ base: '100vw', ...sizes })
