@@ -32,8 +32,8 @@ jobs:
         run: npm install
 
       - name: Run unit tests
-        run: npm test:unit
+        run: npm run test:unit
       
       - name: Run Playwright tests
-        run: npm test
+        run: npm run test
       
