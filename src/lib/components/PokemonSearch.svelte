@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { page } from '$app/stores'
+  import { browser } from '$app/environment'
   import { fillFromTypes, filterPokemon } from '$lib/share'
   import type { Pokemon, PokeTypeRecord } from '$lib/types'
   import { queryParam, ssp } from 'sveltekit-search-params'
@@ -9,35 +9,33 @@
   export let initalPokemons: Pokemon[]
   let searchTerm = ''
   const types = [...new Set(pokemons.flatMap((pokemon) => pokemon.types))]
-  const typeFilter = queryParam<string[]>('types', ssp.array<string>() as EncodeAndDecodeOptions<string[]>, {
+  const typeFilter = queryParam('types', ssp.array() as EncodeAndDecodeOptions<string[]>, {
     pushHistory: false
   })
 
   let dictionary: PokeTypeRecord
 
-  if ($typeFilter) {
-    dictionary = fillFromTypes(types, false)
-    $typeFilter.forEach((type) => (dictionary[type] = true))
-  } else {
-    $typeFilter = types
-    dictionary = fillFromTypes(types, true)
-  }
+  dictionary = fillFromTypes(types, false)
+  dictionary = fillFromTypes(types, true)
 
   const filter = (type: string) => {
-    const newUrl = new URL($page.url)
-    const find = $typeFilter.includes(type)
-    console.log(find)
-    if (find) {
-      $typeFilter = $typeFilter.filter(it => it !== type)
-    } else {
-      $typeFilter = $typeFilter.concat([type])
+    if ($typeFilter) {
+      const found = $typeFilter.includes(type)
+      $typeFilter = found ? $typeFilter.filter((it) => it !== type) : $typeFilter.concat([type])
     }
-
     dictionary[type] = !dictionary[type]
   }
 
   $: {
     pokemons = initalPokemons.filter(filterPokemon(searchTerm, dictionary)) || []
+  }
+
+  $: if (browser) {
+    if ($typeFilter) {
+      $typeFilter.forEach((type) => (dictionary[type] = true))
+    } else {
+      $typeFilter = types
+    }
   }
 </script>
 
