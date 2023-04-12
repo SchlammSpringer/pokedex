@@ -32,7 +32,7 @@
   export let unoptimized = false
   export let sizes: Breakpoints = {}
 
-  const imageSizes = [180, 180, 180, 256, 384, 475]
+  const imageSizes = [180, 180, 180, 256, 310, 384]
   const breakSizes = [384, 640, 768, 1024, 1280, 1536]
   const breakpoints = { base: -1, xs: 384, sm: 640, md: 768, lg: 1024, xl: 1280, '2xl': 1536 }
 

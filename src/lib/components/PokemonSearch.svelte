@@ -1,29 +1,38 @@
 <script lang="ts">
-  import { goto } from '$app/navigation'
   import { page } from '$app/stores'
   import { fillFromTypes, filterPokemon } from '$lib/share'
   import type { Pokemon, PokeTypeRecord } from '$lib/types'
+  import { queryParam, ssp } from 'sveltekit-search-params'
+  import type { EncodeAndDecodeOptions } from 'sveltekit-search-params/package/sveltekit-search-params'
 
-  const url = $page.url
   export let pokemons: Pokemon[]
   export let initalPokemons: Pokemon[]
   let searchTerm = ''
-  let typeFilter = url.searchParams.get('type') || undefined
   const types = [...new Set(pokemons.flatMap((pokemon) => pokemon.types))]
+  const typeFilter = queryParam<string[]>('types', ssp.array<string>() as EncodeAndDecodeOptions<string[]>, {
+    pushHistory: false
+  })
 
   let dictionary: PokeTypeRecord
 
-  if (typeFilter) {
+  if ($typeFilter) {
     dictionary = fillFromTypes(types, false)
-    dictionary[typeFilter] = true
+    $typeFilter.forEach((type) => (dictionary[type] = true))
   } else {
+    $typeFilter = types
     dictionary = fillFromTypes(types, true)
   }
 
   const filter = (type: string) => {
     const newUrl = new URL($page.url)
-    newUrl?.searchParams.delete('type')
-    goto(newUrl)
+    const find = $typeFilter.includes(type)
+    console.log(find)
+    if (find) {
+      $typeFilter = $typeFilter.filter(it => it !== type)
+    } else {
+      $typeFilter = $typeFilter.concat([type])
+    }
+
     dictionary[type] = !dictionary[type]
   }
 
