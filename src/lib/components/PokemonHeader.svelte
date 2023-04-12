@@ -1,8 +1,8 @@
 <script lang="ts">
-  import { officialArtworkUrl } from '$lib/share.js'
-  import type { Pokemon } from '$lib/types'
-  import Image from '$lib/components/Image.svelte'
-  import ImagePokemon from '$lib/components/ImagePokemon.svelte'
+  import { officialArtworkUrl } from "$lib/share.js";
+  import type { Pokemon } from "$lib/types";
+  import Image from "$lib/components/Image.svelte";
+  import ImagePokemon from "$lib/components/ImagePokemon.svelte";
 
   export let pokemon: Pokemon
 </script>
@@ -12,7 +12,6 @@
   alt={`Habitat of ${pokemon.name}`}
   width={1000}
   height={400}
-  loading="eager"
   image={{ sourceUrl: `/assets/habitats/${pokemon.habitat}.jpg` }}
 />
 <div
@@ -20,6 +19,7 @@
 >
   <ImagePokemon
     alt={pokemon.name}
+    title="{pokemon.name}"
     image={{ sourceUrl: `${officialArtworkUrl + pokemon.pokedex}.png` }}
     width={475}
     height={475}

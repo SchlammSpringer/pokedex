@@ -19,13 +19,12 @@
     [K in Keys]?: string
   }
 
-  import { dev } from '$app/environment'
+  import { dev } from "$app/environment";
 
   let className: string | null = null
   export { className as class }
   export let image: WpImage
   export let showTitle = false
-  export let lazy = false
   export let width: string | number = 1280
   export let height: string | number = 720
   export let quality = 70
@@ -69,12 +68,12 @@
 <img
   width={width ?? imageWidth}
   height={height ?? imageHeight}
-  title={showTitle ? title : null}
+  title={title}
   srcset={imageSrcSet}
   src={sourceUrl}
   alt={altText ?? title}
   class={className}
-  loading={lazy ? 'lazy' : 'eager'}
+  loading="eager"
   sizes={mediaSizes}
   bind:this={element}
   {...$$restProps}
