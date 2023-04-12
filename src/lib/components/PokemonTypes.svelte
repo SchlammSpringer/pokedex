@@ -12,7 +12,7 @@
 <span>Choose a specific type, to show classic Pokemons of type</span>
 <div class="flex justify-start items-center space-x-4">
   {#each pokemon.types as type}
-    <a class="chip variant-soft hover:variant-filled !no-underline" href={`/pokemons?types=%5B"${type}"%5D`}>
+    <a class="chip variant-soft hover:variant-filled !no-underline" href="/pokemons?type={type}">
       {type}
     </a>
   {/each}
