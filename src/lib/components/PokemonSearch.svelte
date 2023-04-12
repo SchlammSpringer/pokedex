@@ -44,7 +44,7 @@
 
 <div class="textarea flex flex-wrap gap-2 px-2 py-4">
   {#each Object.keys(dictionary) as type}
-    <span
+    <span data-testid="typeFilter"
       class="chip {dictionary[type] ? 'variant-filled' : 'variant-soft'}"
       on:click={() => {
         filter(type)
