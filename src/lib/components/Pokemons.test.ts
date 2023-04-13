@@ -10,8 +10,7 @@ describe('Pokemons page', async () => {
         {
           pokedex: 1,
           name: 'bulbasaur',
-          description:
-            'Dieses Pokémon trägt von Geburt an einen Samen auf dem Rücken, der mit ihm keimt und wächst.\nBisasam macht gern einmal ein Nickerchen im Sonnenschein. Auf seinem Rücken trägt es einen Samen. Indem es Sonnenstrahlen aufsaugt, wird der Samen zunehmend größer.',
+          description: 'Dieses Pokémon trägt von Geburt an einen Samen auf dem Rücken,',
           types: ['grass', 'poison'],
           color: 'green',
           germanName: 'Bisasam',
