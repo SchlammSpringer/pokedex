@@ -13,6 +13,7 @@
     "lint": "prettier --plugin-search-dir . --check . && eslint .",
     "format": "prettier --plugin-search-dir . --write .",
     "coverage": "vitest run --coverage.enabled --coverage.reporter=cobertura --coverage.all --coverage.src=src",
+    "coverage:local": "vitest run --coverage.enabled --coverage.reporter=html --coverage.all --coverage.src=src",
     "update-types": "npx supabase gen types typescript --project-id \"hykrtxkdrrgsabjsuavx\" --schema public > src/lib/db/types.ts"
   },
   "devDependencies": {

@@ -18,8 +18,8 @@
   class="flex h-full sm:h-fit justify-start items-center absolute bottom-0 left-0 right-0 px-4 backdrop-saturate-200 bg-black/30"
 >
   <ImagePokemon
-    alt={pokemon.name}
-    title={pokemon.name}
+    alt={`official artwork of ${pokemon.name}`}
+    title={`official artwork of ${pokemon.name}`}
     image={{ sourceUrl: `${officialArtworkUrl + pokemon.pokedex}.png` }}
     width={475}
     height={475}
