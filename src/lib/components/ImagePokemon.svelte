@@ -9,7 +9,7 @@
   export let quality = 70
   export let unoptimized = false
 
-  const imageSizes = [180, 180, 180, 256, 384, 475]
+  const imageSizes = [180, 180, 180, 256, 310, 384]
   const breakSizes = [384, 640, 768, 1024, 1280, 1536]
 
   $: ({
