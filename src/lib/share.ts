@@ -1,4 +1,4 @@
-import type { Pokemon, PokeTypeRecord } from './types'
+import type { Breakpoints, BreakpointKeys, Pokemon, PokeTypeRecord, WpImage } from '$lib/types'
 
 export const spriteUrl = '/assets/sprites/'
 export const spriteBackUrl = '/assets/sprites/back/'
@@ -17,3 +17,31 @@ export const filterPokemon =
       pokemon.germanName.toLowerCase().includes(searchTerm.toLowerCase()) ||
       pokemon.pokedex.toString().includes(searchTerm.toLowerCase())) &&
     pokemon.types.filter((type) => dictionary[type]).length > 0
+
+
+export const vercelImgRemap = (
+  sourceUrl: string,
+  size: number,
+  breakpoint: number,
+  breakSizes: number[],
+  quality: number
+) =>
+  `/_vercel/image?url=${encodeURIComponent(sourceUrl)}&w=${size}&q=${quality} ${
+    breakSizes[breakpoint]
+  }w`
+
+export const toVercelRemappedSrcSet = (
+  imageSizes: number[],
+  breakSizes: number[],
+  quality: number,
+  image: WpImage
+) =>
+  imageSizes
+    .map((size, index) => vercelImgRemap(image?.sourceUrl, size, index, breakSizes, quality))
+    .join(',')
+
+export const vercelImg = (sourceUrl: string, size: number, quality: number) =>
+  `/_vercel/image?url=${encodeURIComponent(sourceUrl)}&w=${size}&q=${quality} ${size}w`
+
+export const toVercelSrcSet = (imageSizes: number[], quality: number, image: WpImage) =>
+  imageSizes.map((size) => vercelImg(image?.sourceUrl, size, quality)).join(',')

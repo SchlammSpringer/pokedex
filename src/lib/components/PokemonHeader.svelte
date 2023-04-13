@@ -12,7 +12,6 @@
   alt={`Habitat of ${pokemon.name}`}
   width={1000}
   height={400}
-  loading="eager"
   image={{ sourceUrl: `/assets/habitats/${pokemon.habitat}.jpg` }}
 />
 <div
@@ -20,6 +19,7 @@
 >
   <ImagePokemon
     alt={pokemon.name}
+    title={pokemon.name}
     image={{ sourceUrl: `${officialArtworkUrl + pokemon.pokedex}.png` }}
     width={475}
     height={475}

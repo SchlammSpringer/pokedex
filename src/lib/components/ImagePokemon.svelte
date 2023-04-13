@@ -1,53 +1,16 @@
 <script lang="ts">
-  type WpImage = {
-    sourceUrl: string
-    srcSet?: string | null
-    sizes?: string | null
-    title?: string | null
-    altText?: string | null
-    caption?: string | null
-    mimeType?: string | null
-    class?: string | null
-    mediaDetails?: {
-      height?: string | number | null
-      width?: string | number | null
-    }
-  }
-
-  type Keys = 'base' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'
-  type Breakpoints = {
-    [K in Keys]?: string
-  }
-
   import { dev } from '$app/environment'
+  import { toVercelRemappedSrcSet } from '$lib/share'
+  import type { WpImage } from '$lib/types'
 
   let className: string | null = null
   export { className as class }
   export let image: WpImage
-  export let showTitle = false
-  export let lazy = false
-  export let width: string | number = 1280
-  export let height: string | number = 720
   export let quality = 70
   export let unoptimized = false
-  export let sizes: Breakpoints = {}
 
   const imageSizes = [180, 180, 180, 256, 384, 475]
   const breakSizes = [384, 640, 768, 1024, 1280, 1536]
-  const breakpoints = { base: -1, xs: 384, sm: 640, md: 768, lg: 1024, xl: 1280, '2xl': 1536 }
-
-  $: mediaSizes = Object.entries({ base: '100vw', ...sizes })
-    .map(([k, v]) => [breakpoints[k], v])
-    .sort((a, b) => b[0] - a[0])
-    .filter((c) => c[0])
-    .map((d) => `(min-width: ${d[0]}px) ${d[1]}`)
-    .join(',')
-    .replace(/\(min-width: -1px\) /g, '')
-
-  const vercelImg = (sourceUrl: string, size: number, breakpoint: number) =>
-    `/_vercel/image?url=${encodeURIComponent(sourceUrl)}&w=${size}&q=${quality} ${
-      breakSizes[breakpoint]
-    }w`
 
   $: ({
     srcSet = null,
@@ -56,9 +19,7 @@
     sourceUrl = '',
     mediaDetails: { height: imageHeight = null, width: imageWidth = null } = {}
   } = image || {})
-  $: vercelSrcSet = imageSizes
-    .map((size, index) => vercelImg(image?.sourceUrl, size, index))
-    .join(',')
+  $: vercelSrcSet = toVercelRemappedSrcSet(imageSizes, breakSizes, quality, image)
 
   // dynamic srcset only for optimized (w/vercel)
   $: imageSrcSet = unoptimized || dev ? srcSet : vercelSrcSet
@@ -67,15 +28,15 @@
 </script>
 
 <img
-  width={width ?? imageWidth}
-  height={height ?? imageHeight}
-  title={showTitle ? title : null}
+  width={imageWidth}
+  height={imageHeight}
+  {title}
   srcset={imageSrcSet}
   src={sourceUrl}
   alt={altText ?? title}
   class={className}
-  loading={lazy ? 'lazy' : 'eager'}
-  sizes={mediaSizes}
+  loading="eager"
+  sizes="100vw"
   bind:this={element}
   {...$$restProps}
 />

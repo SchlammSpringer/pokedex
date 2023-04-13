@@ -46,7 +46,7 @@ describe('single Pokemon API', () => {
         name: 'charmander'
       }
       const header = {
-        headers: { 'Cache-Control': 's-maxage=1, stale-while-revalidate' }
+        headers: { 'Cache-Control': 'public, s-maxage=1, stale-while-revalidate' }
       }
       const mockedfindPokemonByName = findPokemonByName as Mock
       const mockedJson = json as Mock

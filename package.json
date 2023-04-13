@@ -12,14 +12,14 @@
     "test:unit": "vitest",
     "lint": "prettier --plugin-search-dir . --check . && eslint .",
     "format": "prettier --plugin-search-dir . --write .",
-    "coverage": "vitest run --coverage",
+    "coverage": "vitest run --coverage.enabled --coverage.reporter=cobertura",
     "update-types": "npx supabase gen types typescript --project-id \"hykrtxkdrrgsabjsuavx\" --schema public > src/lib/db/types.ts"
   },
   "devDependencies": {
     "@playwright/test": "^1.32.3",
     "@skeletonlabs/skeleton": "^1.1.0",
     "@sveltejs/adapter-vercel": "^2.4.1",
-    "@sveltejs/kit": "^1.15.2",
+    "@sveltejs/kit": "^1.15.4",
     "@tailwindcss/forms": "^0.5.3",
     "@tailwindcss/line-clamp": "^0.4.4",
     "@tailwindcss/typography": "^0.5.9",
@@ -28,7 +28,7 @@
     "@types/testing-library__jest-dom": "^5.14.5",
     "@typescript-eslint/eslint-plugin": "^5.58.0",
     "@typescript-eslint/parser": "^5.58.0",
-    "@vitest/coverage-c8": "^0.30.0",
+    "@vitest/coverage-c8": "^0.30.1",
     "autoprefixer": "^10.4.14",
     "eslint": "^8.38.0",
     "eslint-config-prettier": "^8.8.0",
@@ -45,14 +45,14 @@
     "tslib": "^2.5.0",
     "typescript": "^5.0.4",
     "vite": "^4.2.1",
-    "vitest": "^0.30.0",
+    "vitest": "^0.30.1",
     "vitest-fetch-mock": "^0.2.2",
     "vitest-mock-extended": "^1.1.3",
     "zod": "^3.21.4"
   },
   "type": "module",
   "dependencies": {
-    "@supabase/supabase-js": "^2.17.0",
+    "@supabase/supabase-js": "^2.20.0",
     "@vercel/analytics": "^0.1.11",
     "web-vitals": "^3.3.1"
   }

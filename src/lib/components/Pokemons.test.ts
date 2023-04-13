@@ -22,7 +22,7 @@ describe('Pokemons page', async () => {
 
     const heading = screen.getByRole('heading', { level: 1 })
     const searchbox = screen.getByRole('searchbox')
-    const typeButtons = screen.getAllByRole('button')
+    const typeButtons = screen.getAllByTestId('typeFilter')
     const pokemonLinks = screen.getAllByRole('link')
     expect(heading).toHaveTextContent('Pokemons')
     expect(typeButtons[0]).toHaveTextContent('grass')

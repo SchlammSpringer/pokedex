@@ -34,6 +34,7 @@
     <section class="p-4">
       <ImagePokemon
         alt={`official artwork for ${pokemon.name}`}
+        title={pokemon.name}
         image={{ sourceUrl: image[pokemon.pokedex] || frontImage(pokemon.pokedex) }}
         width={475}
         height={475}
