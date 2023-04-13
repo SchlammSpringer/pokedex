@@ -1,7 +1,7 @@
 <script lang="ts">
-  import { spriteBackUrl, spriteShinyBackUrl, spriteShinyUrl, spriteUrl } from "$lib/share.js";
-  import type { Pokemon } from "$lib/types";
-  import ImageSprite from "./ImageSprite.svelte";
+  import { spriteBackUrl, spriteShinyBackUrl, spriteShinyUrl, spriteUrl } from '$lib/share.js'
+  import type { Pokemon } from '$lib/types'
+  import ImageSprite from './ImageSprite.svelte'
 
   export let pokemon: Pokemon
 </script>

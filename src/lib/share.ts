@@ -18,24 +18,6 @@ export const filterPokemon =
       pokemon.pokedex.toString().includes(searchTerm.toLowerCase())) &&
     pokemon.types.filter((type) => dictionary[type]).length > 0
 
-const breakpoints: Record<BreakpointKeys, number> = {
-  base: -1,
-  xs: 384,
-  sm: 640,
-  md: 768,
-  lg: 1024,
-  xl: 1280,
-  '2xl': 1536
-}
-
-export const getMediaSizes = (sizes: Breakpoints) =>
-  Object.entries({ base: '100vw', ...sizes })
-    .map(([first, second]) => [breakpoints[first], second])
-    .sort((a, b) => b[0] - a[0])
-    .filter((c) => c[0])
-    .map((d) => `(min-width: ${d[0]}px) ${d[1]}`)
-    .join(',')
-    .replace(/\(min-width: -1px\) /g, '')
 
 export const vercelImgRemap = (
   sourceUrl: string,
