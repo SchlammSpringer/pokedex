@@ -1,11 +1,10 @@
 <script lang="ts">
-  import PokemonHeader from '$lib/components/PokemonHeader.svelte'
-  import PokemonSprites from '$lib/components/PokemonSprites.svelte'
-  import PokemonTypes from '$lib/components/PokemonTypes.svelte'
-  import { superForm } from 'sveltekit-superforms/client'
-  import type { PageData } from './$types'
-  import { enhance } from '$app/forms'
-  import { fade, fly } from 'svelte/transition'
+  import { enhance } from "$app/forms";
+  import PokemonHeader from "$lib/components/PokemonHeader.svelte";
+  import PokemonSprites from "$lib/components/PokemonSprites.svelte";
+  import PokemonTypes from "$lib/components/PokemonTypes.svelte";
+  import { superForm } from "sveltekit-superforms/client";
+  import type { PageData } from "./$types";
 
   export let data: PageData
 
@@ -54,8 +53,6 @@
             creating = false
           }
         }}
-        in:fly={{ y: 200, duration: 200 }}
-        out:fade
       >
         <input type="hidden" name="pokedex" value={$form.pokedex} />
         <input type="hidden" name="color" value={$form.color} />

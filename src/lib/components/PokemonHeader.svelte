@@ -2,7 +2,7 @@
   import { officialArtworkUrl } from "$lib/share.js";
   import type { Pokemon } from "$lib/types";
   import Image from "$lib/components/Image.svelte";
-  import ImagePokemon from "$lib/components/ImagePokemon.svelte";
+  import ImagePokemon from "$lib/components/ImageSprite.svelte";
 
   export let pokemon: Pokemon
 </script>

@@ -62,3 +62,23 @@ export const schema = z.object({
   habitat: z.string().min(1),
   notes: z.string().min(5).max(1000).optional()
 })
+
+export interface WpImage {
+  sourceUrl: string
+  srcSet?: string | null
+  sizes?: string | null
+  title?: string | null
+  altText?: string | null
+  caption?: string | null
+  mimeType?: string | null
+  class?: string | null
+  mediaDetails?: {
+    height?: string | number | null
+    width?: string | number | null
+  }
+}
+
+export type BreakpointKeys = 'base' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'
+export type Breakpoints = {
+  [K in BreakpointKeys]?: string
+}
