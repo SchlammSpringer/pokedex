@@ -1,5 +1,6 @@
 <script lang="ts">
   import { enhance } from '$app/forms'
+  import { capitalizeFirstLetter } from '$lib/share'
   import type { Pokemon } from '$lib/types'
   import { toastStore, type ToastSettings } from '@skeletonlabs/skeleton'
   import type { ValidationErrors } from 'sveltekit-superforms/index'
@@ -69,8 +70,7 @@
       bind:value={form.notes}
     />
   </label>
-  <button type="submit" class="btn variant-filled-primary">Submit</button>
-  <a href="../pokemons" class="btn variant-filled-secondary">Pokemons</a>
+  <button type="submit" class="mt-4 flex w-full btn variant-filled-primary">save {capitalizeFirstLetter(form.name)}</button>
 </form>
 
 <style>

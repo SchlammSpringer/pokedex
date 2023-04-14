@@ -1,4 +1,6 @@
 <script lang="ts">
+  import FavoriteColor from './FavoriteColor.svelte'
+
   import PokemonHeader from '$lib/components/PokemonHeader.svelte'
   import PokemonSprites from '$lib/components/PokemonSprites.svelte'
   import PokemonTypes from '$lib/components/PokemonTypes.svelte'
@@ -10,7 +12,6 @@
   export let form: Pokemon
   export let errors: ValidationErrors<AnyZodObject>
   export let constraints: Partial<any>
-
 </script>
 
 <div class="card overflow-hidden">
@@ -24,26 +25,19 @@
     <hr class="opacity-50" />
     <h3>Habitat</h3>
     <p
+      data-testid="habitat"
       class="text-2xl bg-gradient-to-br from-red-500 to-yellow-500 bg-clip-text text-transparent
             box-decoration-clone first-letter:uppercase"
     >
       {form.habitat}
     </p>
     <hr class="opacity-50" />
-    <h3>Favorite color</h3>
-    {#if form.color === 'gray'}
-      <div class="w-fit rounded-full" style="background-color: gray">
-        <span class="font-bold p-4" style="color: white">{form.color}</span>
-      </div>
-    {:else}
-      <div class="w-fit rounded-lg" style="background-color: {form.color}">
-        <span class="invert font-bold p-4" style="color: {form.color}">{form.color}</span>
-      </div>
-    {/if}
+    <FavoriteColor color={form.color} />
     <hr class="opacity-50" />
     <PokemonTypes pokemon={form} />
     <hr class="opacity-50" />
-    <PokemonForm {form} {errors} {constraints}/>
+    <PokemonForm {form} {errors} {constraints} />
+    <a href="../pokemons" class="flex btn variant-filled-secondary">back to Pokemons</a>
   </section>
 </div>
 

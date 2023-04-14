@@ -27,7 +27,7 @@
   on:mouseout={() => frontImage(pokemon.pokedex)}
   on:blur={() => frontImage(pokemon.pokedex)}
 >
-  <a href="/pokemons/{pokemon.name}" data-sveltekit-preload-code="viewport" class="!no-underline">
+  <a href="/pokemons/{pokemon.name}" data-sveltekit-preload-code="viewport" class="!no-underline" aria-label="show details for {pokemon.name}">
     <header class="card-header">
       <h2 class="!text-xl first-letter:uppercase">{pokemon.name}</h2>
     </header>

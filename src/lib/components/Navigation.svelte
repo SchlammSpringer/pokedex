@@ -1,8 +1,6 @@
 <script lang="ts">
-  import { page } from '$app/stores'
   import NavigationLink from './NavigationLink.svelte'
-
-  $: active = $page.url.pathname
+  export let active: string
 </script>
 
 <nav class="list-nav p-4">

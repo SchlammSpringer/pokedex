@@ -48,7 +48,7 @@
 <Drawer width="w-70">
   <h2 class="p-4">Navigation</h2>
   <hr />
-  <Navigation />
+  <Navigation active={$page.url.pathname}/>
 </Drawer>
 <!-- App Shell -->
 <AppShell slotSidebarLeft="bg-surface-500/5 hidden lg:flex lg:w-56">
@@ -81,7 +81,7 @@
     </AppBar>
   </svelte:fragment>
   <svelte:fragment slot="sidebarLeft">
-    <Navigation />
+    <Navigation active={$page.url.pathname}/>
   </svelte:fragment>
   <!-- Page Route Content -->
   {#key data.pathname}

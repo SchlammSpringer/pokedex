@@ -18,7 +18,6 @@ export const filterPokemon =
       pokemon.pokedex.toString().includes(searchTerm.toLowerCase())) &&
     pokemon.types.filter((type) => dictionary[type]).length > 0
 
-
 export const vercelImgRemap = (
   sourceUrl: string,
   size: number,
@@ -45,3 +44,8 @@ export const vercelImg = (sourceUrl: string, size: number, quality: number) =>
 
 export const toVercelSrcSet = (imageSizes: number[], quality: number, image: WpImage) =>
   imageSizes.map((size) => vercelImg(image?.sourceUrl, size, quality)).join(',')
+
+export const capitalizeFirstLetter = (str: string) => {
+  const capitalized = str.charAt(0).toUpperCase() + str.slice(1)
+  return capitalized
+}

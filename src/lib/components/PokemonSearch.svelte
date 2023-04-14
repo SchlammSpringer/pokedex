@@ -1,14 +1,12 @@
 <script lang="ts">
-  import { goto } from '$app/navigation'
-  import { page } from '$app/stores'
+  
   import { fillFromTypes, filterPokemon } from '$lib/share'
   import type { Pokemon, PokeTypeRecord } from '$lib/types'
 
-  const url = $page.url
   export let pokemons: Pokemon[]
   export let initalPokemons: Pokemon[]
   let searchTerm = ''
-  let typeFilter = url.searchParams.get('type') || undefined
+  export let typeFilter
   const types = [...new Set(pokemons.flatMap((pokemon) => pokemon.types))]
 
   let dictionary: PokeTypeRecord
@@ -20,12 +18,9 @@
     dictionary = fillFromTypes(types, true)
   }
 
-  const filter = (type: string) => {
-    const newUrl = new URL($page.url)
-    newUrl?.searchParams.delete('type')
-    goto(newUrl)
-    dictionary[type] = !dictionary[type]
-  }
+  const filter = (type: string) => 
+dictionary[type] = !dictionary[type]
+  
 
   $: {
     pokemons = initalPokemons.filter(filterPokemon(searchTerm, dictionary)) || []

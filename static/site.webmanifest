@@ -1,6 +1,6 @@
 {
-    "name": "",
-    "short_name": "",
+    "name": "Pokedex with SvelteKit",
+    "short_name": "Pokedexkit",
     "icons": [
         {
             "src": "/android-chrome-192x192.png",
