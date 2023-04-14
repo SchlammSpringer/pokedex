@@ -18,7 +18,7 @@
   inject({ mode: dev ? 'development' : 'production' })
 
   let analyticsId = import.meta.env.VERCEL_ANALYTICS_ID
-  let path: string
+  let path = '/'
 
   $: if (browser) {
     path = $page.url.pathname
