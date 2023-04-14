@@ -18,13 +18,17 @@
   inject({ mode: dev ? 'development' : 'production' })
 
   let analyticsId = import.meta.env.VERCEL_ANALYTICS_ID
+  let path = '/'
 
-  $: if (browser && analyticsId) {
-    webVitals({
-      path: $page.url.pathname,
-      params: $page.params,
-      analyticsId
-    })
+  $: if (browser) {
+    path = $page.url.pathname
+    if (analyticsId) {
+      webVitals({
+        path: $page.url.pathname,
+        params: $page.params,
+        analyticsId
+      })
+    }
   }
 
   const drawerOpen = () => drawerStore.open({})
@@ -48,7 +52,7 @@
 <Drawer width="w-70">
   <h2 class="p-4">Navigation</h2>
   <hr />
-  <Navigation active={$page.url.pathname}/>
+  <Navigation currentPath={path} />
 </Drawer>
 <!-- App Shell -->
 <AppShell slotSidebarLeft="bg-surface-500/5 hidden lg:flex lg:w-56">
@@ -81,7 +85,7 @@
     </AppBar>
   </svelte:fragment>
   <svelte:fragment slot="sidebarLeft">
-    <Navigation active={$page.url.pathname}/>
+    <Navigation currentPath={path} />
   </svelte:fragment>
   <!-- Page Route Content -->
   {#key data.pathname}
