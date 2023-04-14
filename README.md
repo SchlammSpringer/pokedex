@@ -10,9 +10,15 @@ npm create skeleton-app@latest my-skeleton-app
 cd my-skeleton-app
 ```
 
-## Backend with [PokeApi](https://pokeapi.co/) and [LowDB](https://github.com/typicode/lowdb)
+## Backend with [Vercel](https://www.vercel.com) and [Supabase](https://supabase.com/)
 
-### [PokeApi](https://pokeapi.co/) as a simulation for internal service orchestration
+### [Incremental Static Regeneration](https://vercel.com/docs/concepts/incremental-static-regeneration/overview) 
+
+### [Vercel Image Optimization](https://vercel.com/docs/concepts/image-optimization)
+
+### [Vercel Serverless Functions](https://vercel.com/docs/concepts/functions/serverless-functions)
+
+### [Vercel Edge Network](https://vercel.com/docs/concepts/edge-network/overview)
 
 ## Frontend with dynamic server side rendering (SSR)
 
@@ -25,12 +31,6 @@ cd my-skeleton-app
 ### reactive searching / filtering for Pokemons
 
 ## [Vitest](https://vitest.dev/)
-
-## [Vercel](https://vercel.com)
-
-### Incremental Static Regeneration (ISR)
-
-- chaches query calls
 
 ## Green IT - it's all about resources
 
