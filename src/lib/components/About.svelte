@@ -117,6 +117,13 @@
             target="_blank">Youtube @Huntabyte</a
           >
         </dd>
+        <dd class="text-sm">
+          <a
+            class="whitespace-break-spaces"
+            href="https://sveltesociety.dev/"
+            target="_blank">Svelte Society</a
+          >
+        </dd>
       </span>
     </div>
   </dl>

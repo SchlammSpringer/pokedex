@@ -1,6 +1,6 @@
 import type { Mock } from 'vitest'
 import { describe, expect, it, vi } from 'vitest'
-import { GET } from './+server'
+import { GET, config } from './+server'
 import { findPokemonByName } from '$lib/server/db-queries'
 import type { RequestEvent } from '@sveltejs/kit'
 import { error, json } from '@sveltejs/kit'
@@ -39,6 +39,9 @@ describe('single Pokemon API', () => {
     germanName: 'Bisasam',
     habitat: 'grassland'
   }
+  it('check vercel config', () => {
+    expect(config).toMatchSnapshot()
+  })
 
   describe('GET', () => {
     it('sucess', async () => {
@@ -65,6 +68,7 @@ describe('single Pokemon API', () => {
       expect(mockedJson).toHaveBeenNthCalledWith(1, pokemon, header)
       expect(response).toStrictEqual({ pokemon, header })
     })
+
     it('error', async () => {
       request.params = {
         name: 'notExist'

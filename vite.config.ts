@@ -13,7 +13,13 @@ export default defineConfig({
     include: ['src/**/*.{test,spec}.{js,ts}'],
     setupFiles: ['./setupTest.ts'],
     coverage: {
-      exclude: ['setupTest.ts', 'src/**/*.{test,spec}.{js,ts}']
+      exclude: [
+        'setupTest.ts',
+        'src/**/*.{test,spec}.{js,ts}',
+        'src/lib/vital.js',
+        'src/app.d.ts',
+        'src/lib/db/types.ts'
+      ]
     }
   }
 })

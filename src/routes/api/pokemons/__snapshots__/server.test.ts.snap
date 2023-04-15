@@ -1,0 +1,10 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Pokemon list API > check vercel config 1`] = `
+{
+  "regions": [
+    "fra1",
+  ],
+  "runtime": "edge",
+}
+`;

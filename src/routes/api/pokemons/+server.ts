@@ -31,6 +31,7 @@ const pokemonsToJson = (pokemons: Pokemon[]) =>
 
 export const GET = (async () => {
   const { data } = await selectAllPokemons()
+
   if (data && data?.length !== 0) {
     const pokemons: Pokemon[] = data
       .map(({ pokemon }) => pokemon)
@@ -38,7 +39,7 @@ export const GET = (async () => {
     return pokemonsToJson(pokemons)
   }
   const maybePokemons = await fetchFromPokeAPi()
-  const pokemons = await Promise.all(maybePokemons)
+  const pokemons: Pokemon[] = await Promise.all(maybePokemons)
   for (const pokemon of pokemons) {
     await insertAllPokemons(pokemon)
   }

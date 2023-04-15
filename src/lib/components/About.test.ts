@@ -14,6 +14,6 @@ describe('About page', async () => {
     expect(heading).toHaveTextContent('Credits')
     expect(homeLink).toHaveTextContent('Home')
     expect(pokemonLink).toHaveTextContent('Pokemon')
-    expect(links).toHaveLength(16)
+    expect(links).toHaveLength(17)
   })
 })
