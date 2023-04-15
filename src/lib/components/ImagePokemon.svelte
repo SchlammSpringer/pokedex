@@ -7,7 +7,6 @@
   export { className as class }
   export let image: WpImage
   export let quality = 70
-  export let unoptimized = false
 
   const imageSizes = [180, 180, 180, 256, 310, 384]
   const breakSizes = [384, 640, 768, 1024, 1280, 1536]
@@ -15,14 +14,14 @@
   $: ({
     srcSet = null,
     title = null,
-    altText = null,
+    alt = null,
     sourceUrl = '',
     mediaDetails: { height: imageHeight = null, width: imageWidth = null } = {}
   } = image || {})
   $: vercelSrcSet = toVercelRemappedSrcSet(imageSizes, breakSizes, quality, image)
 
   // dynamic srcset only for optimized (w/vercel)
-  $: imageSrcSet = unoptimized || dev ? srcSet : vercelSrcSet
+  $: imageSrcSet =  dev ? srcSet : vercelSrcSet
 
   let element
 </script>
@@ -33,7 +32,7 @@
   {title}
   srcset={imageSrcSet}
   src={sourceUrl}
-  alt={altText ?? title}
+  {alt}
   class={className}
   loading="eager"
   sizes="100vw"

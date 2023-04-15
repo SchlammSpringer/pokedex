@@ -103,8 +103,21 @@
             target="_blank">Vercel image optimization</a
           >
         </dd>
+        <dd class="text-sm">
+          <a
+            class="whitespace-break-spaces"
+            href="https://www.youtube.com/@jmagrippis"
+            target="_blank">Youtube @jmagrippis</a
+          >
+        </dd>
+        <dd class="text-sm">
+          <a
+            class="whitespace-break-spaces"
+            href="https://www.youtube.com/@Huntabyte"
+            target="_blank">Youtube @Huntabyte</a
+          >
+        </dd>
       </span>
     </div>
   </dl>
 </div>
-

@@ -1,7 +1,6 @@
 <script lang="ts">
   import NavigationLink from './NavigationLink.svelte'
   export let currentPath: string
-
 </script>
 
 <nav class="list-nav p-4">

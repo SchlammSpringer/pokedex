@@ -68,9 +68,7 @@ export interface WpImage {
   srcSet?: string | null
   sizes?: string | null
   title?: string | null
-  altText?: string | null
-  caption?: string | null
-  mimeType?: string | null
+  alt?: string | null
   class?: string | null
   mediaDetails?: {
     height?: string | number | null

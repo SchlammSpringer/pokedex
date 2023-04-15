@@ -32,6 +32,10 @@ cd my-skeleton-app
 
 ## [Vitest](https://vitest.dev/)
 
+### [Vitest UI](https://vitest.dev/guide/ui.html)
+
+### [Testing Library](https://testing-library.com/)
+
 ## Green IT - it's all about resources
 
 - less code
