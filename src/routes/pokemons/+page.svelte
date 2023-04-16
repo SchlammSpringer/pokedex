@@ -4,9 +4,7 @@
   import { page } from '$app/stores'
 
   export let data: Pokemons
-  
   const url = $page.url
-
 </script>
 
 <div>

@@ -22,10 +22,13 @@ export const GET = (async ({ params }) => {
 export const PUT = (async ({ request }) => {
   const body: Pokemon = (await request.json()) as Pokemon
   const form = await validatePokemon(body)
-  const { data } = await updatePokemon(body)
-  if (!data) throw svelteError(400, `validation errors: ${JSON.stringify(form.errors, null, 2)}`)
+  if (!form.valid)
+    throw svelteError(400, `validation errors: ${JSON.stringify(form.errors, null, 2)}`)
+  const { data, error } = await updatePokemon(body)
+  if (error) throw svelteError(400, error)
 
+  console.log(data)
   return json(data[0].pokemon, {
-    headers: { 'Cache-Control': 's-maxage=1, stale-while-revalidate' }
+    headers: { 'Cache-Control': 'public, s-maxage=1, stale-while-revalidate' }
   })
 }) satisfies RequestHandler
