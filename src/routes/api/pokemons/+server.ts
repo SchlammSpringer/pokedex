@@ -1,4 +1,4 @@
-import { insertAllPokemons, selectAllPokemons } from '$lib/server/db-queries'
+import { insertPokemon, selectAllPokemons } from '$lib/server/db-queries'
 import { fetchPokemon } from '$lib/server/share'
 import type { Pokemon } from '$lib/types'
 import type { RequestHandler } from '@sveltejs/kit'
@@ -41,7 +41,7 @@ export const GET = (async () => {
   const maybePokemons = await fetchFromPokeAPi()
   const pokemons: Pokemon[] = await Promise.all(maybePokemons)
   for (const pokemon of pokemons) {
-    await insertAllPokemons(pokemon)
+    await insertPokemon(pokemon)
   }
   return pokemonsToJson(pokemons)
 }) satisfies RequestHandler

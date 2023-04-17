@@ -69,7 +69,7 @@ function promiseOfPokemon(changedPokemon: {
 
 describe('single Pokemon API', () => {
   afterEach(() => {
-    vi.restoreAllMocks()
+    vi.clearAllMocks()
   })
 
   it('check vercel config', () => {

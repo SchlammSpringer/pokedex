@@ -13,13 +13,12 @@ fetchMocker.enableMocks()
 
 describe('Pokemon list API', () => {
   afterEach(() => {
-    vi.restoreAllMocks()
+    vi.clearAllMocks()
   })
 
   vi.mock('@sveltejs/kit')
   vi.mock('$lib/server/db-queries')
   vi.mock('$lib/server/share')
-  const request = mock<RequestEvent>()
 
   const pokemonsFromApi = {
     results: [{ url: 'https://pokemon/1' }, { url: 'https://pokemon/2' }]

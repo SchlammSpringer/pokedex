@@ -1,10 +1,11 @@
 import type { Pokemon } from '$lib/types'
 import { supabase } from './supabase'
 
-export const selectAllPokemons = () =>
-  supabase.from('Pokemons').select('pokemon', { count: 'exact' }).order('id')
+export const selectAllPokemons = () => {
+  return supabase.from('Pokemons').select('pokemon', { count: 'exact' }).order('id')
+}
 
-export const insertAllPokemons = (pokemon: Pokemon) =>
+export const insertPokemon = (pokemon: Pokemon) =>
   supabase.from('Pokemons').insert([{ id: pokemon.pokedex, pokemon: pokemon }])
 
 export const findPokemonByName = (name: string) =>
