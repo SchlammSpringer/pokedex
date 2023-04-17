@@ -25,9 +25,9 @@ export const PUT = (async ({ request }) => {
   if (!form.valid)
     throw svelteError(400, `validation errors: ${JSON.stringify(form.errors, null, 2)}`)
   const { data, error } = await updatePokemon(body)
-  if (error) throw svelteError(400, error)
+  if (error || data.length === 0)
+    throw svelteError(400, `can´t save pokemon ${error?.message || ''}`)
 
-  console.log(data)
   return json(data[0].pokemon, {
     headers: { 'Cache-Control': 'public, s-maxage=1, stale-while-revalidate' }
   })

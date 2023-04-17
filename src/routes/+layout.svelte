@@ -11,6 +11,7 @@
   import { webVitals } from '$lib/vital'
   import { inject } from '@vercel/analytics'
   import '../app.postcss'
+  import { page } from '$app/stores'
 
   inject({ mode: dev ? 'development' : 'production' })
 
@@ -21,7 +22,7 @@
   $: if (browser && analyticsId) {
     webVitals({
       path: data.pathname,
-      params: data.params,
+      params: $page.params,
       analyticsId
     })
   }

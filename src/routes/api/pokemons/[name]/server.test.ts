@@ -16,6 +16,11 @@ interface Response {
   header: Record<string, Record<string, string>>
 }
 
+const invalidForm = {
+  valid: false,
+  errors: { notes: ['String must contain at least 5 character(s)'] },
+  data: {}
+}
 const validForm = {
   valid: true,
   errors: {},
@@ -45,6 +50,21 @@ const pokemon = {
 }
 const header = {
   headers: { 'Cache-Control': 'public, s-maxage=1, stale-while-revalidate' }
+}
+
+function promiseOfPokemon(changedPokemon: {
+  types: string[]
+  germanName: string
+  habitat: string
+  notes: string
+  color: string
+  name: string
+  pokedex: number
+  description: string
+}) {
+  return new Promise(function (resolve, _) {
+    setTimeout(() => resolve(changedPokemon))
+  })
 }
 
 describe('single Pokemon API', () => {
@@ -99,10 +119,7 @@ describe('single Pokemon API', () => {
       const changedPokemon = { ...pokemon, notes: 'change' }
       const mockedValidatePokemon = validatePokemon as Mock
       mockedValidatePokemon.mockResolvedValueOnce(validForm)
-      request.request.json = () =>
-        new Promise(function (resolve, _) {
-          setTimeout(() => resolve(changedPokemon))
-        })
+      request.request.json = () => promiseOfPokemon(changedPokemon)
       const mockedUpdatePokemon = updatePokemon as Mock
       mockedUpdatePokemon.mockResolvedValueOnce({ data: [changedPokemon], error: null })
       const mockedJson = json as Mock
@@ -116,11 +133,49 @@ describe('single Pokemon API', () => {
     })
 
     it('validation error', async () => {
-      // PUT({'name': 'Shitty-Charmander'} )
+      const changedPokemon = { ...pokemon, notes: 'change' }
+      const mockedValidatePokemon = validatePokemon as Mock
+      mockedValidatePokemon.mockResolvedValueOnce(invalidForm)
+      request.request.json = () => promiseOfPokemon(changedPokemon)
+      const mockedError = error as Mock
+      mockedError.mockImplementation(convertError())
+
+      await expect(PUT(request)).rejects.toThrowError(`400: validation errors: {
+  "notes": [
+    "String must contain at least 5 character(s)"
+  ]
+}`)
     })
 
+    it('database no data', async () => {
+      const changedPokemon = { ...pokemon, notes: 'change' }
+      const mockedValidatePokemon = validatePokemon as Mock
+      mockedValidatePokemon.mockResolvedValueOnce(validForm)
+      request.request.json = () => promiseOfPokemon(changedPokemon)
+      const mockedUpdatePokemon = updatePokemon as Mock
+      mockedUpdatePokemon.mockResolvedValueOnce({ data: [], error: null })
+      const mockedError = error as Mock
+      mockedError.mockImplementation(convertError())
+
+      await expect(PUT(request)).rejects.toThrowError(`400: can´t save pokemon`)
+    })
     it('database error', async () => {
-      // PUT({'name': 'Shitty-Charmander'} )
+      const changedPokemon = { ...pokemon, notes: 'change' }
+      const mockedValidatePokemon = validatePokemon as Mock
+      mockedValidatePokemon.mockResolvedValueOnce(validForm)
+      request.request.json = () =>
+        new Promise(function (resolve, _) {
+          setTimeout(() => resolve(changedPokemon))
+        })
+      const mockedUpdatePokemon = updatePokemon as Mock
+      mockedUpdatePokemon.mockResolvedValueOnce({
+        data: [],
+        error: { message: 'fehler', details: 'more details', hint: 'something', code: '123' }
+      })
+      const mockedError = error as Mock
+      mockedError.mockImplementation(convertError())
+
+      await expect(PUT(request)).rejects.toThrowError(`400: can´t save pokemon fehler`)
     })
   })
 })

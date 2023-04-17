@@ -1,8 +1,5 @@
-export const load = ({ url, params }) => {
-  const { pathname } = url
+import type { PageServerLoad } from './$types'
 
-  return {
-    pathname,
-    params
-  }
-}
+export const load: PageServerLoad = ({ url }) => ({
+  pathname: url.pathname
+})

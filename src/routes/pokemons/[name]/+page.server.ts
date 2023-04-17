@@ -23,15 +23,18 @@ export const load = (async ({ fetch, params }) => {
 export const actions = {
   default: async ({ fetch, request, params }) => {
     const form = await superValidate(request, schema)
-
     // Convenient validation check:
     if (!form.valid) {
       return fail(400, { form })
     }
-    await fetch(`/api/pokemons/${params.name}`, {
+    const put = await fetch(`/api/pokemons/${params.name}`, {
       method: 'PUT',
       body: JSON.stringify(form.data)
     })
+    if (!put.ok) {
+      form.errors.notes = ['Pokemon could not be saved because of database errors']
+      return fail(400, { form, incorrect: true })
+    }
     // Yep, return { form } here too
     return { form }
   }
