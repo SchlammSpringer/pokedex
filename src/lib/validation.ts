@@ -1,6 +1,6 @@
 import { error as svelteError } from '@sveltejs/kit'
 import { z } from 'zod'
-import type { Pokemon } from './types'
+import type { Pokemon } from '$lib/types'
 import { superValidate } from 'sveltekit-superforms/server'
 
 export const schema = z.object({

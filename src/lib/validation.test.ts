@@ -1,11 +1,10 @@
-import { schema, validatePokemon } from './validation'
+import { schema, validatePokemon } from '$lib/validation'
 import { ZodFastCheck } from 'zod-fast-check'
 import { fc } from '@fast-check/vitest'
 import { describe, expect, it, vi, type Mock } from 'vitest'
 import { z } from 'zod'
-import type { Pokemon } from './types'
+import type { Pokemon } from '$lib/types'
 import { superValidate } from 'sveltekit-superforms/server'
-import { GET } from '../routes/api/pokemons/[name]/+server'
 import { error } from '@sveltejs/kit'
 
 describe('validate Pokemon', () => {

@@ -1,4 +1,4 @@
-import type { Breakpoints, BreakpointKeys, Pokemon, PokeTypeRecord, WpImage } from '$lib/types'
+import type { Pokemon, PokeTypeRecord, WpImage } from '$lib/types'
 
 export const spriteUrl = '/assets/sprites/'
 export const spriteBackUrl = '/assets/sprites/back/'
@@ -45,7 +45,4 @@ export const vercelImg = (sourceUrl: string, size: number, quality: number) =>
 export const toVercelSrcSet = (imageSizes: number[], quality: number, image: WpImage) =>
   imageSizes.map((size) => vercelImg(image?.sourceUrl, size, quality)).join(',')
 
-export const capitalizeFirstLetter = (str: string) => {
-  const capitalized = str.charAt(0).toUpperCase() + str.slice(1)
-  return capitalized
-}
+export const capitalizeFirstLetter = (str: string) => str.charAt(0).toUpperCase() + str.slice(1)
