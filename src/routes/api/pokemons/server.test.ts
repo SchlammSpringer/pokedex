@@ -1,12 +1,10 @@
-import type { RequestEvent } from '@sveltejs/kit'
-import { json } from '@sveltejs/kit'
-import { type Mock, vi } from 'vitest'
-import { mock } from 'vitest-mock-extended'
-import { GET, config } from './+server'
-import createFetchMock from 'vitest-fetch-mock'
 import { selectAllPokemons } from '$lib/server/db-queries'
-import type { Pokemon } from '$lib/types'
 import { fetchPokemon } from '$lib/server/share'
+import type { Pokemon } from '$lib/types'
+import { json } from '@sveltejs/kit'
+import { vi, type Mock } from 'vitest'
+import createFetchMock from 'vitest-fetch-mock'
+import { GET, config } from './+server'
 
 const fetchMocker = createFetchMock(vi)
 fetchMocker.enableMocks()

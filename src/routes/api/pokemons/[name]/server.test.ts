@@ -1,12 +1,12 @@
-import type { Mock } from 'vitest'
-import { describe, expect, it, vi } from 'vitest'
-import { config, GET, PUT } from './+server'
 import { findPokemonByName, updatePokemon } from '$lib/server/db-queries'
+import type { Pokemon } from '$lib/types'
+import { validatePokemon } from '$lib/validation'
 import type { RequestEvent } from '@sveltejs/kit'
 import { error, json } from '@sveltejs/kit'
+import type { Mock } from 'vitest'
+import { describe, expect, it, vi } from 'vitest'
 import { mock } from 'vitest-mock-extended'
-import type { Pokemon } from '$lib/types'
-import { validatePokemon } from '$lib/server/share'
+import { GET, PUT, config } from './+server'
 
 const convertError = () => (statuscode: number, message: string) =>
   new Error(`${statuscode}: ${message}`)
@@ -36,7 +36,7 @@ const convertResponse = (pokemon: Pokemon, header: Record<string, Record<string,
 vi.mock('@sveltejs/kit')
 vi.mock('$lib/server/db-queries')
 vi.mock('sveltekit-superforms/server')
-vi.mock('$lib/server/share')
+vi.mock('$lib/validation')
 const request = mock<RequestEvent>()
 
 const pokemon = {

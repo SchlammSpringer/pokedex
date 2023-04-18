@@ -34,7 +34,9 @@ cd my-skeleton-app
 
 ### [Vitest UI](https://vitest.dev/guide/ui.html)
 
-### [Testing Library](https://testing-library.com/)
+## [Testing Library](https://testing-library.com/)
+
+## [fast-check property based testing](https://github.com/dubzzz/fast-check)
 
 ## Green IT - it's all about resources
 

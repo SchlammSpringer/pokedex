@@ -1,9 +1,9 @@
-import { validatePokemon } from '$lib/server/share'
-import { type Pokemon, schema } from '$lib/types'
-import { error as svelteError, fail } from '@sveltejs/kit'
+import type { Pokemon } from '$lib/types'
+import { schema, validatePokemon } from '$lib/validation'
+import type { Config } from '@sveltejs/adapter-vercel'
+import { fail, error as svelteError } from '@sveltejs/kit'
 import { superValidate } from 'sveltekit-superforms/server'
 import type { Actions, PageServerLoad } from './$types'
-import type { Config } from '@sveltejs/adapter-vercel'
 
 export const config: Config = {
   runtime: 'edge',

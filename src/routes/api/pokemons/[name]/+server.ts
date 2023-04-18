@@ -1,8 +1,8 @@
 import { findPokemonByName, updatePokemon } from '$lib/server/db-queries'
-import { validatePokemon } from '$lib/server/share'
 import type { Pokemon } from '$lib/types'
+import { validatePokemon } from '$lib/validation'
 import type { Config, RequestHandler } from '@sveltejs/kit'
-import { error as svelteError, json } from '@sveltejs/kit'
+import { json, error as svelteError } from '@sveltejs/kit'
 
 export const config: Config = {
   runtime: 'edge',
