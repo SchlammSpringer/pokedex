@@ -18,7 +18,11 @@ export default defineConfig({
         'src/**/*.{test,spec}.{js,ts}',
         'src/lib/vital.js',
         'src/app.d.ts',
-        'src/lib/db/types.ts'
+        'src/lib/db/types.ts',
+        'src/lib/types.ts',
+        'src/lib/components/Image.svelte',
+        'src/lib/components/ImagePokemon.svelte',
+        'src/lib/components/ImageSprite.svelte',
       ]
     }
   }
