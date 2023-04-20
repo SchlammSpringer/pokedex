@@ -49,21 +49,3 @@ export interface Type {
 export interface PokeTypeRecord {
   [p: string]: string | boolean
 }
-
-export interface WpImage {
-  sourceUrl: string
-  srcSet?: string | null
-  sizes?: string | null
-  title?: string | null
-  alt?: string | null
-  class?: string | null
-  mediaDetails?: {
-    height?: string | number | null
-    width?: string | number | null
-  }
-}
-
-export type BreakpointKeys = 'base' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'
-export type Breakpoints = {
-  [K in BreakpointKeys]?: string
-}

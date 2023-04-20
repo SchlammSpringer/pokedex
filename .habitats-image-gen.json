@@ -1,0 +1,13 @@
+{
+  "images": {
+    "formats": [
+      "avif", "webp"
+    ],
+    "sizes": [384, 640, 768, 1024],
+    "default": {
+      "format": "webp",
+      "size": 1024
+    },
+    "images": "assets/habitats"
+  }
+}

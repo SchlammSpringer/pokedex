@@ -1,49 +1,34 @@
 <script lang="ts">
-  import { spriteBackUrl, spriteShinyBackUrl, spriteShinyUrl, spriteUrl } from '$lib/share.js'
   import type { Pokemon } from '$lib/types'
-  import ImageSprite from './ImageSprite.svelte'
+  import spriteImage from '$lib/assets/images/_gen/front.json'
+  import spriteBackImage from '$lib/assets/images/_gen/back.json'
+  import spriteShinyImage from '$lib/assets/images/_gen/shiny.json'
+  import spriteShinyBackImage from '$lib/assets/images/_gen/shinyback.json'
+  import type { ImageSet as ImageSetType } from 'web-image-gen-svelte'
+  import ImageSet from 'web-image-gen-svelte'
 
   export let pokemon: Pokemon
+
+  const spriteSet: ImageSetType = spriteImage[pokemon.pokedex]
+  const spriteBackSet: ImageSetType = spriteBackImage[pokemon.pokedex]
+  const spriteShinySet: ImageSetType = spriteShinyImage[pokemon.pokedex]
+  const spriteShinyBackSet: ImageSetType = spriteShinyBackImage[pokemon.pokedex]
 </script>
 
 <h3>Sprites</h3>
 
 <div class="flex space-x-2 justify-between">
   <span class="rounded-full bg-primary-50 border-primary-500 border-solid border-2">
-    <ImageSprite
-      alt={`${pokemon.name} classic sprite front view`}
-      title={pokemon.name}
-      image={{ sourceUrl: `${spriteUrl + pokemon.pokedex}.png` }}
-      width={124}
-      height={124}
-    />
+    <ImageSet alt={`${pokemon.name} classic sprite front view`} set={spriteSet} sizes="96" imgClass="h-[96px]"/>
   </span>
   <span class="rounded-full bg-primary-50 border-primary-500 border-solid border-2">
-    <ImageSprite
-      alt={`${pokemon.name} classic sprite back view`}
-      title={pokemon.name}
-      image={{ sourceUrl: `${spriteBackUrl + pokemon.pokedex}.png` }}
-      width={124}
-      height={124}
-    />
+    <ImageSet alt={`${pokemon.name} classic sprite back view`} set={spriteBackSet} sizes="96" imgClass="h-[96px]"/>
   </span>
   <span class="rounded-full bg-primary-50 border-primary-500 border-solid border-2">
-    <ImageSprite
-      alt={`${pokemon.name} shiny sprite front view`}
-      title={pokemon.name}
-      image={{ sourceUrl: `${spriteShinyUrl + pokemon.pokedex}.png` }}
-      width={124}
-      height={124}
-    />
+    <ImageSet alt={`${pokemon.name} shiny sprite front view`} set={spriteShinySet} sizes="96" imgClass="h-[96px]"/>
   </span>
   <span class="rounded-full bg-primary-50 border-primary-500 border-solid border-2">
-    <ImageSprite
-      alt={`${pokemon.name} shiny sprite back view`}
-      title={pokemon.name}
-      image={{ sourceUrl: `${spriteShinyBackUrl + pokemon.pokedex}.png` }}
-      width={124}
-      height={124}
-    />
+    <ImageSet alt={`${pokemon.name} shiny sprite back view`} set={spriteShinyBackSet} sizes="96" imgClass="h-[96px]"/>
   </span>
 </div>
 

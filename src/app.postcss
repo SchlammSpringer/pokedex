@@ -3,3 +3,12 @@ html,
 body {
   @apply h-full overflow-hidden;
 }
+
+.lazyload,
+.lazyloading {
+  filter: blur(5px);
+  transition: filter 0.5s;
+}
+.lazyloaded {
+  filter: blur(0);
+}

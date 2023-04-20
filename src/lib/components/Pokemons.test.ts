@@ -46,10 +46,9 @@ describe('Pokemons page', async () => {
     expect(typeButtons[2]).toHaveTextContent('poison')
     expect(bulbasaur).toHaveAccessibleName('show details for bulbasaur')
     expect(bulbasaurHeading).toHaveTextContent('bulbasaur')
-    expect(pokeImages[0]).toHaveAccessibleName('official artwork for bulbasaur')
+    expect(pokeImages[0]).toHaveAccessibleName('official artwork of bulbasaur')
     expect(pikachu).toHaveAccessibleName('show details for pikachu')
     expect(pikachuHeading).toHaveTextContent('pikachu')
-    expect(pokeImages[1]).toHaveAccessibleName('official artwork for pikachu')
-
+    expect(pokeImages[1]).toHaveAccessibleName('official artwork of pikachu')
   })
 })

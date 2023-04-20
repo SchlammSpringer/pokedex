@@ -1,0 +1,13 @@
+{
+  "images": {
+    "formats": [
+      "avif", "webp"
+    ],
+    "sizes": [180, 256, 310, 384, 475],
+    "default": {
+      "format": "webp",
+      "size": 384
+    },
+    "images": "assets/pokemons"
+  }
+}

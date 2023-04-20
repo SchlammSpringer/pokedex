@@ -1,44 +1,25 @@
 <script lang="ts">
-  import { officialArtworkUrl, officialShinyArtworkUrl } from '$lib/share'
   import type { Pokemon } from '$lib/types'
-  import ImagePokemon from '$lib/components/ImagePokemon.svelte'
+  import classicImage from '$lib/assets/images/_gen/official-artwork.json'
+  import ImageSet from 'web-image-gen-svelte'
+  import type {
+    ImageSet as ImageSetType,
+  } from 'web-image-gen-svelte'
 
   export let pokemon: Pokemon
-
-  let image: string[] = []
-
-  const frontImage = (pokedex: number) => {
-    const url = `${officialArtworkUrl + pokemon.pokedex}.png`
-    image[pokedex] = url
-    return url
-  }
-
-  const shinyImage = (pokedex: number) => {
-    const url = `${officialShinyArtworkUrl + pokemon.pokedex}.png`
-    image[pokedex] = url
-    return url
-  }
+  const classicSet: ImageSetType = classicImage[pokemon.pokedex]
 </script>
 
 <div
   class="card overflow-hidden p-4 text-center"
-  on:mouseover={() => shinyImage(pokemon.pokedex)}
-  on:focus={() => shinyImage(pokemon.pokedex)}
-  on:mouseout={() => frontImage(pokemon.pokedex)}
-  on:blur={() => frontImage(pokemon.pokedex)}
 >
   <a href="/pokemons/{pokemon.name}" data-sveltekit-preload-code="viewport" class="!no-underline" aria-label="show details for {pokemon.name}">
     <header class="card-header">
       <h2 class="!text-xl first-letter:uppercase">{pokemon.name}</h2>
     </header>
     <section class="p-4">
-      <ImagePokemon
-        alt={`official artwork for ${pokemon.name}`}
-        title={pokemon.name}
-        image={{ sourceUrl: image[pokemon.pokedex] || frontImage(pokemon.pokedex) }}
-        width={475}
-        height={475}
-      />
+        <ImageSet alt="{`official artwork of ${pokemon.name}`}"
+        set="{classicSet}"/>
     </section>
   </a>
 </div>

@@ -1,0 +1,13 @@
+{
+  "images": {
+    "formats": [
+      "avif", "webp"
+    ],
+    "sizes": [96],
+    "default": {
+      "format": "webp",
+      "size": 96
+    },
+    "images": "assets/sprites"
+  }
+}

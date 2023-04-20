@@ -20,9 +20,7 @@ export default defineConfig({
         'src/app.d.ts',
         'src/lib/db/types.ts',
         'src/lib/types.ts',
-        'src/lib/components/Image.svelte',
-        'src/lib/components/ImagePokemon.svelte',
-        'src/lib/components/ImageSprite.svelte',
+        'src/lib/components/ImageSprite.svelte'
       ]
     }
   }

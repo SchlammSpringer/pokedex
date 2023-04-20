@@ -1,31 +1,26 @@
 <script lang="ts">
-  import { officialArtworkUrl } from '$lib/share.js'
   import type { Pokemon } from '$lib/types'
-  import Image from '$lib/components/Image.svelte'
-  import ImagePokemon from '$lib/components/ImagePokemon.svelte'
+  import classicImage from '$lib/assets/images/_gen/official-artwork.json'
+  import habitatImage from '$lib/assets/images/_gen/habitats.json'
+  import type { ImageSet as ImageSetType } from 'web-image-gen-svelte'
+  import ImageSet from 'web-image-gen-svelte'
 
   export let pokemon: Pokemon
+
+  const classicSet: ImageSetType = classicImage[pokemon.pokedex]
+  const habitatSet: ImageSetType = habitatImage[pokemon.habitat]
 </script>
 
-<Image
-  class="w-full"
-  alt={`Habitat of ${pokemon.name}`}
-  width={1000}
-  height={400}
-  image={{ sourceUrl: `/assets/habitats/${pokemon.habitat}.jpg` }}
-/>
+<ImageSet alt={`Habitat of ${pokemon.name}`} set={habitatSet} />
 <div
   class="flex h-full sm:h-fit justify-start items-center absolute bottom-0 left-0 right-0 px-4 backdrop-saturate-200 bg-black/30"
 >
-  <ImagePokemon
+  <ImageSet
+    imgClass="w-32 sm:w-40 lg:w-48"
+    pictureClass="w-32 sm:w-40 lg:w-48"
     alt={`official artwork of ${pokemon.name}`}
-    title={`official artwork of ${pokemon.name}`}
-    image={{ sourceUrl: `${officialArtworkUrl + pokemon.pokedex}.png` }}
-    width={475}
-    height={475}
-    class="w-32 sm:w-40 lg:w-48"
+    set={classicSet}
   />
-
   <div class="text-right">
     <h1 class="pt-10 text-white font-bold first-letter:uppercase">
       {pokemon.name}
