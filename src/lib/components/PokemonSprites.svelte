@@ -19,16 +19,16 @@
 
 <div class="flex space-x-2 justify-between">
   <span class="rounded-full bg-primary-50 border-primary-500 border-solid border-2">
-    <ImageSet alt={`${pokemon.name} classic sprite front view`} set={spriteSet} sizes="96" imgClass="h-[96px]"/>
+    <ImageSet alt={`${pokemon.name} classic sprite front view`} set={spriteSet} sizes="96" imgClass="h-[96px] w-[96px]"/>
   </span>
   <span class="rounded-full bg-primary-50 border-primary-500 border-solid border-2">
-    <ImageSet alt={`${pokemon.name} classic sprite back view`} set={spriteBackSet} sizes="96" imgClass="h-[96px]"/>
+    <ImageSet alt={`${pokemon.name} classic sprite back view`} set={spriteBackSet} sizes="96" imgClass="h-[96px] w-[96px]"/>
   </span>
   <span class="rounded-full bg-primary-50 border-primary-500 border-solid border-2">
-    <ImageSet alt={`${pokemon.name} shiny sprite front view`} set={spriteShinySet} sizes="96" imgClass="h-[96px]"/>
+    <ImageSet alt={`${pokemon.name} shiny sprite front view`} set={spriteShinySet} sizes="96" imgClass="h-[96px] w-[96px]"/>
   </span>
   <span class="rounded-full bg-primary-50 border-primary-500 border-solid border-2">
-    <ImageSet alt={`${pokemon.name} shiny sprite back view`} set={spriteShinyBackSet} sizes="96" imgClass="h-[96px]"/>
+    <ImageSet alt={`${pokemon.name} shiny sprite back view`} set={spriteShinyBackSet} sizes="96" imgClass="h-[96px] w-[96px]"/>
   </span>
 </div>
 

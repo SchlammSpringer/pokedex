@@ -11,12 +11,12 @@
   const habitatSet: ImageSetType = habitatImage[pokemon.habitat]
 </script>
 
-<ImageSet alt={`Habitat of ${pokemon.name}`} set={habitatSet} />
+<ImageSet alt={`Habitat of ${pokemon.name}`} set={habitatSet} imgClass="w-full h-full"/>
 <div
   class="flex h-full sm:h-fit justify-start items-center absolute bottom-0 left-0 right-0 px-4 backdrop-saturate-200 bg-black/30"
 >
   <ImageSet
-    imgClass="w-32 sm:w-40 lg:w-48"
+    imgClass="w-32 sm:w-40 lg:w-48 h-full"
     pictureClass="w-32 sm:w-40 lg:w-48"
     alt={`official artwork of ${pokemon.name}`}
     set={classicSet}
