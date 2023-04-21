@@ -9,5 +9,8 @@
       "size": 384
     },
     "images": "assets/pokemons"
+  },
+  "manifests": {
+    "format": "ts"
   }
 }

@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { Pokemon } from '$lib/types'
-  import classicImage from '$lib/assets/images/_gen/official-artwork.json'
+  import classicImage from '$lib/assets/images/_gen/official-artwork'
   import habitatImage from '$lib/assets/images/_gen/habitats.json'
   import type { ImageSet as ImageSetType } from 'web-image-gen-svelte'
   import ImageSet from 'web-image-gen-svelte'
