@@ -18,6 +18,14 @@
             target="_blank">GitHub SchlammSpringer/pokedex</a
           >
         </dd>
+         <dt class="font-bold">Slides</dt>
+         <dd class="text-sm">
+          <a
+            class="whitespace-break-spaces"
+            href="https://pokedex-slides.vercel.app/"
+            target="_blank">Slides in new windows</a
+          >
+        </dd>
         <dd class="h-full">
 <iframe seamless class="w-full h-[55vh]" allow="fullscreen" src="https://pokedex-slides.vercel.app/" loading="lazy"></iframe>
         </dd>
