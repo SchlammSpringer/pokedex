@@ -23,7 +23,7 @@
           <a
             class="whitespace-break-spaces"
             href="https://pokedex-slides.vercel.app/"
-            target="_blank">Slides in new windows</a
+            target="_blank">Slides in new window</a
           >
         </dd>
         <dd class="h-full">
