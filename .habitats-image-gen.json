@@ -9,5 +9,8 @@
       "size": 1024
     },
     "images": "assets/habitats"
+  },
+  "manifests": {
+    "format": "ts"
   }
 }

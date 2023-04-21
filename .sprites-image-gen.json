@@ -9,5 +9,8 @@
       "size": 96
     },
     "images": "assets/sprites"
+  },
+  "manifests": {
+    "format": "ts"
   }
 }

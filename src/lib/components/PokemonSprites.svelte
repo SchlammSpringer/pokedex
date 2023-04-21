@@ -1,9 +1,9 @@
 <script lang="ts">
   import type { Pokemon } from '$lib/types'
-  import spriteImage from '$lib/assets/images/_gen/front.json'
-  import spriteBackImage from '$lib/assets/images/_gen/back.json'
-  import spriteShinyImage from '$lib/assets/images/_gen/shiny.json'
-  import spriteShinyBackImage from '$lib/assets/images/_gen/shinyback.json'
+  import spriteImage from '$lib/assets/images/_gen/front'
+  import spriteBackImage from '$lib/assets/images/_gen/back'
+  import spriteShinyImage from '$lib/assets/images/_gen/shiny'
+  import spriteShinyBackImage from '$lib/assets/images/_gen/shinyback'
   import type { ImageSet as ImageSetType } from 'web-image-gen-svelte'
   import ImageSet from 'web-image-gen-svelte'
 
