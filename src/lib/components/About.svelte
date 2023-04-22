@@ -27,7 +27,7 @@
           >
         </dd>
         <dd class="h-full">
-<iframe seamless class="w-full h-[55vh]" allow="fullscreen" src="https://pokedex-slides.vercel.app/" loading="lazy"></iframe>
+<iframe title="slides" seamless class="w-full h-[55vh]" allow="fullscreen" src="https://pokedex-slides.vercel.app/" loading="lazy"></iframe>
         </dd>
       </span>
     </div>
