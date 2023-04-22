@@ -60,6 +60,7 @@
   "dependencies": {
     "@supabase/supabase-js": "^2.20.0",
     "@vercel/analytics": "^0.1.11",
+    "fp-ts": "^2.14.0",
     "web-image-gen-svelte": "^1.0.5",
     "web-vitals": "^3.3.1"
   }

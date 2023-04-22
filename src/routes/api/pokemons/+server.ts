@@ -1,27 +1,35 @@
 import { insertPokemon, selectAllPokemons } from '$lib/server/db-queries'
-import { fetchPokemon } from '$lib/server/share'
+import { fetchPokemon, getAllPokemons } from '$lib/server/share'
 import type { Pokemon } from '$lib/types'
-import type { RequestHandler } from '@sveltejs/kit'
-import { json } from '@sveltejs/kit'
 import type { Config } from '@sveltejs/adapter-vercel'
+import type { RequestHandler } from '@sveltejs/kit'
+import { json, error as svelteError } from '@sveltejs/kit'
+import * as E from 'fp-ts/lib/Either'
+import { pipe } from 'fp-ts/lib/function'
 
 export const config: Config = {
   runtime: 'edge',
   regions: ['fra1']
 }
 
-const fetchOriginalPokemons = async () => {
-  const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=151', {
-    headers: {
-      Accept: 'application/json'
-    }
-  })
-  return await response.json()
-}
+const fetchFromPokeAPi: () => Promise<Promise<Pokemon>[]> = async () => {
+  try {
+    const allPokemonsInEither = await getAllPokemons()
 
-const fetchFromPokeAPi = async () => {
-  const originalPokemons = await fetchOriginalPokemons()
-  return originalPokemons.results.map(({ url }: { url: URL }) => fetchPokemon(url))
+    return pipe(
+      allPokemonsInEither,
+      E.match(
+        (error) => {
+          console.error(error)
+          throw svelteError(400, `fetch from poke api: ${JSON.stringify(error, null, 2)}`)
+        },
+        (result) => result.results.map(({ url }) => fetchPokemon(url))
+      )
+    )
+  } catch (error) {
+    console.error(error)
+    throw svelteError(400, `fetch from poke api: ${JSON.stringify(error, null, 2)}`)
+  }
 }
 
 const pokemonsToJson = (pokemons: Pokemon[]) =>

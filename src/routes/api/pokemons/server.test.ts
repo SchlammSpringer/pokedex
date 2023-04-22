@@ -1,7 +1,8 @@
 import { selectAllPokemons } from '$lib/server/db-queries'
-import { fetchPokemon } from '$lib/server/share'
+import { fetchPokemon, getAllPokemons } from '$lib/server/share'
 import type { Pokemon } from '$lib/types'
 import { json } from '@sveltejs/kit'
+import * as TE from 'fp-ts/lib/TaskEither'
 import { vi, type Mock } from 'vitest'
 import createFetchMock from 'vitest-fetch-mock'
 import { GET, config } from './+server'
@@ -67,9 +68,11 @@ describe('Pokemon list API', () => {
   describe('GET', () => {
     it('from pokeapi', async () => {
       mockedFindPokemons.mockResolvedValue({ data: [] })
-      fetchMocker.mockIf('https://pokeapi.co/api/v2/pokemon?limit=151', (req) =>
+      fetchMocker.mockIf('https://pokeapi.co/api/v2/pokemon?limit=151', () =>
         JSON.stringify(pokemonsFromApi)
       )
+      const mockedGetAllPokemons = getAllPokemons as Mock
+      mockedGetAllPokemons.mockImplementation(TE.of(pokemonsFromApi))
       mockedFetchPokemon.mockResolvedValueOnce(pokemons[0])
       mockedFetchPokemon.mockResolvedValueOnce(pokemons[1])
       const mockedJson = json as Mock

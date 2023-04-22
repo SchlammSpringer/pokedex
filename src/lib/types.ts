@@ -1,3 +1,6 @@
+export interface BasePokemonInformations {
+  results: { url: URL }[]
+}
 export interface Pokemon {
   pokedex: number
   name: string
