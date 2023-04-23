@@ -1,13 +1,14 @@
 <script lang="ts">
-  
   import { fillFromTypes, filterPokemon } from '$lib/share'
   import type { Pokemon, PokeTypeRecord } from '$lib/types'
+  import { uniq } from 'fp-ts/lib/Array'
+  import * as S from 'fp-ts/lib/string'
 
   export let pokemons: Pokemon[]
   export let initalPokemons: Pokemon[]
   let searchTerm = ''
   export let typeFilter
-  const types = [...new Set(pokemons.flatMap((pokemon) => pokemon.types))]
+  const types = uniq(S.Eq)(pokemons.flatMap((pokemon) => pokemon.types))
 
   let dictionary: PokeTypeRecord
 
@@ -18,9 +19,7 @@
     dictionary = fillFromTypes(types, true)
   }
 
-  const filter = (type: string) => 
-dictionary[type] = !dictionary[type]
-  
+  const filter = (type: string) => (dictionary[type] = !dictionary[type])
 
   $: {
     pokemons = initalPokemons.filter(filterPokemon(searchTerm, dictionary)) || []
@@ -39,7 +38,8 @@ dictionary[type] = !dictionary[type]
 
 <div class="textarea flex flex-wrap gap-2 px-2 py-4">
   {#each Object.keys(dictionary) as type}
-    <span data-testid="typeFilter"
+    <span
+      data-testid="typeFilter"
       class="chip {dictionary[type] ? 'variant-filled' : 'variant-soft'}"
       on:click={() => {
         filter(type)
@@ -47,8 +47,8 @@ dictionary[type] = !dictionary[type]
       on:keypress
     >
       {#if dictionary[type]}<span
-        class="border-b-2 border-surface-50 border-r-2 w-1 h-2 inline-block rotate-45"
-      />{/if}
+          class="border-b-2 border-surface-50 border-r-2 w-1 h-2 inline-block rotate-45"
+        />{/if}
       <span class="capitalize">{type}</span>
     </span>
   {/each}

@@ -42,6 +42,25 @@ export const getAllPokemons = pipe(
   fetchAPI<BasePokemonInformations>
 )
 
+const toPokemon = (result: { pokemonFromApi: PokemonFromApi; species: SpeciesFromApi }) => {
+  const types = extractTypes(result)
+  return {
+    pokedex: result.pokemonFromApi.id,
+    name: result.pokemonFromApi.name,
+    description: extractFlavorTexts(result.species).join('\n'),
+    types: types.length > 0 ? (types as [string, ...string[]]) : ['somethingstrange'],
+    color: result.species.color.name,
+    germanName: result.species.names
+      .filter((name: LanguageName) => name.language.name === 'de')
+      .map((name: LanguageName) => name.name)
+      .join('\n'),
+    habitat: result.species.habitat.name
+  } satisfies Pokemon
+}
+
+const extractTypes = (result: { pokemonFromApi: PokemonFromApi; species: SpeciesFromApi }) =>
+  result.pokemonFromApi.types.map((type: Type) => type.type.name)
+
 export const fetchPokemon: (pokeUrl: URL) => Promise<Pokemon> = async (pokeUrl: URL) => {
   try {
     const allResultInEither = await getAllPokemonStuff(pokeUrl)()
@@ -52,21 +71,7 @@ export const fetchPokemon: (pokeUrl: URL) => Promise<Pokemon> = async (pokeUrl: 
           console.error(error)
           throw svelteError(400, `fetch from poke api: ${JSON.stringify(error, null, 2)}`)
         },
-        (result) => {
-          const types = result.pokemonFromApi.types.map((type: Type) => type.type.name)
-          return {
-            pokedex: result.pokemonFromApi.id,
-            name: result.pokemonFromApi.name,
-            description: extractFlavorTexts(result.species).join('\n'),
-            types: types.length > 0 ? (types as [string, ...string[]]) : ['somethingstrange'],
-            color: result.species.color.name,
-            germanName: result.species.names
-              .filter((name: LanguageName) => name.language.name === 'de')
-              .map((name: LanguageName) => name.name)
-              .join('\n'),
-            habitat: result.species.habitat.name
-          } satisfies Pokemon
-        }
+        (result) => toPokemon(result)
       )
     )
   } catch (error) {
