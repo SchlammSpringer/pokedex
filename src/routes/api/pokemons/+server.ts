@@ -3,12 +3,13 @@ import { fetchPokemon, getAllPokemons } from '$lib/server/share'
 import type { Pokemon } from '$lib/types'
 import type { Config } from '@sveltejs/adapter-vercel'
 import type { RequestHandler } from '@sveltejs/kit'
-import { json, error as svelteError } from '@sveltejs/kit'
+import { error as svelteError, json } from '@sveltejs/kit'
 import * as E from 'fp-ts/lib/Either'
 import { pipe } from 'fp-ts/lib/function'
 
 export const config: Config = {
   runtime: 'edge',
+  split: true,
   regions: ['fra1']
 }
 

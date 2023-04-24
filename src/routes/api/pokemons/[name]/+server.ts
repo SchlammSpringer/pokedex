@@ -6,6 +6,7 @@ import { json, error as svelteError } from '@sveltejs/kit'
 
 export const config: Config = {
   runtime: 'edge',
+  split: 'true',
   regions: ['fra1']
 }
 

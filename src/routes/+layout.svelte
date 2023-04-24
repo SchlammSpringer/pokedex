@@ -1,17 +1,17 @@
 <script lang="ts">
   import PokedexAppShell from '$lib/components/PokedexAppShell.svelte'
   import PokedexDrawer from '$lib/components/PokedexDrawer.svelte'
-  // The ordering of these imports is critical to your app working properly
+// The ordering of these imports is critical to your app working properly
   import '@skeletonlabs/skeleton/themes/theme-modern.css'
   // If you have source.organizeImports set to true in VSCode, then it will auto change this ordering
   import '@skeletonlabs/skeleton/styles/all.css'
   // Most of your app wide CSS should be put in this file
   import { browser, dev } from '$app/environment'
   import { afterNavigate } from '$app/navigation'
+  import { page } from '$app/stores'
   import { webVitals } from '$lib/vital'
   import { inject } from '@vercel/analytics'
   import '../app.postcss'
-  import { page } from '$app/stores'
 
   inject({ mode: dev ? 'development' : 'production' })
 
@@ -19,7 +19,7 @@
 
   export let data
 
-  $: if (browser && analyticsId) {
+  $: if (!dev && browser && analyticsId) {
     webVitals({
       path: data.pathname,
       params: $page.params,
