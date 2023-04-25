@@ -7,7 +7,7 @@
     clearTimeout(timer)
     timer = setTimeout(() => {
       searchTerm = e.target.value
-    }, 500)
+    }, 350)
   }
 
 </script>
