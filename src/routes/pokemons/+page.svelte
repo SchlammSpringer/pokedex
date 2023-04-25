@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { Pokemons } from '$lib/types'
-  import PokemonsGrid from '$lib/components/Pokemons.svelte'
+  import PokemonsGrid from '$lib/components/pokemons/Pokemons.svelte'
   import { page } from '$app/stores'
 
   export let data: Pokemons

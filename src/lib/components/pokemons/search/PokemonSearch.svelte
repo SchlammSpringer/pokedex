@@ -22,7 +22,7 @@
 </script>
 
 <div class="space-y-2">
-  <TypeSelection typeFilter={typeFilterFromQuery} {types} bind:filteredTypes />
+  <TypeSelection initialSelectedType={typeFilterFromQuery} {types} bind:filteredTypes />
   <SearchInput bind:searchTerm />
 </div>
 

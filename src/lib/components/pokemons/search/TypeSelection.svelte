@@ -3,14 +3,14 @@
   import type { PokeTypeRecord } from '$lib/types'
   import { slide } from 'svelte/transition'
 
-  export let typeFilter
-  export let types 
+  export let initialSelectedType: string
+  export let types: string[]
   export let filteredTypes: PokeTypeRecord
   let isOpen = false
 
-  if (typeFilter) {
+  if (initialSelectedType) {
     filteredTypes = fillFromTypes(types, false)
-    filteredTypes[typeFilter] = true
+    filteredTypes[initialSelectedType] = true
     isOpen = true
   } else {
     filteredTypes = fillFromTypes(types, true)
@@ -40,19 +40,17 @@
     <button class="badge-icon variant-filled-warning absolute -top-0 -right-0 z-10" on:click={toggle}>X</button>
     <div class="textarea flex flex-wrap gap-2 px-2 py-4" transition:slide={{ duration: 300 }}>
       {#each Object.keys(filteredTypes) as type}
-    <span
+    <button
       data-testid="typeFilter"
       class="chip {filteredTypes[type] ? 'variant-filled' : 'variant-soft'}"
       on:click={() => {
         filter(type)
       }}
-      on:keypress
     >
       {#if filteredTypes[type]}<span
-        class="border-b-2 border-surface-50 border-r-2 w-1 h-2 inline-block rotate-45"
-      />{/if}
+        class="border-b-2 border-surface-50 border-r-2 w-1 h-2 inline-block rotate-45"></span>{/if}
       <span class="capitalize">{type}</span>
-    </span>
+    </button>
       {/each}
     </div>
   {/if}

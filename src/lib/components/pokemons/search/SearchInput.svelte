@@ -2,12 +2,20 @@
 
   export let searchTerm = ''
 
+  let timer
+  const debounce = e => {
+    clearTimeout(timer)
+    timer = setTimeout(() => {
+      searchTerm = e.target.value
+    }, 500)
+  }
+
 </script>
 
 <div class="input-group input-group-divider grid-cols-[auto_1fr_auto]">
   <div class="input-group-shim">🔍</div>
   <input
-    bind:value={searchTerm}
+    on:input={debounce}
     autocomplete="false"
     type="search"
     placeholder="Search name, german name or pokedex id"

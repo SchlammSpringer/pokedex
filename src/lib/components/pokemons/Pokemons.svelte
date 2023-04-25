@@ -1,6 +1,6 @@
 <script lang="ts">
-  import PokemonCard from '$lib/components/PokemonCard.svelte'
-  import PokemonSearch from '$lib/components/PokemonSearch.svelte'
+  import PokemonCard from '$lib/components/pokemons/PokemonCard.svelte'
+  import PokemonSearch from '$lib/components/pokemons/search/PokemonSearch.svelte'
   import type { Pokemon } from '$lib/types'
   import { flip } from 'svelte/animate';
 
