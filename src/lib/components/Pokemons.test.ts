@@ -4,7 +4,7 @@ import Pokemons from '$lib/components/Pokemons.svelte'
 
 // https://github.com/davipon/svelte-component-test-recipes
 describe('Pokemons page', async () => {
-  it('should render the page', () => {
+  it('should render the page', async () => {
     render(Pokemons, {
       url: new URL('https://test.de'),
       initalPokemons: [
@@ -31,7 +31,9 @@ describe('Pokemons page', async () => {
 
     const heading = screen.getByRole('heading', { level: 1 })
     const searchbox = screen.getByRole('searchbox')
-    const typeButtons = screen.getAllByTestId('typeFilter')
+    const typeFilterOpenButton = screen.getByRole('button')
+    typeFilterOpenButton.click()
+    const typeButtons = await screen.findAllByTestId('typeFilter')
     const pokemonLinks = screen.getAllByRole('link')
     const pokeImages = screen.getAllByRole('img')
     const bulbasaur = pokemonLinks[0]

@@ -1,57 +1,29 @@
 <script lang="ts">
-  import { fillFromTypes, filterPokemon } from '$lib/share'
-  import type { Pokemon, PokeTypeRecord } from '$lib/types'
+  import SearchInput from './SearchInput.svelte'
+
+  import TypeSelection from './TypeSelection.svelte'
+
+  import { filterPokemon } from '$lib/share'
+  import type { PokeTypeRecord, Pokemon } from '$lib/types'
   import { uniq } from 'fp-ts/lib/Array'
   import * as S from 'fp-ts/lib/string'
 
   export let pokemons: Pokemon[]
   export let initalPokemons: Pokemon[]
   let searchTerm = ''
-  export let typeFilter
+  export let typeFilterFromQuery: string | null
   const types = uniq(S.Eq)(pokemons.flatMap((pokemon) => pokemon.types))
 
-  let dictionary: PokeTypeRecord
-
-  if (typeFilter) {
-    dictionary = fillFromTypes(types, false)
-    dictionary[typeFilter] = true
-  } else {
-    dictionary = fillFromTypes(types, true)
-  }
-
-  const filter = (type: string) => (dictionary[type] = !dictionary[type])
+  let filteredTypes: PokeTypeRecord
 
   $: {
-    pokemons = initalPokemons.filter(filterPokemon(searchTerm, dictionary)) || []
+    pokemons = initalPokemons.filter(filterPokemon(searchTerm, filteredTypes)) || []
   }
 </script>
 
-<div class="input-group input-group-divider grid-cols-[auto_1fr_auto]">
-  <div class="input-group-shim">🔍</div>
-  <input
-    bind:value={searchTerm}
-    autocomplete="false"
-    type="search"
-    placeholder="Search name, german name or pokedex id"
-  />
-</div>
-
-<div class="textarea flex flex-wrap gap-2 px-2 py-4">
-  {#each Object.keys(dictionary) as type}
-    <span
-      data-testid="typeFilter"
-      class="chip {dictionary[type] ? 'variant-filled' : 'variant-soft'}"
-      on:click={() => {
-        filter(type)
-      }}
-      on:keypress
-    >
-      {#if dictionary[type]}<span
-          class="border-b-2 border-surface-50 border-r-2 w-1 h-2 inline-block rotate-45"
-        />{/if}
-      <span class="capitalize">{type}</span>
-    </span>
-  {/each}
+<div class="space-y-2">
+  <TypeSelection typeFilter={typeFilterFromQuery} {types} bind:filteredTypes />
+  <SearchInput bind:searchTerm />
 </div>
 
 <style>

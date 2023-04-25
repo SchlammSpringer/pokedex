@@ -6,5 +6,6 @@ exports[`single Pokemon API > check vercel config 1`] = `
     "fra1",
   ],
   "runtime": "edge",
+  "split": "true",
 }
 `;
