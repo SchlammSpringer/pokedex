@@ -3,10 +3,10 @@
   export let searchTerm = ''
 
   let timer
-  const debounce = e => {
+  const debounce = ({ target }) => {
     clearTimeout(timer)
     timer = setTimeout(() => {
-      searchTerm = e.target.value
+      searchTerm = target.value
     }, 350)
   }
 

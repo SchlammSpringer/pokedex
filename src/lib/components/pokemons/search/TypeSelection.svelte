@@ -3,7 +3,7 @@
   import type { PokeTypeRecord } from '$lib/types'
   import { slide } from 'svelte/transition'
 
-  export let initialSelectedType: string
+  export let initialSelectedType: string | null
   export let types: string[]
   export let filteredTypes: PokeTypeRecord
   let isOpen = false
@@ -12,8 +12,6 @@
     filteredTypes = fillFromTypes(types, false)
     filteredTypes[initialSelectedType] = true
     isOpen = true
-  } else {
-    filteredTypes = fillFromTypes(types, true)
   }
   const toggle = () => isOpen = !isOpen
 

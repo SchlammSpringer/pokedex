@@ -6,12 +6,19 @@ const meta = {
   component: TypeSelection,
   tags: ['autodocs'],
   argTypes: {
-    initialSelectedType: { control: 'text' }
+    initialSelectedType: {
+      description: 'Query param from pokemon detail page',
+      type: 'string',
+      control: 'text',
+      defaultValue: 'undefined'
+    },
+    types: {  control: 'object' },
+    filteredTypes: { control: 'object' }
   },
   args: {
     initialSelectedType: undefined,
     types: ['moon', 'star', 'planet'],
-    filteredTypes: [{ moon: true }, { star: true }, { planet: true }]
+    filteredTypes: { moon: true, star: true, planet: true }
   }
 } satisfies Meta<TypeSelection>
 
@@ -22,5 +29,10 @@ export const Default: Story = {}
 export const WithInitialTypeDefaultOpen: Story = {
   args: {
     initialSelectedType: 'moon'
+  }
+}
+export const ShowWarningInFilterActiveState: Story = {
+  args: {
+    filteredTypes: { moon: true, star: true, planet: false }
   }
 }

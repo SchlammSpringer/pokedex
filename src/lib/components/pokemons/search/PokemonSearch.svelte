@@ -3,7 +3,7 @@
 
   import TypeSelection from './TypeSelection.svelte'
 
-  import { filterPokemon } from '$lib/share'
+  import { fillFromTypes, filterPokemon } from '$lib/share'
   import type { PokeTypeRecord, Pokemon } from '$lib/types'
   import { uniq } from 'fp-ts/lib/Array'
   import * as S from 'fp-ts/lib/string'
@@ -14,7 +14,7 @@
   export let typeFilterFromQuery: string | null
   const types = uniq(S.Eq)(pokemons.flatMap((pokemon) => pokemon.types))
 
-  let filteredTypes: PokeTypeRecord
+  let filteredTypes: PokeTypeRecord = fillFromTypes(types, true)
 
   $: {
     pokemons = initalPokemons.filter(filterPokemon(searchTerm, filteredTypes)) || []

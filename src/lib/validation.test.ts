@@ -10,13 +10,13 @@ import { error } from '@sveltejs/kit'
 describe('validate Pokemon', () => {
   const schemaForTesting = z.object({
     pokedex: z.number().positive().int().min(1),
-    name: z.string().trim().min(1).max(30),
-    types: z.array(z.string().trim().min(1).max(30)).nonempty(),
-    description: z.string().trim().min(1).max(3000),
-    color: z.string().trim().min(1),
-    germanName: z.string().trim().min(1).max(50),
-    habitat: z.string().trim().min(1).max(50),
-    notes: z.string().trim().min(5).max(1000).optional()
+    name: z.string().min(1).max(30),
+    types: z.array(z.string().min(1).max(30)).nonempty(),
+    description: z.string().min(1).max(3000),
+    color: z.string().min(1),
+    germanName: z.string().min(1).max(50),
+    habitat: z.string().min(1).max(50),
+    notes: z.string().min(5).max(1000).optional()
   })
 
   const pokemonArbitrary = ZodFastCheck().inputOf(schemaForTesting)
@@ -27,6 +27,7 @@ describe('validate Pokemon', () => {
 
         // TODO workaround Arbitrary ignores trim functionality
         if (!parsedPokemon.success && parsedPokemon.error) {
+          console.table(parsedPokemon.error.issues)
           expect(
             parsedPokemon.error.issues.length ===
               parsedPokemon.error.issues
