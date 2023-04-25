@@ -1,13 +1,13 @@
 <script lang="ts">
   import FavoriteColor from './FavoriteColor.svelte'
 
-  import PokemonHeader from '$lib/components/PokemonHeader.svelte'
-  import PokemonSprites from '$lib/components/PokemonSprites.svelte'
-  import PokemonTypes from '$lib/components/PokemonTypes.svelte'
+  import PokemonHeader from './PokemonHeader.svelte'
+  import PokemonSprites from './PokemonSprites.svelte'
+  import PokemonTypes from './PokemonTypes.svelte'
   import type { Pokemon } from '$lib/types'
   import type { ValidationErrors } from 'sveltekit-superforms/index'
   import type { AnyZodObject } from 'zod'
-  import PokemonForm from '$lib/components/PokemonForm.svelte'
+  import PokemonForm from './PokemonForm.svelte'
 
   export let form: Pokemon
   export let errors: ValidationErrors<AnyZodObject>
@@ -15,9 +15,7 @@
 </script>
 
 <div class="card overflow-hidden">
-  <header class="relative">
-    <PokemonHeader pokemon={form} />
-  </header>
+  <PokemonHeader pokemon={form} />
   <section class="p-4 space-y-4">
     <PokemonSprites pokemon={form} />
     <h3>Description</h3>

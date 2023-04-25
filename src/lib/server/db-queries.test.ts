@@ -6,6 +6,7 @@ import {
   updatePokemon
 } from './db-queries'
 import { supabase } from './supabase'
+import type { Pokemon } from '$lib/types'
 
 vi.mock('./supabase')
 const supabaseMock = supabase as MockedObject<any>
@@ -17,7 +18,7 @@ const pokemon = {
   color: 'green',
   germanName: 'Bisasam',
   habitat: 'grassland'
-}
+} satisfies Pokemon
 
 const mockSelect = vi.fn().mockReturnThis()
 const mockOrder = vi.fn().mockReturnThis()

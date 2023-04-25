@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Pokemon from '$lib/components/Pokemon.svelte'
+  import Pokemon from '$lib/components/pokemon/Pokemon.svelte'
   import { superForm } from 'sveltekit-superforms/client'
   import type { PageData } from './$types'
 

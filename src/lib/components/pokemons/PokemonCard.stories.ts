@@ -6,7 +6,7 @@ const meta = {
   component: PokemonCard,
   tags: ['autodocs'],
   args: {
-    pokemon: {pokedex: 1, name: 'mimi'}
+    pokemon: { pokedex: 123, name: 'bestomonio' }
   }
 } satisfies Meta<PokemonCard>
 

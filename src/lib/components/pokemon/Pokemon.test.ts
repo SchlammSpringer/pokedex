@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/svelte'
 import { describe, expect, it } from 'vitest'
-import Pokemon from '$lib/components/Pokemon.svelte'
+import Pokemon from '$lib/components/pokemon/Pokemon.svelte'
 
 // https://github.com/davipon/svelte-component-test-recipes
 describe('Pokemon page', async () => {
