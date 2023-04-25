@@ -14,7 +14,7 @@
   <PokemonSearch {initalPokemons} typeFilterFromQuery={url?.searchParams?.get('type')} bind:pokemons />
   <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
     {#each pokemons as pokemon (pokemon)}
-      <div animate:flip="{{duration: 350}}">
+      <div>
       <PokemonCard bind:pokemon />
       </div>
     {/each}
