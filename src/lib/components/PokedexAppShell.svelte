@@ -4,7 +4,7 @@
   import Navigation from '$lib/components/Navigation.svelte'
   import { AppShell, Toast } from '@skeletonlabs/skeleton'
 
-  export let currentPath: string = '/'
+  export let currentPath = '/'
 </script>
 
 <AppShell slotSidebarLeft="bg-surface-500/5 hidden lg:flex lg:w-56">

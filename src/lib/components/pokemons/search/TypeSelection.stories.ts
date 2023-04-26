@@ -4,7 +4,6 @@ import type { Meta, StoryObj } from '@storybook/svelte'
 const meta = {
   title: 'Pokemons/Search/Type Selection',
   component: TypeSelection,
-  tags: ['autodocs'],
   argTypes: {
     initialSelectedType: {
       description: 'Query param from pokemon detail page',
@@ -12,7 +11,7 @@ const meta = {
       control: 'text',
       defaultValue: 'undefined'
     },
-    types: {  control: 'object' },
+    types: { control: 'object' },
     filteredTypes: { control: 'object' }
   },
   args: {

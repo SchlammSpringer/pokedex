@@ -1,15 +1,13 @@
 <script lang="ts">
-
   export let searchTerm = ''
 
-  let timer
-  const debounce = ({ target }) => {
+  let timer: NodeJS.Timeout | string | number | undefined
+  const debounce = ({ target }: Event) => {
     clearTimeout(timer)
     timer = setTimeout(() => {
-      searchTerm = target.value
+      searchTerm = (target as HTMLInputElement).value
     }, 350)
   }
-
 </script>
 
 <div class="input-group input-group-divider grid-cols-[auto_1fr_auto]">
@@ -24,4 +22,3 @@
 
 <style>
 </style>
-
