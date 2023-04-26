@@ -1,14 +1,12 @@
 <script lang="ts">
+  import { getClassicSet, getHabitatSet } from '$lib/share'
   import type { Pokemon } from '$lib/types'
-  import classicImage from '$lib/assets/images/_gen/official-artwork'
-  import habitatImage from '$lib/assets/images/_gen/habitats'
-  import type { ImageSet as ImageSetType } from 'web-image-gen-svelte'
   import ImageSet from 'web-image-gen-svelte'
 
   export let pokemon: Pokemon
 
-  const classicSet: ImageSetType = classicImage[pokemon.pokedex]
-  const habitatSet: ImageSetType = habitatImage[pokemon.habitat]
+  const classicSet = getClassicSet(pokemon.pokedex.toString())
+  const habitatSet = getHabitatSet(pokemon.habitat)
 </script>
 
 <header class="relative">

@@ -75,5 +75,5 @@
     "width"
   ],
   "vitest.enable": true,
-  "testing.automaticallyOpenPeekView": "never"
+  "vitest.commandLine": "npx vitest"
 }

@@ -1,18 +1,14 @@
 <script lang="ts">
+  import { getBackImage, getFrontImage, getShinyBackImage, getShinyImage } from '$lib/share'
   import type { Pokemon } from '$lib/types'
-  import spriteImage from '$lib/assets/images/_gen/front'
-  import spriteBackImage from '$lib/assets/images/_gen/back'
-  import spriteShinyImage from '$lib/assets/images/_gen/shiny'
-  import spriteShinyBackImage from '$lib/assets/images/_gen/shinyback'
-  import type { ImageSet as ImageSetType } from 'web-image-gen-svelte'
   import ImageSet from 'web-image-gen-svelte'
 
   export let pokemon: Pokemon
 
-  const spriteSet: ImageSetType = spriteImage[pokemon.pokedex]
-  const spriteBackSet: ImageSetType = spriteBackImage[pokemon.pokedex]
-  const spriteShinySet: ImageSetType = spriteShinyImage[pokemon.pokedex]
-  const spriteShinyBackSet: ImageSetType = spriteShinyBackImage[pokemon.pokedex]
+  const spriteSet = getFrontImage(pokemon.pokedex.toString())
+  const spriteBackSet = getBackImage(pokemon.pokedex.toString())
+  const spriteShinySet = getShinyImage(pokemon.pokedex.toString())
+  const spriteShinyBackSet = getShinyBackImage(pokemon.pokedex.toString())
 </script>
 
 <h3>Sprites</h3>

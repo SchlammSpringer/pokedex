@@ -1,0 +1,175 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`test image selecting > classic offical image > find image in set 1`] = `
+{
+  "credit": null,
+  "default": "\\\\assets\\\\pokemons\\\\official-artwork\\\\_gen\\\\1-384.webp?v=1682506628131",
+  "formats": {
+    "avif": {
+      "180": "\\\\assets\\\\pokemons\\\\official-artwork\\\\_gen\\\\1-180.avif?v=1682506628131",
+      "256": "\\\\assets\\\\pokemons\\\\official-artwork\\\\_gen\\\\1-256.avif?v=1682506628131",
+      "310": "\\\\assets\\\\pokemons\\\\official-artwork\\\\_gen\\\\1-310.avif?v=1682506628131",
+      "384": "\\\\assets\\\\pokemons\\\\official-artwork\\\\_gen\\\\1-384.avif?v=1682506628131",
+      "475": "\\\\assets\\\\pokemons\\\\official-artwork\\\\_gen\\\\1-475.avif?v=1682506628131",
+    },
+    "webp": {
+      "180": "\\\\assets\\\\pokemons\\\\official-artwork\\\\_gen\\\\1-180.webp?v=1682506628131",
+      "256": "\\\\assets\\\\pokemons\\\\official-artwork\\\\_gen\\\\1-256.webp?v=1682506628131",
+      "310": "\\\\assets\\\\pokemons\\\\official-artwork\\\\_gen\\\\1-310.webp?v=1682506628131",
+      "384": "\\\\assets\\\\pokemons\\\\official-artwork\\\\_gen\\\\1-384.webp?v=1682506628131",
+      "475": "\\\\assets\\\\pokemons\\\\official-artwork\\\\_gen\\\\1-475.webp?v=1682506628131",
+    },
+  },
+  "placeholder": "data:image/webp;base64,UklGRvgAAABXRUJQVlA4WAoAAAAQAAAADwAADwAAQUxQSFQAAAARL0CkbZubnLHhK3hEBH0KtpFstXmgBrC5bO5zXwCSXv/FYGqI6P8EoFyZqF6uDdD4yA34bpIUislqTPk9EzJHSqo/IfAmJMLzJ/Zh50wBJVSnDPJWUDggfgAAAHACAJ0BKhAAEAAFQHwlsAJ0MFERoGzaSmE38AAA+SxPtHn+oVWFXjP7St3oRjnHK4+dVw58VUFxlRnRZnjhm0gT11KyqyULTnma/PY9GTWc0aAVfixvivbkKEO85C7eWi89bA1FpGXnwElVOVzg97NpJaadOymxmhY9QAYAAA==",
+  "sizes": {
+    "180": {
+      "avif": "\\\\assets\\\\pokemons\\\\official-artwork\\\\_gen\\\\1-180.avif?v=1682506628131",
+      "webp": "\\\\assets\\\\pokemons\\\\official-artwork\\\\_gen\\\\1-180.webp?v=1682506628131",
+    },
+    "256": {
+      "avif": "\\\\assets\\\\pokemons\\\\official-artwork\\\\_gen\\\\1-256.avif?v=1682506628131",
+      "webp": "\\\\assets\\\\pokemons\\\\official-artwork\\\\_gen\\\\1-256.webp?v=1682506628131",
+    },
+    "310": {
+      "avif": "\\\\assets\\\\pokemons\\\\official-artwork\\\\_gen\\\\1-310.avif?v=1682506628131",
+      "webp": "\\\\assets\\\\pokemons\\\\official-artwork\\\\_gen\\\\1-310.webp?v=1682506628131",
+    },
+    "384": {
+      "avif": "\\\\assets\\\\pokemons\\\\official-artwork\\\\_gen\\\\1-384.avif?v=1682506628131",
+      "webp": "\\\\assets\\\\pokemons\\\\official-artwork\\\\_gen\\\\1-384.webp?v=1682506628131",
+    },
+    "475": {
+      "avif": "\\\\assets\\\\pokemons\\\\official-artwork\\\\_gen\\\\1-475.avif?v=1682506628131",
+      "webp": "\\\\assets\\\\pokemons\\\\official-artwork\\\\_gen\\\\1-475.webp?v=1682506628131",
+    },
+  },
+}
+`;
+
+exports[`test image selecting > habitat image > find image in set 1`] = `
+{
+  "credit": null,
+  "default": "\\\\assets\\\\habitats\\\\habitats\\\\_gen\\\\cave-1024.webp?v=1682065423028",
+  "formats": {
+    "avif": {
+      "1024": "\\\\assets\\\\habitats\\\\habitats\\\\_gen\\\\cave-1024.avif?v=1682065423028",
+      "384": "\\\\assets\\\\habitats\\\\habitats\\\\_gen\\\\cave-384.avif?v=1682065423028",
+      "640": "\\\\assets\\\\habitats\\\\habitats\\\\_gen\\\\cave-640.avif?v=1682065423028",
+      "768": "\\\\assets\\\\habitats\\\\habitats\\\\_gen\\\\cave-768.avif?v=1682065423028",
+    },
+    "webp": {
+      "1024": "\\\\assets\\\\habitats\\\\habitats\\\\_gen\\\\cave-1024.webp?v=1682065423028",
+      "384": "\\\\assets\\\\habitats\\\\habitats\\\\_gen\\\\cave-384.webp?v=1682065423028",
+      "640": "\\\\assets\\\\habitats\\\\habitats\\\\_gen\\\\cave-640.webp?v=1682065423028",
+      "768": "\\\\assets\\\\habitats\\\\habitats\\\\_gen\\\\cave-768.webp?v=1682065423028",
+    },
+  },
+  "placeholder": "data:image/webp;base64,UklGRjwAAABXRUJQVlA4IDAAAADwAQCdASoQAAYABUB8JQBOgCIL23gBuoAA/tyT2qIllwMzAMKQxU5iPs00hZow0AA=",
+  "sizes": {
+    "1024": {
+      "avif": "\\\\assets\\\\habitats\\\\habitats\\\\_gen\\\\cave-1024.avif?v=1682065423028",
+      "webp": "\\\\assets\\\\habitats\\\\habitats\\\\_gen\\\\cave-1024.webp?v=1682065423028",
+    },
+    "384": {
+      "avif": "\\\\assets\\\\habitats\\\\habitats\\\\_gen\\\\cave-384.avif?v=1682065423028",
+      "webp": "\\\\assets\\\\habitats\\\\habitats\\\\_gen\\\\cave-384.webp?v=1682065423028",
+    },
+    "640": {
+      "avif": "\\\\assets\\\\habitats\\\\habitats\\\\_gen\\\\cave-640.avif?v=1682065423028",
+      "webp": "\\\\assets\\\\habitats\\\\habitats\\\\_gen\\\\cave-640.webp?v=1682065423028",
+    },
+    "768": {
+      "avif": "\\\\assets\\\\habitats\\\\habitats\\\\_gen\\\\cave-768.avif?v=1682065423028",
+      "webp": "\\\\assets\\\\habitats\\\\habitats\\\\_gen\\\\cave-768.webp?v=1682065423028",
+    },
+  },
+}
+`;
+
+exports[`test image selecting > sprite image > find image in set 1`] = `
+{
+  "credit": null,
+  "default": "\\\\assets\\\\sprites\\\\front\\\\_gen\\\\1-96.webp?v=1682519026035",
+  "formats": {
+    "avif": {
+      "96": "\\\\assets\\\\sprites\\\\front\\\\_gen\\\\1-96.avif?v=1682519026035",
+    },
+    "webp": {
+      "96": "\\\\assets\\\\sprites\\\\front\\\\_gen\\\\1-96.webp?v=1682519026035",
+    },
+  },
+  "placeholder": "data:image/webp;base64,UklGRroAAABXRUJQVlA4WAoAAAAQAAAADwAADwAAQUxQSDsAAAARL6AmAAE2p4t7fSqIiMDUE4oiSWruUAAOwEEUkAWk9S/meKEgov8TQD/7/CgAiwUoUQEWdt6HdoZ+BgBWUDggWAAAABACAJ0BKhAAEAAFQHwlsAJ0fwAO0N6mjcAA/FsaF/nNoYk9VF1YDZQvwqpI/ACdsWUFQaO3FAL5J6h1QegHxaJTEiS3elnujgUFrPqM3fTOgma0gPMAAAA=",
+  "sizes": {
+    "96": {
+      "avif": "\\\\assets\\\\sprites\\\\front\\\\_gen\\\\1-96.avif?v=1682519026035",
+      "webp": "\\\\assets\\\\sprites\\\\front\\\\_gen\\\\1-96.webp?v=1682519026035",
+    },
+  },
+}
+`;
+
+exports[`test image selecting > sprite image > find image in set 2`] = `
+{
+  "credit": null,
+  "default": "\\\\assets\\\\sprites\\\\back\\\\_gen\\\\1-96.webp?v=1682519026035",
+  "formats": {
+    "avif": {
+      "96": "\\\\assets\\\\sprites\\\\back\\\\_gen\\\\1-96.avif?v=1682519026035",
+    },
+    "webp": {
+      "96": "\\\\assets\\\\sprites\\\\back\\\\_gen\\\\1-96.webp?v=1682519026035",
+    },
+  },
+  "placeholder": "data:image/webp;base64,UklGRq4AAABXRUJQVlA4WAoAAAAQAAAADwAADwAAQUxQSDUAAAARL6AmABI2SBYCcOI2IgLy8KEgsk0LCYwIEghBhNs/DO+bIKL/E0A/26RIbgHIgqeirm7DrwBWUDggUgAAABACAJ0BKhAAEAAFQHwlsALD4EABMWSLshAA7UdXs4mH/IDZ15oGyA5RcMy1DQj85uXYM/uR/FzUxklGMfdSSBEAt7tnwcbDIiBZOTptCdY6wAA=",
+  "sizes": {
+    "96": {
+      "avif": "\\\\assets\\\\sprites\\\\back\\\\_gen\\\\1-96.avif?v=1682519026035",
+      "webp": "\\\\assets\\\\sprites\\\\back\\\\_gen\\\\1-96.webp?v=1682519026035",
+    },
+  },
+}
+`;
+
+exports[`test image selecting > sprite image > find image in set 3`] = `
+{
+  "credit": null,
+  "default": "\\\\assets\\\\sprites\\\\shiny\\\\_gen\\\\1-96.webp?v=1682519026035",
+  "formats": {
+    "avif": {
+      "96": "\\\\assets\\\\sprites\\\\shiny\\\\_gen\\\\1-96.avif?v=1682519026035",
+    },
+    "webp": {
+      "96": "\\\\assets\\\\sprites\\\\shiny\\\\_gen\\\\1-96.webp?v=1682519026035",
+    },
+  },
+  "placeholder": "data:image/webp;base64,UklGRrwAAABXRUJQVlA4WAoAAAAQAAAADwAADwAAQUxQSDsAAAARL6AmAAE2p4t7fSqIiMDUE4oiSWruUAAOwEEUkAWk9S/meKEgov8TQD/7/CgAiwUoUQEWdt6HdoZ+BgBWUDggWgAAAJACAJ0BKhAAEAAFQHwlsAJ0fwYn/ZFBEPFk8Xw4APxaa6AsPslD0kP6pSoQ64rdcbh7jVYpY5F4ZVbNK/YZxadsYZPSLpBt7Xq7oXubbxbThuNAp3nKY9fAAA==",
+  "sizes": {
+    "96": {
+      "avif": "\\\\assets\\\\sprites\\\\shiny\\\\_gen\\\\1-96.avif?v=1682519026035",
+      "webp": "\\\\assets\\\\sprites\\\\shiny\\\\_gen\\\\1-96.webp?v=1682519026035",
+    },
+  },
+}
+`;
+
+exports[`test image selecting > sprite image > find image in set 4`] = `
+{
+  "credit": null,
+  "default": "\\\\assets\\\\sprites\\\\shinyback\\\\_gen\\\\1-96.webp?v=1682519026035",
+  "formats": {
+    "avif": {
+      "96": "\\\\assets\\\\sprites\\\\shinyback\\\\_gen\\\\1-96.avif?v=1682519026035",
+    },
+    "webp": {
+      "96": "\\\\assets\\\\sprites\\\\shinyback\\\\_gen\\\\1-96.webp?v=1682519026035",
+    },
+  },
+  "placeholder": "data:image/webp;base64,UklGRrYAAABXRUJQVlA4WAoAAAAQAAAADwAADwAAQUxQSDUAAAARL6AmABI2SBYCcOI2IgLy8KEgsk0LCYwIEghBhNs/DO+bIKL/E0A/26RIbgHIgqeirm7DrwBWUDggWgAAAFACAJ0BKhAAEAAFQHwlsAJ0fwPYtBik53kyAAD+ucNhWhawG4K6VIQottNEnTzt1eUkpdUsNMthJRL1l2x6GBZd/au2F4EgMUVAgNxc3jhVntVQLbmF5wAAAA==",
+  "sizes": {
+    "96": {
+      "avif": "\\\\assets\\\\sprites\\\\shinyback\\\\_gen\\\\1-96.avif?v=1682519026035",
+      "webp": "\\\\assets\\\\sprites\\\\shinyback\\\\_gen\\\\1-96.webp?v=1682519026035",
+    },
+  },
+}
+`;

@@ -1,10 +1,12 @@
 <script lang="ts">
   import type { Pokemon } from '$lib/types'
-  import classicImage from '$lib/assets/images/_gen/official-artwork'
   import ImageSet from 'web-image-gen-svelte'
   import 'lazysizes/plugins/attrchange/ls.attrchange'
+  import { getClassicSet } from '$lib/share'
 
   export let pokemon: Pokemon
+
+  const classicSet = getClassicSet(pokemon.pokedex.toString())
 </script>
 
 <div class="card overflow-hidden p-4 text-center">
@@ -20,7 +22,7 @@
     <section class="p-4">
       <ImageSet
         alt={`official artwork of ${pokemon.name}`}
-        set={classicImage[pokemon.pokedex.toString()]}
+        set={classicSet}
         imgClass="w-full h-full"
       />
     </section>
