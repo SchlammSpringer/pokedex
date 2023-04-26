@@ -16,6 +16,7 @@ export default defineConfig({
       exclude: [
         'setupTest.ts',
         'src/**/*.{test,spec}.{js,ts}',
+        'src/**/*.stories.{ts,svelte}',
         'src/lib/vital.js',
         'src/app.d.ts',
         'src/lib/db/types.ts',
