@@ -25,13 +25,15 @@ describe('test filter Pokemon', () => {
   }
   it.each`
     searchTerm | types                  | pokemon    | expected | cause
-    ${'1'}     | ${types}               | ${pokemon} | ${true}  | ${'pokedex'}
-    ${'KEN'}   | ${types}               | ${pokemon} | ${true}  | ${'pokemon name'}
-    ${'KEGE'}  | ${types}               | ${pokemon} | ${true}  | ${'pokemon german name'}
-    ${'1'}     | ${{ fakeType: false }} | ${pokemon} | ${false} | ${'search term not in type'}
-    ${'1'}     | ${undefined}           | ${pokemon} | ${false} | ${'no type'}
-  `('test filter by $cause', ({ searchTerm, types, pokemon, expected }) => {
+    ${'1'}     | ${types}               | ${pokemon} | ${true}  | ${'hit: pokedex'}
+    ${'KEN'}   | ${types}               | ${pokemon} | ${true}  | ${'hit: pokemon name'}
+    ${'KEGE'}  | ${types}               | ${pokemon} | ${true}  | ${'hit: pokemon german name'}
+    ${'abc'}   | ${types}               | ${pokemon} | ${false} | ${'no hit: wrong search term'}
+    ${'1'}     | ${{ fakeType: false }} | ${pokemon} | ${false} | ${'not hit: search term not in type'}
+    ${'1'}     | ${undefined}           | ${pokemon} | ${false} | ${'not hit: no type'}
+  `('test filter - $cause', ({ searchTerm, types, pokemon, expected }) => {
     const result = filterPokemon(searchTerm, types)(pokemon)
+
     expect(result).toBe(expected)
   })
 })
