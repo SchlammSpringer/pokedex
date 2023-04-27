@@ -7,6 +7,7 @@ import shinyBackImage from '$lib/assets/images/_gen/shinyback'
 import { range } from 'fp-ts/NonEmptyArray'
 import { describe, expect, it } from 'vitest'
 import {
+  filterPokemon,
   getBackImage,
   getClassicSet,
   getFrontImage,
@@ -14,7 +15,26 @@ import {
   getShinyBackImage,
   getShinyImage
 } from './share'
-
+describe('test filter Pokemon', () => {
+  const types = { fakeType: true }
+  const pokemon = {
+    pokedex: 1,
+    name: 'fakeName',
+    germanName: 'fakeGermanName',
+    types: ['fakeType']
+  }
+  it.each`
+    searchTerm | types                  | pokemon    | expected | cause
+    ${'1'}     | ${types}               | ${pokemon} | ${true}  | ${'pokedex'}
+    ${'KEN'}   | ${types}               | ${pokemon} | ${true}  | ${'pokemon name'}
+    ${'KEGE'}  | ${types}               | ${pokemon} | ${true}  | ${'pokemon german name'}
+    ${'1'}     | ${{ fakeType: false }} | ${pokemon} | ${false} | ${'search term not in type'}
+    ${'1'}     | ${undefined}           | ${pokemon} | ${false} | ${'no type'}
+  `('test filter by $cause', ({ searchTerm, types, pokemon, expected }) => {
+    const result = filterPokemon(searchTerm, types)(pokemon)
+    expect(result).toBe(expected)
+  })
+})
 describe('test image selecting', () => {
   describe('classic offical image', () => {
     it('all images present', () => {
