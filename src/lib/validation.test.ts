@@ -4,8 +4,8 @@ import { fc } from '@fast-check/vitest'
 import { describe, expect, it, vi, type Mock } from 'vitest'
 import { z } from 'zod'
 import type { Pokemon } from '$lib/types'
-import { superValidate } from 'sveltekit-superforms/server'
 import { error } from '@sveltejs/kit'
+import { superValidate } from 'sveltekit-superforms/server'
 
 describe('validate Pokemon', () => {
   const schemaForTesting = z.object({
@@ -17,6 +17,16 @@ describe('validate Pokemon', () => {
     germanName: z.string().min(1).max(50),
     habitat: z.string().min(1).max(50),
     notes: z.string().min(5).max(1000).optional()
+  })
+  const schemaForInvalidTesting = z.object({
+    pokedex: z.number().optional(),
+    name: z.string().min(31).optional(),
+    types: z.array(z.string().min(31)),
+    description: z.string().min(3001).optional(),
+    color: z.string().optional(),
+    germanName: z.string().min(51).optional(),
+    habitat: z.string().min(51).optional(),
+    notes: z.string().min(1001)
   })
 
   const pokemonArbitrary = ZodFastCheck().inputOf(schemaForTesting)
@@ -40,16 +50,27 @@ describe('validate Pokemon', () => {
       })
     )
   })
-  it('example invalid', () => {
+
+  const wrongPokemonArbitrary = ZodFastCheck().inputOf(schemaForInvalidTesting)
+  it('PBT correct invalid', () => {
+    fc.assert(
+      fc.property(wrongPokemonArbitrary, (pokemon) => {
+        const parsedPokemon = schema.safeParse(pokemon)
+
+        expect(parsedPokemon.success).toBe(false)
+      })
+    )
+  })
+  it('empty invalid', () => {
     const pokemon = {
       pokedex: 0.5,
-      name: ' ',
-      description: ' ',
+      name: '  ',
+      description: '  ',
       types: [],
-      color: ' ',
-      germanName: ' ',
-      habitat: ' ',
-      notes: ' '
+      color: '  ',
+      germanName: '  ',
+      habitat: '  ',
+      notes: '  '
     }
 
     const parsedPokemon = schema.safeParse(pokemon)
